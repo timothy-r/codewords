@@ -1,0 +1,22 @@
+{
+	"name": "Codewords",
+	"description": "A codeword puzzle solving app",
+	"keywords": ["puzzle", "codewords"],
+	"license": "",
+	"require": {
+	},
+    "require-dev" : {
+        "phpunit/phpunit" : "3.7.*",
+        "way/phpunit-wrappers": "dev-master",
+        "mockery/mockery": "dev-master"
+    },
+	"autoload": {
+        "psr-0":{
+            "Codewords": "lib/Codewords/"
+        }
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "dev"
+}
