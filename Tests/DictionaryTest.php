@@ -4,13 +4,16 @@ use Codewords\Dictionary;
 
 class DictionaryTest extends BaseTest
 {
-    public function testFindReturnsMatches()
+    public function testFindReturnsAllMatchingWords()
     {
-        $pattern = '^.at$';
-        $dictionary = new Dictionary
+        $pattern = '^.a.$';
+        $words = ['cat', 'mat', 'mouse'];
+        $dictionary = new Dictionary($words);
         $result = $dictionary->find($pattern);
 
         $this->assertTrue(is_array($result));
-
+        $this->assertSame(2, count($result));
+        $this->assertTrue(in_array('cat', $result));
+        $this->assertTrue(in_array('mat', $result));
     }
 }
