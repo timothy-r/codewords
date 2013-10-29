@@ -18,5 +18,12 @@ class Dictionary
     */
     public function find($pattern)
     {
+        $result = [];
+        foreach($this->words as $word){
+            if (preg_match('#'.$pattern.'#', $word)){
+                $result []= $word;
+            }
+        }
+        return $result;
     }
 }
