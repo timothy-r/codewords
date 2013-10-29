@@ -10,5 +10,13 @@ class CellTest extends BaseTest
         $cell = new Cell(1);
         $this->assertSame(1, $cell->getNumber());
     }
+
+    public function testCanSetCharacter()
+    {
+        $char = 'Z';
+        $cell = new Cell(1);
+        $cell->setCharacter($char);
+        $this->assertSame($char, $cell->getCharacter());
+    }
 }
 

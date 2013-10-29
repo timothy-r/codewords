@@ -22,13 +22,16 @@ class Cell
 
     public function getNumber()
     {
+        return $this->number;
     }
 
     public function setCharacter($char)
     {
+        $this->character = $char;
     }
 
     public function getCharacter()
     {
+        return $this->character;
     }
 }
