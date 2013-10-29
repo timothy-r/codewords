@@ -1,15 +1,15 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\Dictionary;
+use Codewords\ArrayDictionary;
 
-class DictionaryTest extends BaseTest
+class ArrayDictionaryTest extends BaseTest
 {
     public function testFindReturnsAllMatchingWords()
     {
         $pattern = '^.a.$';
         $words = ['cat', 'mat', 'mouse'];
-        $dictionary = new Dictionary($words);
+        $dictionary = new ArrayDictionary($words);
         $result = $dictionary->find($pattern);
 
         $this->assertTrue(is_array($result));

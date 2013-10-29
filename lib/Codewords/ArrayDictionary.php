@@ -1,6 +1,11 @@
 <?php namespace Codewords;
 
-class Dictionary
+use Codewords\IDictionary;
+
+/**
+* implements IDictionary using an in memory array of words
+*/
+class ArrayDictionary implements IDictionary
 {
     /**
     * @var array of words
