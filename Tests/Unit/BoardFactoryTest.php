@@ -6,6 +6,9 @@ use Codewords\Cell;
 use Codewords\BoardFactory;
 use Codewords\IBoardReader;
 
+/**
+* @group unit
+*/
 class BoardFactoryTest extends BaseTest
 {
     public function testCreateReturnsABoard()

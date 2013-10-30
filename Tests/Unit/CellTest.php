@@ -3,6 +3,9 @@ require_once(__DIR__ . '/BaseTest.php');
 
 use Codewords\Cell;
 
+/**
+* @group unit
+*/
 class CellTest extends BaseTest
 {
     public function testCellHasANumber()

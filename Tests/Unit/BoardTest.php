@@ -4,6 +4,9 @@ require_once(__DIR__ . '/BaseTest.php');
 use Codewords\Board;
 use Codewords\Cell;
 
+/**
+* @group unit
+*/
 class BoardTest extends BaseTest
 {
     public function testCanAddCellToBoard()

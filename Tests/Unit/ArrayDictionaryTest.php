@@ -3,6 +3,9 @@ require_once(__DIR__ . '/BaseTest.php');
 
 use Codewords\ArrayDictionary;
 
+/**
+* @group unit
+*/
 class ArrayDictionaryTest extends BaseTest
 {
     public function testFindReturnsAllMatchingWords()
