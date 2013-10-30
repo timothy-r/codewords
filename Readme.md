@@ -1,4 +1,4 @@
-# A code words solving app
+# A codewords solving app
 
 * Read file / input into a Board in memory - based on grid cells which have a number which can map to a character
 * Fill out initial letters - set the character value of a number
