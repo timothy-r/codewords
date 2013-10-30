@@ -30,7 +30,7 @@ class BoardTest extends BaseTest
     /**
     * @dataProvider getValidCellLocations
     */
-    public function testCanGetCellToBoard($x, $y)
+    public function testCanGetCellFromBoard($x, $y)
     {
         $board = new Board;
         $cell = new Cell(1);

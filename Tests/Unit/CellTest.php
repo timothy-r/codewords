@@ -1,4 +1,5 @@
 <?php
+
 require_once(__DIR__ . '/BaseTest.php');
 
 use Codewords\Cell;
@@ -14,7 +15,7 @@ class CellTest extends BaseTest
         $this->assertSame(1, $cell->getNumber());
     }
 
-    public function testCanSetCharacter()
+    public function testCanCellSetCharacter()
     {
         $char = 'Z';
         $cell = new Cell(1);
@@ -22,4 +23,3 @@ class CellTest extends BaseTest
         $this->assertSame($char, $cell->getCharacter());
     }
 }
-

@@ -2,7 +2,9 @@
 
 class BoardFactory
 {
-    
+    /**
+    * @var IBoardReader
+    */
     protected $reader;
 
     public function __construct(IBoardReader $reader)
