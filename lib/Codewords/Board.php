@@ -28,6 +28,9 @@ class Board
 
     public function addCell(Cell $cell, $x, $y)
     {
+        $this->validateLocation($x);
+        $this->validateLocation($y);
+
         $row = &$this->rows[$y];
         $row[$x] = $cell;
     }
@@ -36,5 +39,12 @@ class Board
     {
         $row = $this->rows[$y];
         return $row[$x]; 
+    }
+
+    protected function validateLocation($location)
+    {
+        if ($location < 0 || $location > 12) {
+            throw new InvalidCellLocation;
+        }
     }
 }

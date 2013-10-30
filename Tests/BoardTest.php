@@ -21,5 +21,26 @@ class BoardTest extends BaseTest
         $result = $board->getCell(0,0);
         $this->assertsame($cell, $result);
     }
+   
+    public function getInvalidCellLocations()
+    {
+        return [
+            [-2, 0],
+            [40, 2],
+            [3, -4],
+            [10, 33]
+        ];
+    }
+
+    /**
+    * @dataProvider getInvalidCellLocations
+    * @expectedException Codewords\InvalidCellLocation
+    */
+    public function testMustAddCellAtValidLocation($x, $y)
+    {
+        $board = new Board;
+        $cell = new Cell(1);
+        $board->addCell($cell, $x, $y);
+    }
 }
 
