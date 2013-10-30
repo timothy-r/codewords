@@ -1,6 +1,6 @@
 <?php namespace Codewords;
 
-class BoardDirector
+class BoardFactory
 {
     
     protected $reader;
