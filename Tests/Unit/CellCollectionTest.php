@@ -24,4 +24,23 @@ class CellCollectionTest extends BaseTest
         // assertSame tests that the two objects reference the same instance
         $this->assertSame($cell_1, $cell_2);
     }
+    
+    public function getValidCellNumbers()
+    {
+        return [
+            [345],
+            [0],
+            [-99]
+        ];
+    }
+
+    /**
+    * @expectedException Codewords\InvalidCellLocation
+    * @dataProvider getValidCellNumbers
+    */
+    public function testGetCellRespectsValidCellRange($number)
+    {
+        $cell_collection = new CellCollection;
+        $cell = $cell_collection->cell($number);
+    }
 }
