@@ -15,9 +15,15 @@ class BoardFactory
         $board = new Board;
         $length = 12;
 
-        // get each cell value from reader and add to Board
-        // reader->numberAt($x, $y);
-        // return BoardA
+        for ($y = 0; $y <= $length; $y++) {
+            for($x = 0; $x <= $length; $x++) {
+                // get each cell value from reader and add to Board
+                $number = $this->reader->numberAt($x, $y);
+                $cell = new Cell($number);
+                $board->addCell($cell, $x, $y);
+            }
+        }
+        // return Board
         return $board;
     }
 }
