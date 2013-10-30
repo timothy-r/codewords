@@ -11,11 +11,26 @@ use Codewords\IBoardReader;
 */
 class BoardFactoryTest extends BaseTest
 {
+    protected $factory;
+
+    protected $reader;
+
+    protected $mock_cell;
+
+    public function setUp()
+    {
+        $this->reader = $this->getMock('Codewords\IBoardReader', ['numberAt']);
+        $collection = $this->getMock('Codewords\CellCollection', ['cell']);
+        $this->mock_cell  = $this->getMock('Codewords\Cell', [], [], '', false);
+        $collection->expects($this->any())
+            ->method('cell')
+            ->will($this->returnValue($this->mock_cell));
+        $this->factory = new BoardFactory($this->reader, $collection);
+    }
+
     public function testCreateReturnsABoard()
     {
-        $reader = $this->getMock('Codewords\IBoardReader', ['numberAt']);
-        $factory = new BoardFactory($reader);
-        $product = $factory->create();
+        $product = $this->factory->create();
         $this->assertInstanceOf('Codewords\Board', $product);
     }
 
@@ -23,19 +38,16 @@ class BoardFactoryTest extends BaseTest
     {
         $number = 19;
         $length = 12;
-        $reader = $this->getMock('Codewords\IBoardReader', ['numberAt']);
-        $reader->expects($this->atLeastOnce())
+        $this->reader->expects($this->atLeastOnce())
             ->method('numberAt')
             ->will($this->returnValue($number));
-
-        $factory = new BoardFactory($reader);
-        $product = $factory->create();
+        
+        $product = $this->factory->create();
         
         for ($y = 0; $y <= $length; $y++) {
             for($x = 0; $x <= $length; $x++) {
                 $cell = $product->getCell($x, $y);
-                $this->assertInstanceOf('Codewords\Cell', $cell);
-                $this->assertSame($number, $cell->getNumber());
+                $this->assertSame($this->mock_cell, $cell);
             }
         }
     }
