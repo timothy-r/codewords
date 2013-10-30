@@ -13,13 +13,19 @@ class Board
     * @var array
     */
     protected $rows;
+    
+    /**
+    * boards are square with width & height = length
+    * @var integer
+    */
+    protected $length = 12;
 
     public function __construct()
     {
         $this->rows = [];
-        for ($y = 0; $y < 13; $y++) {
+        for ($y = 0; $y <= $this->length; $y++) {
             $row = [];
-            for($x = 0; $x < 13; $x++) {
+            for($x = 0; $x <= $this->length; $x++) {
                 $row[$x] = null;
             }
             $this->rows []= $row;
@@ -46,7 +52,7 @@ class Board
 
     protected function validateLocation($location)
     {
-        if ($location < 0 || $location > 12) {
+        if ($location < 0 || $location > $this->length) {
             throw new InvalidCellLocation;
         }
     }
