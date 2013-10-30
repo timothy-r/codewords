@@ -20,10 +20,10 @@ class BoardFactoryTest extends BaseTest
     public function setUp()
     {
         $this->reader = $this->getMock('Codewords\IBoardReader', ['numberAt']);
-        $collection = $this->getMock('Codewords\CellCollection', ['cell']);
+        $collection = $this->getMock('Codewords\CellCollection', ['at']);
         $this->mock_cell  = $this->getMock('Codewords\Cell', [], [], '', false);
         $collection->expects($this->any())
-            ->method('cell')
+            ->method('at')
             ->will($this->returnValue($this->mock_cell));
         $this->factory = new BoardFactory($this->reader, $collection);
     }

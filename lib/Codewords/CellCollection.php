@@ -13,7 +13,7 @@ class CellCollection
     *
     * @return Codewords\Cell
     */
-    public function cell($number)
+    public function at($number)
     {
         if ($number > $this->max_cells || $number < 1){
             throw new InvalidCellLocation;

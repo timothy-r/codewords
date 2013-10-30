@@ -30,11 +30,10 @@ class BoardFactory
             for($x = 0; $x <= $length; $x++) {
                 // get each cell value from reader and add to Board
                 $number = $this->reader->numberAt($x, $y);
-                $cell = $this->cells->cell($number);
+                $cell = $this->cells->at($number);
                 $board->addCell($cell, $x, $y);
             }
         }
-        // return Board
         return $board;
     }
 }
