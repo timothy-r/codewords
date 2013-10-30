@@ -1,4 +1,4 @@
-A code words solving app
+# A code words solving app
 
 * Read file / input into a Board in memory - based on grid cells which have a number which can map to a character
 * Fill out initial letters - set the character value of a number
@@ -8,7 +8,7 @@ A code words solving app
 * Consult Dictionary to guess at words
 
 
-Classes:
+# Classes:
 
 Board contains a grid of Cells
 Cell has a number and can have its character set via the mapping of numbers to characters
@@ -16,8 +16,8 @@ Cell has a number and can have its character set via the mapping of numbers to c
 Character to Number mapping?
 DataReader - string / file to Board
 
-Game to contain parts?
+Game to contain parts of the puzzle
 
 Dictionary - allows lookups based on reg exp patterns
 
-A Player? that interacts with the Board/Game/Dictionary objects
+A Player that interacts with the Board/Game/Dictionary objects
