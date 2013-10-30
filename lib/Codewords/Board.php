@@ -37,6 +37,9 @@ class Board
 
     public function getCell($x, $y)
     {
+        $this->validateLocation($x);
+        $this->validateLocation($y);
+
         $row = $this->rows[$y];
         return $row[$x]; 
     }

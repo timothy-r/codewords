@@ -42,5 +42,14 @@ class BoardTest extends BaseTest
         $cell = new Cell(1);
         $board->addCell($cell, $x, $y);
     }
-}
 
+    /**
+    * @dataProvider getInvalidCellLocations
+    * @expectedException Codewords\InvalidCellLocation
+    */
+    public function testMustGetCellAtValidLocation($x, $y)
+    {
+        $board = new Board;
+        $board->getCell($x, $y);
+    }
+}
