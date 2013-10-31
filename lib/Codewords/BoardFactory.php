@@ -27,8 +27,8 @@ class BoardFactory
         $length = $this->reader->length();
         $board = new Board($length);
 
-        for ($y = 0; $y <= $length; $y++) {
-            for($x = 0; $x <= $length; $x++) {
+        for ($y = 0; $y <= $length - 1; $y++) {
+            for($x = 0; $x <= $length - 1; $x++) {
                 // get each cell value from reader and add to Board
                 $number = $this->reader->numberAt($x, $y);
                 $cell = $this->cells->at($number);

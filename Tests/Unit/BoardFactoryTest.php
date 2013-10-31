@@ -48,8 +48,8 @@ class BoardFactoryTest extends BaseTest
         
         $product = $this->factory->create();
         
-        for ($y = 0; $y <= $length; $y++) {
-            for($x = 0; $x <= $length; $x++) {
+        for ($y = 0; $y <= $length - 1; $y++) {
+            for($x = 0; $x <= $length - 1; $x++) {
                 $cell = $product->getCell($x, $y);
                 $this->assertSame($this->mock_cell, $cell);
             }

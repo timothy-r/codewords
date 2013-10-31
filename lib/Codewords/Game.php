@@ -1,20 +1,25 @@
 <?php namespace Codewords;
 
+use Codewords\CsvBoardReader;
+use Codewords\CellCollection;
+use Codewords\BoardFactory;
+
 /**
 * The central class for a Codewords applications
 */
 class Game
 {
-    public function __construct()
+    /**
+    * @todo pass IBoardReader to contructor
+    */
+    public function __construct($data)
     {
-
+        $reader = new CsvBoardReader($data);
+        $this->cells = new CellCollection;
+        $factory = new BoardFactory($reader, $this->cells);
+        $this->board = $factory->create();
     }
 
-    public function setCellCharacter($number, $character)
-    {
-
-    }
-    
     /**
     * @return Codewords\Board
     */
@@ -27,10 +32,5 @@ class Game
     */
     public function getCells()
     {
-    }
-
-    public function clearBoard()
-    {
-
     }
 }
