@@ -67,4 +67,35 @@ class CsvBoardReaderTest extends BaseTest
         $reader = new CsvBoardReader($this->data);
         $number = $reader->numberAt($x, $y);
     }
+    
+    public function getInvalidBoardData()
+    {
+        return [
+            [''],
+            [null],
+            ["1,2,3,4,5,6,7,8,9,10,11,12,13\n"],
+            ["1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
+            "1,2,3,4,5,6,7,8,9,10,11,12\n"]
+        ];
+    }
+
+    /**
+    * @dataProvider getInvalidBoardData
+    * @expectedException Codewords\InvalidBoardData
+    */
+    public function testCsvBoardReaderValidatesData($invalid_data)
+    {
+        $reader = new CsvBoardReader($invalid_data);
+    }
 }
