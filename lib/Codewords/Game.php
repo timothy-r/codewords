@@ -1,7 +1,7 @@
 <?php namespace Codewords;
 
 /**
-* The entry point for Codewords applications
+* The central class for a Codewords applications
 */
 class Game
 {
@@ -14,11 +14,17 @@ class Game
     {
 
     }
-
+    
+    /**
+    * @return Codewords\Board
+    */
     public function getBoard()
     {
     }
 
+    /**
+    * @return Codewords\CellCollection
+    */
     public function getCells()
     {
     }
