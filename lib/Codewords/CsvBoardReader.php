@@ -9,6 +9,9 @@ use Codewords\InvalidBoardData;
 */
 class CsvBoardReader implements IBoardReader
 {
+    /**
+    * initial value of width and height of board
+    */
     protected $length = 13;
 
     public function __construct($data)
@@ -18,10 +21,14 @@ class CsvBoardReader implements IBoardReader
         if (count($lines) < $this->length){
             throw new InvalidBoardData("'$data' is invalid");
         }
+
+        // allow for longer lines than default
+        // boards must be square
+        $this->length = count($lines);
         foreach($lines as $line) {
             $line_data = str_getcsv($line, ",");
-            if (count($line_data) < $this->length){
-                throw new InvalidBoardData("'$data' is invalid");
+            if (count($line_data) !== $this->length){
+                throw new InvalidBoardData(print_r($line_data,1) . " is invalid it is not {$this->length} long");
             }
             $this->data []= $line_data;
         }
@@ -30,7 +37,7 @@ class CsvBoardReader implements IBoardReader
     /**
     * @var integer $x
     * @var integer $y
-    * @return integer string
+    * @return string (either an integer string or a blank)
     */
     public function numberAt($x, $y)
     {
