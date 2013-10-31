@@ -18,10 +18,11 @@ class Board
     * boards are square with width & height = length
     * @var integer
     */
-    protected $length = 12;
+    protected $length;
 
-    public function __construct()
+    public function __construct($length)
     {
+        $this->length = $length;
         $this->rows = [];
         for ($y = 0; $y <= $this->length; $y++) {
             $row = [];

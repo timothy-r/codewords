@@ -11,7 +11,7 @@ class BoardTest extends BaseTest
 {
     public function testCanAddCellToBoard()
     {
-        $board = new Board;
+        $board = new Board(12);
         $cell = new Cell(1);
         $board->addCell($cell, 0, 0);
     }
@@ -32,7 +32,7 @@ class BoardTest extends BaseTest
     */
     public function testCanGetCellFromBoard($x, $y)
     {
-        $board = new Board;
+        $board = new Board(12);
         $cell = new Cell(1);
         $board->addCell($cell, $x, $y);
         $result = $board->getCell($x, $y);
@@ -57,7 +57,7 @@ class BoardTest extends BaseTest
     */
     public function testMustAddCellAtValidLocation($x, $y)
     {
-        $board = new Board;
+        $board = new Board(12);
         $cell = new Cell(1);
         $board->addCell($cell, $x, $y);
     }
@@ -68,7 +68,7 @@ class BoardTest extends BaseTest
     */
     public function testMustGetCellAtValidLocation($x, $y)
     {
-        $board = new Board;
+        $board = new Board(12);
         $board->getCell($x, $y);
     }
 }

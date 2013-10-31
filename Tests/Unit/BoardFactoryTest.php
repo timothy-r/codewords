@@ -37,7 +37,11 @@ class BoardFactoryTest extends BaseTest
     public function testCreateAddsCellsToBoard()
     {
         $number = 19;
-        $length = 12;
+        $length = 15;
+        $this->reader->expects($this->atLeastOnce())
+            ->method('length')
+            ->will($this->returnValue($length));
+        
         $this->reader->expects($this->atLeastOnce())
             ->method('numberAt')
             ->will($this->returnValue($number));
