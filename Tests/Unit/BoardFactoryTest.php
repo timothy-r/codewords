@@ -19,7 +19,7 @@ class BoardFactoryTest extends BaseTest
 
     public function setUp()
     {
-        $this->reader = $this->getMock('Codewords\IBoardReader', ['numberAt']);
+        $this->reader = $this->getMock('Codewords\IBoardReader', ['numberAt', 'length']);
         $collection = $this->getMock('Codewords\CellCollection', ['at']);
         $this->mock_cell  = $this->getMock('Codewords\Cell', [], [], '', false);
         $collection->expects($this->any())

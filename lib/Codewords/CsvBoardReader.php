@@ -49,4 +49,9 @@ class CsvBoardReader implements IBoardReader
         }
         return $this->data[$y][$x];
     }
+
+    public function length()
+    {
+        return $this->length;
+    }
 }

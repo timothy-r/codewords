@@ -8,41 +8,29 @@ use Codewords\CsvBoardReader;
 */
 class CsvBoardReaderTest extends BaseTest
 {
-    protected $data;
+    protected $data_13 = 
+"1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n";
 
-    public function setUp()
-    {
-        parent::setUp();
-        $this->data = "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
-                "1,2,3,4,5,6,7,8,9,10,11,12,13\n";
-    }
+    protected $data_15 = 
+"1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\n";
 
     public function getValidInput()
     {
         return [
-            [0,0,'1'],
-            [1,1,'2'],
-            [12,12,'13'],
+            [$this->data_13, 0, 0, '1'],
+            [$this->data_13, 1, 1, '2'],
+            [$this->data_13, 12, 12,'13'],
+            [$this->data_15, 14, 14,'15'],
+            [$this->data_15, 0, 14,'1'],
         ];
     }
 
     /**
     * @dataProvider getValidInput
     */
-    public function testNumberAt($x, $y, $expected)
+    public function testNumberAt($data, $x, $y, $expected)
     {
-        $reader = new CsvBoardReader($this->data);
+        $reader = new CsvBoardReader($data);
         $number = $reader->numberAt($x, $y);
         $this->assertSame($expected, $number);
     }
@@ -63,7 +51,7 @@ class CsvBoardReaderTest extends BaseTest
     */
     public function testNumberAtValidatesInput($x, $y)
     {
-        $reader = new CsvBoardReader($this->data);
+        $reader = new CsvBoardReader($this->data_13);
         $number = $reader->numberAt($x, $y);
     }
     
@@ -110,5 +98,23 @@ class CsvBoardReaderTest extends BaseTest
     public function testCsvBoardReaderValidatesData($invalid_data)
     {
         $reader = new CsvBoardReader($invalid_data);
+    }
+
+    public function getBoardLengths()
+    {
+        return [
+            [$this->data_13, 13],
+            [$this->data_15, 15],
+        ];
+    }
+
+    /**
+    * @dataProvider getBoardLengths
+    */
+    public function testLengthReturnsBoardLength($data, $expected)
+    {
+        $reader = new CsvBoardReader($data);
+        $length = $reader->length();
+        $this->assertSame($expected, $length);
     }
 }

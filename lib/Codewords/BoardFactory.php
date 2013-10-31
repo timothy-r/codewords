@@ -24,6 +24,7 @@ class BoardFactory
     public function create()
     {
         $board = new Board;
+        // get length from $reader, don't hard code
         $length = 12;
 
         for ($y = 0; $y <= $length; $y++) {
