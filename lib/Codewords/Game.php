@@ -25,6 +25,7 @@ class Game
     */
     public function getBoard()
     {
+        return $this->board;
     }
 
     /**
@@ -32,5 +33,6 @@ class Game
     */
     public function getCells()
     {
+        return $this->cells;
     }
 }
