@@ -13,7 +13,7 @@ class GameTest extends IntegrationTest
 
     public function testMakeGame()
     {
-        $game = new Game($this->data_13);
+        $game = new Game($this->getFixture('data-1.csv'));
 
         $board = $game->getBoard();
         $this->assertInstanceOf('Codewords\Board', $board);
