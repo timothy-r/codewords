@@ -52,60 +52,51 @@ class Board
 
         return $this->rows[$y][$x];
     }
-
+    
+    /**
+    * @return array of arrays of Cells
+    */
     public function getWords()
     {
         $words = [];
         // iterate along each row first
-        $word = '';
+        $word = [];
         foreach($this->rows as $row){
             foreach($row as $cell){
-                $word = $this->addCellToWord($cell, $word, $words);
+                $this->addCellToWord($cell, $word, $words);
             }
             // end of line
-            if (strlen($word) > 1){
+            if (count($word) > 0){
                 $words []= $word;
             }
-            $word = '';
+            $word = [];
         }
 
         // now add vertical words
         for ($x = 0; $x < $this->length; $x++){
             for ($y = 0; $y < $this->length; $y++){
                 $cell = $this->rows[$y][$x];
-                $word = $this->addCellToWord($cell, $word, $words);
+                $this->addCellToWord($cell, $word, $words);
             }
             // end of line
-            if (strlen($word) > 1){
+            if (count($word) > 0){
                 $words []= $word;
             }
-            $word = '';
+            $word = [];
         }
         return $words;
     }
     
-    protected function addCellToWord(Cell $cell, $word, &$words){
-        $char = $this->renderCell($cell);
-        if (is_null($char)){
-            if (strlen($word) > 1){
+    protected function addCellToWord(Cell $cell, array &$word, array &$words){
+        if ($cell->isNull()){
+            if (count($word) > 0){
                 $words []= $word;
             }
-            $word = '';
+            $word = [];
         } else {
-            $word .= $char;
+            $word []= $cell;
         }
-        return $word;
-    }
-
-    protected function renderCell(Cell $cell)
-    {
-            if ($cell->isNull()){
-                    return null;
-            } else if ($character = $cell->getCharacter()){
-                    return $character;
-            } else {
-                    return '*';
-            }
+        //return $word;
     }
 
     protected function validateLocation($location)
