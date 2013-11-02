@@ -3,6 +3,9 @@
 use Codewords\Cell;
 use Codewords\InvalidCellLocation;
 
+/**
+* Produces and contains the Games Cells
+*/
 class CellCollection
 {
     protected $cells = [];
