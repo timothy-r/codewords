@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Error;
 
 use Exception;
 

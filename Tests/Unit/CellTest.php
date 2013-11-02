@@ -55,7 +55,7 @@ class CellTest extends BaseTest
 
     /**
     * @dataProvider getInvalidCellNumbers
-    * @expectedException Codewords\InvalidCellNumber
+    * @expectedException Codewords\Error\InvalidCellNumber
     */
     public function testCellsValidateNumberRange($number)
     {

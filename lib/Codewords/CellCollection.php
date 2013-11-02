@@ -1,7 +1,7 @@
 <?php namespace Codewords;
 
 use Codewords\Cell;
-use Codewords\InvalidCellLocation;
+use Codewords\Error\InvalidCellLocation;
 
 /**
 * Produces and contains the Games Cells

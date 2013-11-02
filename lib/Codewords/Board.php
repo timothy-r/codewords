@@ -1,7 +1,8 @@
 <?php namespace Codewords;
 
 use Codewords\Cell;
-use Codewords\IllegalOperation;
+use Codewords\Error\IllegalOperation;
+use Codewords\Error\InvalidCellLocation;
 
 /**
 * Represents the grid of Cells

@@ -34,7 +34,7 @@ class CellCollectionTest extends BaseTest
     }
 
     /**
-    * @expectedException Codewords\InvalidCellNumber
+    * @expectedException Codewords\Error\InvalidCellNumber
     * @dataProvider getInvalidCellNumbers
     */
     public function testGetCellRespectsValidCellRange($number)

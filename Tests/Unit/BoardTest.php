@@ -53,7 +53,7 @@ class BoardTest extends BaseTest
 
     /**
     * @dataProvider getInvalidCellLocations
-    * @expectedException Codewords\InvalidCellLocation
+    * @expectedException Codewords\Error\InvalidCellLocation
     */
     public function testMustAddCellAtValidLocation($x, $y)
     {
@@ -64,7 +64,7 @@ class BoardTest extends BaseTest
 
     /**
     * @dataProvider getInvalidCellLocations
-    * @expectedException Codewords\InvalidCellLocation
+    * @expectedException Codewords\Error\InvalidCellLocation
     */
     public function testMustGetCellAtValidLocation($x, $y)
     {
@@ -73,7 +73,7 @@ class BoardTest extends BaseTest
     }
     
     /**
-    * @expectedException Codewords\IllegalOperation
+    * @expectedException Codewords\Error\IllegalOperation
     */
     public function testCannotOverwriteACell()
     {

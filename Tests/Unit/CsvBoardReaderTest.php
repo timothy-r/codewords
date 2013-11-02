@@ -47,7 +47,7 @@ class CsvBoardReaderTest extends BaseTest
 
     /**
     * @dataProvider getInvalidInput
-    * @expectedException Codewords\InvalidBoardLocation
+    * @expectedException Codewords\Error\InvalidBoardLocation
     */
     public function testNumberAtValidatesInput($x, $y)
     {
@@ -93,7 +93,7 @@ class CsvBoardReaderTest extends BaseTest
 
     /**
     * @dataProvider getInvalidBoardData
-    * @expectedException Codewords\InvalidBoardData
+    * @expectedException Codewords\Error\InvalidBoardData
     */
     public function testCsvBoardReaderValidatesData($invalid_data)
     {

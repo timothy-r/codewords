@@ -1,5 +1,7 @@
 <?php namespace Codewords;
 
+use Codewords\Error\InvalidCellNumber;
+
 /**
 * Maps number to a character
 */
