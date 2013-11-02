@@ -2,23 +2,44 @@
 require_once(__DIR__ . '/IntegrationTest.php');
 
 use Codewords\Game;
+use Codewords\HtmlTableBoardRenderer;
 
 /**
 * @group integration
 */
 class GameTest extends IntegrationTest
 {
-    protected $data_13 = 
-"1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13\n1,2,3,4,5,6,7,8,9,10,11,12,13";
-
-    public function testMakeGame()
+    public function getValidGameData()
     {
-        $game = new Game($this->getFixture('data-1.csv'));
+        return [
+            ['data-1.csv', 'data-1-expectation.html']
+        ];
+    }
+    
+    /**
+    * @dataProvider getValidGameData
+    */
+    public function testMakeGame($fixture)
+    {
+        $game = new Game($this->getFixture($fixture));
 
         $board = $game->getBoard();
         $this->assertInstanceOf('Codewords\Board', $board);
 
         $cells = $game->getCells();
         $this->assertInstanceOf('Codewords\CellCollection', $cells);
+    }
+
+    /**
+    * @dataProvider getValidGameData
+    */
+    public function testRenderBoard($fixture, $expectation)
+    {
+        $expectation = $this->getFixture($expectation);
+        $game = new Game($this->getFixture($fixture));
+        $renderer = new HtmlTableBoardRenderer;
+        $table = $renderer->render($game->getBoard());
+
+        $this->assertSame($expectation, $table);
     }
 }

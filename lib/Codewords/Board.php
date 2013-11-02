@@ -3,7 +3,7 @@
 use Codewords\Cell;
 
 /**
-* Represents the grid of 13 x 13 Cells
+* Represents the grid of Cells
 * Contains the Cells
 * Allows access to rows, columns and cells
 */
@@ -31,6 +31,11 @@ class Board
             }
             $this->rows []= $row;
         }
+    }
+
+    public function getLength()
+    {
+        return $this->length;
     }
 
     public function addCell(Cell $cell, $x, $y)
