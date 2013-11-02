@@ -96,12 +96,12 @@ class BoardTest extends BaseTest
         $this->addCell($board, 3, 'T', 2, 0);
         $this->addCell($board, 4, 'I', 3, 0);
 
-        $this->addCell($board, 4, 'B',  0, 1);
+        $this->addCell($board, 4, '',  0, 1);
         $this->addCell($board, 0, '',  1, 1);
         $this->addCell($board, 5, 'O', 2, 1);
         $this->addCell($board, 0, '',  3, 1);
 
-        $this->addCell($board, 6, 'L', 0, 2);
+        $this->addCell($board, 6, '', 0, 2);
         $this->addCell($board, 0, '',  1, 2);
         $this->addCell($board, 7, 'W', 2, 2);
         $this->addCell($board, 4, 'I', 3, 2);
@@ -115,7 +115,7 @@ class BoardTest extends BaseTest
         $this->assertTrue(is_array($words));
         $this->assertWord('ANTI', $words[0]);
         $this->assertWord('WI', $words[1]);
-        $this->assertWord('ABLE', $words[2]);
+        $this->assertWord('A**E', $words[2]);
         $this->assertWord('TOW', $words[3]);
         $this->assertWord('IN', $words[4]);
     }
@@ -123,7 +123,12 @@ class BoardTest extends BaseTest
     protected function assertWord($text, $cells)
     {
         for($i = 0; $i < count($cells); $i++){
-            $this->assertSame(substr($text, $i, 1), $cells[$i]->getCharacter());
+            $char = substr($text, $i, 1);
+            if ('*' == $char){
+                $this->assertSame('', $cells[$i]->getCharacter());
+            } else  {
+                $this->assertSame(substr($text, $i, 1), $cells[$i]->getCharacter());
+            }
         }
 
     }
