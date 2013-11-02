@@ -96,12 +96,12 @@ class BoardTest extends BaseTest
         $this->addCell($board, 3, 'T', 2, 0);
         $this->addCell($board, 4, 'I', 3, 0);
 
-        $this->addCell($board, 4, '',  0, 1);
+        $this->addCell($board, 4, 'B',  0, 1);
         $this->addCell($board, 0, '',  1, 1);
         $this->addCell($board, 5, 'O', 2, 1);
         $this->addCell($board, 0, '',  3, 1);
 
-        $this->addCell($board, 6, '', 0, 2);
+        $this->addCell($board, 6, 'L', 0, 2);
         $this->addCell($board, 0, '',  1, 2);
         $this->addCell($board, 7, 'W', 2, 2);
         $this->addCell($board, 4, 'I', 3, 2);
@@ -112,19 +112,12 @@ class BoardTest extends BaseTest
         $this->addCell($board, 2, 'N',  3, 3);
 
         $words = $board->getWords();
-        //print_r($words);die;
         $this->assertTrue(is_array($words));
         $this->assertWord('ANTI', $words[0]);
         $this->assertWord('WI', $words[1]);
-        $this->assertWord('A**E', $words[2]);
-        //$this->assertWord('ANTI', $words[0]);
-        //$this->assertWord('ANTI', $words[0]);
-
-        #$this->assertSame('ANTI', $words[0]);
-        #$this->assertSame('WI', $words[1]);
-        #$this->assertSame('A**E', $words[2]);
-        #$this->assertSame('TOW', $words[3]);
-        #$this->assertSame('IN', $words[4]);
+        $this->assertWord('ABLE', $words[2]);
+        $this->assertWord('TOW', $words[3]);
+        $this->assertWord('IN', $words[4]);
     }
     
     protected function assertWord($text, $cells)

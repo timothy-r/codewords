@@ -54,6 +54,8 @@ class Board
     }
     
     /**
+    * @todo refactor into a separate class
+    *
     * @return array of arrays of Cells
     */
     public function getWords()
@@ -66,7 +68,7 @@ class Board
                 $this->addCellToWord($cell, $word, $words);
             }
             // end of line
-            if (count($word) > 0){
+            if (count($word) > 1){
                 $words []= $word;
             }
             $word = [];
@@ -79,7 +81,7 @@ class Board
                 $this->addCellToWord($cell, $word, $words);
             }
             // end of line
-            if (count($word) > 0){
+            if (count($word) > 1){
                 $words []= $word;
             }
             $word = [];
@@ -89,14 +91,13 @@ class Board
     
     protected function addCellToWord(Cell $cell, array &$word, array &$words){
         if ($cell->isNull()){
-            if (count($word) > 0){
+            if (count($word) > 1){
                 $words []= $word;
             }
             $word = [];
         } else {
             $word []= $cell;
         }
-        //return $word;
     }
 
     protected function validateLocation($location)
