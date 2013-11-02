@@ -25,18 +25,17 @@ class CellCollectionTest extends BaseTest
         $this->assertSame($cell_1, $cell_2);
     }
     
-    public function getValidCellNumbers()
+    public function getInvalidCellNumbers()
     {
         return [
             [345],
-            [0],
             [-99]
         ];
     }
 
     /**
-    * @expectedException Codewords\InvalidCellLocation
-    * @dataProvider getValidCellNumbers
+    * @expectedException Codewords\InvalidCellNumber
+    * @dataProvider getInvalidCellNumbers
     */
     public function testGetCellRespectsValidCellRange($number)
     {

@@ -15,8 +15,22 @@ class Cell
     */
     protected $character;
 
+    protected $min = 0;
+
+    protected $max = 26;
+
     public function __construct($number)
     {
+        if (!is_numeric($number)){
+            throw new InvalidCellNumber("$number is out of range, ({$this->min} - {$this->max})");
+        }
+        
+        $number = (integer) $number;
+
+        if ($number > $this->max || $number < $this->min){
+            throw new InvalidCellNumber("$number is out of range, ({$this->min} - {$this->max})");
+        }
+
         $this->number = $number;
     }
 
@@ -33,5 +47,10 @@ class Cell
     public function getCharacter()
     {
         return $this->character;
+    }
+
+    public function isNull()
+    {
+        return 0 === $this->number;
     }
 }
