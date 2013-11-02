@@ -11,7 +11,5 @@ class WordTest extends BaseTest
 {
     public function testWordHasLetters()
     {
-        $word = new Word;
-        $letter = $word->letter(1);
     }
 }
