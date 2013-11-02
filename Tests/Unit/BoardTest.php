@@ -71,4 +71,16 @@ class BoardTest extends BaseTest
         $board = new Board(12);
         $board->getCell($x, $y);
     }
+    
+    /**
+    * @expectedException Codewords\IllegalOperation
+    */
+    public function testCannotOverwriteACell()
+    {
+        $x = $y = 1;
+        $board = new Board(12);
+        $cell = new Cell(1);
+        $board->addCell($cell, $x, $y);
+        $board->addCell($cell, $x, $y);
+    }
 }

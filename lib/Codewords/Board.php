@@ -1,6 +1,7 @@
 <?php namespace Codewords;
 
 use Codewords\Cell;
+use Codewords\IllegalOperation;
 
 /**
 * Represents the grid of Cells
@@ -12,7 +13,7 @@ class Board
     /**
     * @var array
     */
-    protected $rows;
+    protected $rows = [];
     
     /**
     * boards are square with width & height = length
@@ -23,14 +24,6 @@ class Board
     public function __construct($length)
     {
         $this->length = $length;
-        $this->rows = [];
-        for ($y = 0; $y <= $this->length; $y++) {
-            $row = [];
-            for($x = 0; $x <= $this->length; $x++) {
-                $row[$x] = null;
-            }
-            $this->rows []= $row;
-        }
     }
 
     public function getLength()
@@ -42,9 +35,13 @@ class Board
     {
         $this->validateLocation($x);
         $this->validateLocation($y);
+        if (isset($this->rows[$y])){
+            if (isset($this->rows[$y][$x])){
+                throw new IllegalOperation("Cannot overwrite a Cell at ($x,$y)");
+            }
+        }
 
-        $row = &$this->rows[$y];
-        $row[$x] = $cell;
+        $this->rows[$y][$x] = $cell;
     }
 
     public function getCell($x, $y)
