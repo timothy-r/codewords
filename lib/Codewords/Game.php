@@ -9,16 +9,22 @@ use Codewords\BoardFactory;
 */
 class Game
 {
+    protected $cells;
+
+    protected $dictionary;
+
+    protected $board;
+
     /**
     * @todo pass IBoardReader to contructor?
     */
-    public function __construct($data)
+    public function __construct($data, IDictionary $dictionary)
     {
         $reader = new CsvBoardReader($data);
         $this->cells = new CellCollection;
         $factory = new BoardFactory($reader, $this->cells);
         $this->board = $factory->create();
-        // validate the Board here?
+        $this->dictionary = $dictionary;
     }
 
     /**
@@ -35,5 +41,10 @@ class Game
     public function getCells()
     {
         return $this->cells;
+    }
+
+    public function getDictionary()
+    {
+        return $this->dictionary;
     }
 }
