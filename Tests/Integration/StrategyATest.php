@@ -27,7 +27,10 @@ class StrategyATest extends IntegrationTest
     {
         $this->givenAFileDictionary();
         $this->givenAGame($data);
-
+        // first three letters are solved
+        $this->game->getCells()->at(13)->setCharacter('I');
+        $this->game->getCells()->at(14)->setCharacter('L');
+        $this->game->getCells()->at(24)->setCharacter('A');
         $strategy = new StrategyA($this->game);
         $letter = $strategy->nextLetter();
 

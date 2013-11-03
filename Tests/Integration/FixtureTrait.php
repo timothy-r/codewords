@@ -17,8 +17,9 @@ trait FixtureTrait
 
     protected function givenAFileDictionary()
     {
-        $words = file(__DIR__.'/../../config/words');
-        $this->dictionary = new FileDictionary($words);
+        $file = __DIR__ . '/../../config/words';
+        //$words = file(__DIR__.'/../../config/words');
+        $this->dictionary = new FileDictionary($file);
     }
 
     protected function givenAGame($data)

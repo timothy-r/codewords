@@ -15,16 +15,15 @@ class StrategyA
         $this->game = $game;
     }
 
-
     public function nextLetter()
     {
         // find already solved letters
-        list($next_cell, $index) = $this->getNextUnsolvedCell();
+        list($next_cell, $expected_char) = $this->getNextUnsolvedCell();
         if (!$next_cell){
             return null;
         }
         // now guess this char based on standard letter frequencies
-        $expected_char = $this->getCharFromFrequency($index);
+        //$expected_char = $this->getCharFromFrequency($index);
         if ($this->testCharacter($next_cell, $expected_char)){
             // solve the character
             $next_cell->setCharacter($expected_char);
@@ -38,21 +37,32 @@ class StrategyA
         foreach($this->game->getBoard()->getWords() as $word){
             // create a pattern from Word 
             $pattern = '^';
+            $test = false; // only test words that contain our character
             foreach ($word as $word_cell){
                 if ($word_cell->matches($cell)){
                     $pattern .= $char;
+                    $test = true;
                 } else if ($character = $word_cell->getCharacter()){
                     $pattern .= $character;
                 } else {
-                    $pattern .= '*';
+                    $pattern .= '.';
                 }
             }
             $pattern .= '$';
+            #var_dump($char . ' ' . $pattern);
 
-            var_dump($pattern);
+            if ($test){
+                $matches = $this->game->getDictionary()->find($pattern);
+                //var_dump($matches);
+                if (!count($matches)){
+                    // no possible words found - reject this guess
+                    return false;
+                }
+            }
         }
+        // all words which contain this char can be solved 
+        return true;
     }
-
 
     protected function getCharFromFrequency($frequency)
     {
@@ -73,6 +83,8 @@ class StrategyA
         arsort($frequencies);
         $index = 0;
 
+        $data = ['E','T','A','O','I','N','S','H','R','D','L','C','U','M','W','F','G','Y','P','B','V','K','J','X','Q','Z'];
+
         foreach($frequencies as $number => $count) {
             // test to see if $number is solved yet
             $cell = $cells->at($number);
@@ -80,9 +92,14 @@ class StrategyA
 
             if ($character = $cell->getCharacter()){
                 print "Cell $number is $character\n";
+                $i = array_search($character, $data);
+                if ($i !== false) {
+                    unset($data[$i]);
+                }
             } else {
                 print "Solving Cell $number at index $index\n";
-                return [$cell, $index];
+                // removed solved chars from $data
+                return [$cell, array_shift($data)];
             }
         }
     }
