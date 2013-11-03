@@ -32,6 +32,26 @@ class Board
         return $this->length;
     }
 
+    /**
+    * access Cell frequencies
+    * @return array
+    */
+    public function getFrequencies()
+    {
+        $frequencies = array_map(function($i){ return 0;}, range(1,27));
+        unset($frequencies[0]);
+
+        foreach($this->rows as $row){
+            foreach($row as $cell){
+                if (!$cell->isNull()){
+                    $frequencies[$cell->getNumber()]++; 
+                }
+            }
+        }
+
+        return $frequencies; 
+    }
+
     public function addCell(Cell $cell, $x, $y)
     {
         $this->validateLocation($x);
@@ -55,6 +75,8 @@ class Board
     
     /**
     * @todo refactor into a separate class
+    * walk over the board and builds an array of Words
+    * use a BoardIterator - Vertical or Horizontal 
     *
     * @return array of arrays of Cells
     */
@@ -102,8 +124,8 @@ class Board
 
     protected function validateLocation($location)
     {
-            if ($location < 0 || $location > $this->length) {
-                    throw new InvalidCellLocation;
-            }
+        if ($location < 0 || $location > $this->length) {
+            throw new InvalidCellLocation;
+        }
     }
 }

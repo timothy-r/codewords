@@ -86,6 +86,36 @@ class BoardTest extends BaseTest
 
     public function testCanGetWords()
     {
+        $board = $this->generateTestBoard();
+        $words = $board->getWords();
+        $this->assertTrue(is_array($words));
+        $this->assertWord('ANTI', $words[0]);
+        $this->assertWord('WI', $words[1]);
+        $this->assertWord('A**E', $words[2]);
+        $this->assertWord('TOW', $words[3]);
+        $this->assertWord('IN', $words[4]);
+    }
+
+    public function testGetFrequencies()
+    {
+        $board = $this->generateTestBoard();
+        $frequencies = $board->getFrequencies();
+
+        $this->assertTrue(is_array($frequencies));
+        $this->assertSame(26, count($frequencies));
+        $this->assertSame(1, $frequencies[1]);
+        $this->assertSame(2, $frequencies[2]);
+        $this->assertSame(1, $frequencies[3]);
+        $this->assertSame(2, $frequencies[4]);
+        $this->assertSame(1, $frequencies[5]);
+        $this->assertSame(1, $frequencies[6]);
+        $this->assertSame(1, $frequencies[7]);
+        $this->assertSame(1, $frequencies[8]);
+        $this->assertSame(1, $frequencies[9]);
+    }
+
+    protected function generateTestBoard()
+    {
         $board = new Board(4);
         // ANTI
         // *.O.
@@ -96,7 +126,7 @@ class BoardTest extends BaseTest
         $this->addCell($board, 3, 'T', 2, 0);
         $this->addCell($board, 4, 'I', 3, 0);
 
-        $this->addCell($board, 4, '',  0, 1);
+        $this->addCell($board, 9, '',  0, 1);
         $this->addCell($board, 0, '',  1, 1);
         $this->addCell($board, 5, 'O', 2, 1);
         $this->addCell($board, 0, '',  3, 1);
@@ -110,16 +140,9 @@ class BoardTest extends BaseTest
         $this->addCell($board, 0, '',   1, 3);
         $this->addCell($board, 0, '',   2, 3);
         $this->addCell($board, 2, 'N',  3, 3);
-
-        $words = $board->getWords();
-        $this->assertTrue(is_array($words));
-        $this->assertWord('ANTI', $words[0]);
-        $this->assertWord('WI', $words[1]);
-        $this->assertWord('A**E', $words[2]);
-        $this->assertWord('TOW', $words[3]);
-        $this->assertWord('IN', $words[4]);
+        return $board;
     }
-    
+
     protected function assertWord($text, $cells)
     {
         for($i = 0; $i < count($cells); $i++){
@@ -130,8 +153,8 @@ class BoardTest extends BaseTest
                 $this->assertSame(substr($text, $i, 1), $cells[$i]->getCharacter());
             }
         }
-
     }
+
     protected function addCell($board, $number, $char, $x, $y)
     {
         $c = new Cell($number);

@@ -18,6 +18,7 @@ class Game
         $this->cells = new CellCollection;
         $factory = new BoardFactory($reader, $this->cells);
         $this->board = $factory->create();
+        // validate the Board here?
     }
 
     /**
