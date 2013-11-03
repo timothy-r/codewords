@@ -61,4 +61,20 @@ class CellTest extends BaseTest
     {
         $cell = new Cell($number);
     }
+
+    public function testTwoCellsWithSameNumberMatch()
+    {
+        $cell_1 = new Cell(1);
+        $cell_2 = new Cell(1);
+        $this->assertTrue($cell_1->matches($cell_2));
+        $this->assertTrue($cell_2->matches($cell_1));
+    }
+
+    public function testTwoCellsWithDifferentNumbersDontMatch()
+    {
+        $cell_1 = new Cell(1);
+        $cell_2 = new Cell(5);
+        $this->assertFalse($cell_1->matches($cell_2));
+        $this->assertFalse($cell_2->matches($cell_1));
+    }
 }

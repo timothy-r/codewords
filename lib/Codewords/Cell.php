@@ -51,8 +51,19 @@ class Cell
         return $this->character;
     }
 
+    /**
+    * @return boolean
+    */
     public function isNull()
     {
         return 0 === $this->number;
+    }
+    
+    /**
+    * @return boolean
+    */
+    public function matches(Cell $other)
+    {
+        return $other->getNumber() === $this->number;
     }
 }
