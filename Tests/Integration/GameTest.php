@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/IntegrationTest.php');
+require_once(__DIR__. '/FixtureTrait.php');
 
 use Codewords\Game;
 use Codewords\FileDictionary;
@@ -10,14 +11,7 @@ use Codewords\HtmlTableBoardRenderer;
 */
 class GameTest extends IntegrationTest
 {
-    protected $dictionary;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $words = file(__DIR__.'/../../config/words');
-        $this->dictionary = new FileDictionary($words);
-    }
+    use FixtureTrait;
 
     public function getValidGameData()
     {
@@ -31,12 +25,13 @@ class GameTest extends IntegrationTest
     */
     public function testMakeGame($fixture)
     {
-        $game = new Game($this->getFixture($fixture), $this->dictionary);
+        $this->givenAFileDictionary();
+        $this->givenAGame($fixture);
 
-        $board = $game->getBoard();
+        $board = $this->game->getBoard();
         $this->assertInstanceOf('Codewords\Board', $board);
 
-        $cells = $game->getCells();
+        $cells = $this->game->getCells();
         $this->assertInstanceOf('Codewords\CellCollection', $cells);
     }
 
@@ -45,10 +40,11 @@ class GameTest extends IntegrationTest
     */
     public function testRenderBoard($fixture, $expectation)
     {
+        $this->givenAFileDictionary();
+        $this->givenAGame($fixture);
         $expectation = $this->getFixture($expectation);
-        $game = new Game($this->getFixture($fixture), $this->dictionary);
         $renderer = new HtmlTableBoardRenderer;
-        $table = $renderer->render($game->getBoard());
+        $table = $renderer->render($this->game->getBoard());
 
         $this->assertSame($expectation, $table);
     }
@@ -58,8 +54,9 @@ class GameTest extends IntegrationTest
     */
     public function testGetFrequencies($fixture, $expectation)
     {
-        $game = new Game($this->getFixture($fixture), $this->dictionary);
-        $board = $game->getBoard();
+        $this->givenAFileDictionary();
+        $this->givenAGame($fixture);
+        $board = $this->game->getBoard();
         $frequencies = $board->getFrequencies();
         $this->assertSame(26, count($frequencies));
     }
@@ -69,8 +66,11 @@ class GameTest extends IntegrationTest
     */
     public function testGetDictionary($fixture)
     {
-        $game = new Game($this->getFixture($fixture), $this->dictionary);
-        $dictionary = $game->getDictionary();
+        $this->givenAFileDictionary();
+        $this->givenAGame($fixture);
+
+        //$game = new Game($this->getFixture($fixture), $this->dictionary);
+        $dictionary = $this->game->getDictionary();
         $this->assertInstanceOf('Codewords\IDictionary', $dictionary);
     }
 }
