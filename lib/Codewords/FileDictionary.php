@@ -1,11 +1,12 @@
 <?php namespace Codewords;
 
 use Codewords\IDictionary;
+use Codewords\Dictionary;
 
 /**
 * implements IDictionary using a data from a unix dictionary format file
 */
-class FileDictionary implements IDictionary
+class FileDictionary extends Dictionary implements IDictionary
 {
     /**
     * @var array of words
@@ -31,13 +32,6 @@ class FileDictionary implements IDictionary
         if (!$this->words){
             $this->words = file($this->file);
         }
-
-        $result = [];
-        foreach($this->words as $word){
-            if (preg_match('#'.$pattern.'#', $word)){
-                $result []= trim($word);
-            }
-        }
-        return $result;
+        return $this->lookup($this->words, $pattern);
     }
 }

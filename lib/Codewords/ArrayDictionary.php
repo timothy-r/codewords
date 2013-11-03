@@ -1,11 +1,12 @@
 <?php namespace Codewords;
 
 use Codewords\IDictionary;
+use Codewords\Dictionary;
 
 /**
 * implements IDictionary using an in memory array of words
 */
-class ArrayDictionary implements IDictionary
+class ArrayDictionary extends Dictionary implements IDictionary
 {
     /**
     * @var array of words
@@ -23,12 +24,6 @@ class ArrayDictionary implements IDictionary
     */
     public function find($pattern)
     {
-        $result = [];
-        foreach($this->words as $word){
-            if (preg_match('#'.$pattern.'#', $word)){
-                $result []= $word;
-            }
-        }
-        return $result;
+        return $this->lookup($this->words, $pattern);
     }
 }
