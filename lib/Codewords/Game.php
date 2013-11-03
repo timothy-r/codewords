@@ -10,7 +10,7 @@ use Codewords\BoardFactory;
 class Game
 {
     /**
-    * @todo pass IBoardReader to contructor
+    * @todo pass IBoardReader to contructor?
     */
     public function __construct($data)
     {

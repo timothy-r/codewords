@@ -42,4 +42,16 @@ class GameTest extends IntegrationTest
 
         $this->assertSame($expectation, $table);
     }
+
+    /**
+    * @dataProvider getValidGameData
+    */
+    public function testGetFrequencies($fixture, $expectation)
+    {
+        $game = new Game($this->getFixture($fixture));
+        $board = $game->getBoard();
+        $frequencies = $board->getFrequencies();
+        $this->assertSame(26, count($frequencies));
+        
+    }
 }
