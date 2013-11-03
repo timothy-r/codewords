@@ -51,4 +51,20 @@ class CellCollectionTest extends BaseTest
         $cell_2 = $cell_collection->at(1);
         $this->assertSame('A', $cell_2->getCharacter());
     }
+
+    public function testCellForCharacter()
+    {
+        $cell_collection = new CellCollection;
+        $cell = $cell_collection->at(1);
+        $cell->setCharacter('S');
+        $other_cell = $cell_collection->cellForCharacter('S');
+        $this->assertTrue($cell->matches($other_cell));
+    }
+
+    public function testCellForCharacterReturnsNullWhenNoneFound()
+    {
+        $cell_collection = new CellCollection;
+        $cell = $cell_collection->cellForCharacter('S');
+        $this->assertSame(null, $cell);
+    }
 }
