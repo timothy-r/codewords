@@ -17,7 +17,7 @@ class BoardFactoryTest extends IntegrationTest
     public function getValidGameData()
     {
         return [
-            ['data-1.csv']
+            ['data-1.csv', 'data-1-expectation.php']
         ];
     }
 
@@ -44,10 +44,29 @@ class BoardFactoryTest extends IntegrationTest
     }
 
     /**
+    * @dataProvider getValidGameData
+    */
+    public function testCreateReturnsABoardWithCorrectFrequencies($fixture, $expectation)
+    {
+        $data = $this->getFixture($fixture);
+        $reader = new CsvBoardReader($data);
+        $cells = new CellCollection;
+        
+        $factory = new BoardFactory($reader, $cells);
+        $product = $factory->create();
+        $frequencies = $product->getFrequencies();
+        // test the frequency values
+        $expected = $this->requireFixture($expectation);
+        for($i = 1; $i < count($expected); $i++) {
+            $this->assertSame($expected[$i], $frequencies[$i]);
+        }
+    }
+
+    /**
     * @dataProvider getInvalidGameData
     * @expectedException Codewords\Error\InvalidBoardData
     */
-    public function testCreateValidatesBoardCharacters($fixture)
+    public function testCreateValidatesBoard($fixture)
     {
         $data = $this->getFixture($fixture);
         $reader = new CsvBoardReader($data);
