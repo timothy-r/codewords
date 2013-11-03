@@ -23,4 +23,14 @@ class CellCollection
         }
         return $this->cells[$number];
     }
+
+    public function cellForCharacter($char)
+    {
+        foreach($this->cells as $cell) {
+            if ($cell->getCharacter() === $char){
+                return $cell;
+            }
+        }
+        return null;
+    }
 }
