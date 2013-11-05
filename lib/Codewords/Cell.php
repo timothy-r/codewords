@@ -66,4 +66,12 @@ class Cell
     {
         return $other->getNumber() === $this->number;
     }
+
+    /**
+    * @return boolean
+    */
+    public function isSolved()
+    {
+        return !is_null($this->character);
+    }
 }

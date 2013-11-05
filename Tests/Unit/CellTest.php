@@ -77,4 +77,17 @@ class CellTest extends BaseTest
         $this->assertFalse($cell_1->matches($cell_2));
         $this->assertFalse($cell_2->matches($cell_1));
     }
+
+    public function testCellWithoutLetterIsNotSolved()
+    {
+        $cell = new Cell(1);
+        $this->assertFalse($cell->isSolved());
+    }
+
+    public function testCellWithLetterIsSolved()
+    {
+        $cell = new Cell(1);
+        $cell->setCharacter('W');
+        $this->assertTrue($cell->isSolved());
+    }
 }
