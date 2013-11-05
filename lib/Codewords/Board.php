@@ -1,6 +1,7 @@
 <?php namespace Codewords;
 
 use Codewords\Cell;
+use Codewords\Word;
 use Codewords\Error\IllegalOperation;
 use Codewords\Error\InvalidCellLocation;
 
@@ -78,7 +79,7 @@ class Board
     * walk over the board and builds an array of Words
     * use a BoardIterator - Vertical or Horizontal 
     *
-    * @return array of arrays of Cells
+    * @return array of Word instances
     */
     public function getWords()
     {
@@ -91,7 +92,7 @@ class Board
             }
             // end of line
             if (count($word) > 1){
-                $words []= $word;
+                $words []= new Word($word);
             }
             $word = [];
         }
@@ -104,17 +105,33 @@ class Board
             }
             // end of line
             if (count($word) > 1){
-                $words []= $word;
+                $words []= new Word($word);
             }
             $word = [];
         }
         return $words;
     }
     
-    protected function addCellToWord(Cell $cell, array &$word, array &$words){
+    /**
+    * @return array of Words that contain $cell
+    */
+    public function getWordsContainingCell(Cell $cell)
+    {
+        $words = [];
+        $all_words = $this->getWords();
+        foreach ($all_words as $word){
+            if ($word->contains($cell)){
+                $words []= $word;
+            }
+        }
+        return $words;
+    }
+
+    protected function addCellToWord(Cell $cell, array &$word, array &$words)
+    {
         if ($cell->isNull()){
             if (count($word) > 1){
-                $words []= $word;
+                $words []= new Word($word);
             }
             $word = [];
         } else {

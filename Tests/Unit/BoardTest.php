@@ -3,6 +3,7 @@ require_once(__DIR__ . '/BaseTest.php');
 
 use Codewords\Board;
 use Codewords\Cell;
+use Codewords\Word;
 
 /**
 * @group unit
@@ -114,6 +115,32 @@ class BoardTest extends BaseTest
         $this->assertSame(1, $frequencies[9]);
     }
 
+    public function getWordCountsForNumber()
+    {
+        return [
+            [1, 2],
+            [2, 2],
+            [3, 2],
+            [4, 3],
+            [5, 1],
+            [6, 1],
+        ];
+    }
+
+    /**
+    * @dataProvider getWordCountsForNumber
+    */
+    public function testCanGetWordsContainingCell($number, $count)
+    {
+        $board = $this->generateTestBoard();
+        $cell = new Cell($number);
+        $words = $board->getWordsContainingCell($cell);
+        $this->assertSame($count, count($words));
+        foreach($words as $word) {
+            $this->assertTrue($word->contains($cell));
+        }
+    }
+
     protected function generateTestBoard()
     {
         $board = new Board(4);
@@ -143,14 +170,16 @@ class BoardTest extends BaseTest
         return $board;
     }
 
-    protected function assertWord($text, $cells)
+    protected function assertWord($text, Word $word)
     {
-        for($i = 0; $i < count($cells); $i++){
+        for($i = 0; $i < $word->length(); $i++){
             $char = substr($text, $i, 1);
+            $cell = $word->at($i);
+
             if ('*' == $char){
-                $this->assertSame('', $cells[$i]->getCharacter());
+                $this->assertSame('', $cell->getCharacter());
             } else  {
-                $this->assertSame(substr($text, $i, 1), $cells[$i]->getCharacter());
+                $this->assertSame(substr($text, $i, 1), $cell->getCharacter());
             }
         }
     }
