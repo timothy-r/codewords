@@ -27,4 +27,11 @@ class WordTest extends BaseTest
         $this->assertTrue($word->contains($cells[1]));
         $this->assertFalse($word->contains(new Cell(3)));
     }
+
+    public function testWordLength()
+    {
+        $cells = [new Cell(1), new Cell(2)];
+        $word = new Word($cells);
+        $this->assertSame(2, $word->length());
+    }
 }

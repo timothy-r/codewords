@@ -10,27 +10,32 @@ class Word
     /**
     * @var array
     */
-    protected $word;
+    protected $cells;
 
-    public function __construct(array $word)
+    public function __construct(array $cells)
     {
-        $this->word = $word;    
+        $this->cells = $cells;    
     }
 
     public function at($index)
     {
-        if ($index >= 0 && $index < count($this->word)){
-            return $this->word[$index];
+        if ($index >= 0 && $index < count($this->cells)){
+            return $this->cells[$index];
         }
     }
 
     public function contains(Cell $other)
     {
-        foreach($this->word as $cell){
+        foreach($this->cells as $cell){
             if ($other->matches($cell)){
                 return true;
             }
         }
         return false;
+    }
+
+    public function length()
+    {
+        return count($this->cells);
     }
 }
