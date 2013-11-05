@@ -9,7 +9,14 @@ use Codewords\Error\InvalidCellLocation;
 class CellCollection
 {
     protected $cells = [];
-   
+ 
+    protected $length;
+
+    public function __construct($length = 26)
+    {
+        $this->length = $length;
+    }
+
     /**
     * @throws Codewords\InvalidCellNumber
     * @return Codewords\Cell
@@ -32,5 +39,20 @@ class CellCollection
             }
         }
         return null;
+    }
+    
+    /**
+    * @return array of Cells which are unsolved
+    */
+    public function getUnsolved()
+    {
+        $unsolved = [];
+        for ($i = 1; $i <= $this->length; $i++) {
+            $cell = $this->at($i);
+            if (!$cell->isSolved()){
+                $unsolved[]= $cell;
+            }
+        }
+        return $unsolved;
     }
 }

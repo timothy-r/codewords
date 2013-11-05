@@ -67,4 +67,30 @@ class CellCollectionTest extends BaseTest
         $cell = $cell_collection->cellForCharacter('S');
         $this->assertSame(null, $cell);
     }
+
+    public function testAllCellsInNewCollectionAreUnsolved()
+    {
+        $cell_collection = new CellCollection;
+        $unsolved = $cell_collection->getUnsolved();
+        $this->assertSame(26, count($unsolved));
+
+        foreach($unsolved as $cell) {
+            $this->assertFalse($cell->isSolved());
+        }
+    }
+
+    public function testGetUnsolvedDoesNotIncludeSolvedCells()
+    {
+        $cell_collection = new CellCollection;
+        $cell = $cell_collection->at(1);
+        $cell->setCharacter('S');
+        $cell = $cell_collection->at(2);
+        $cell->setCharacter('Y');
+        $unsolved = $cell_collection->getUnsolved();
+        $this->assertSame(24, count($unsolved));
+
+        foreach($unsolved as $cell) {
+            $this->assertFalse($cell->isSolved());
+        }
+    }
 }
