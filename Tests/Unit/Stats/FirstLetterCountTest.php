@@ -23,8 +23,8 @@ class FirstLetterCountTest extends BaseTest
         $this->assertSame(0, $stats[2]);
         $this->assertSame(1, $stats[3]);
         $this->assertSame(0, $stats[4]);
-        $this->assertSame(0, $stats[5]);
-        $this->assertSame(1, $stats[6]);
+        $this->assertSame(1, $stats[5]);
+        $this->assertSame(0, $stats[6]);
         $this->assertSame(1, $stats[7]);
         $this->assertSame(0, $stats[8]);
         $this->assertSame(0, $stats[9]);
