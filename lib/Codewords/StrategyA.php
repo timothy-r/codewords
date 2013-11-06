@@ -68,12 +68,15 @@ class StrategyA
                 }
             }
             $pattern .= '$';
+            $pattern = strtolower($pattern);
+
             #var_dump($char . ' ' . $pattern);
 
             if ($test){
                 $matches = $this->game->getDictionary()->find($pattern);
                 //var_dump($matches);
                 if (!count($matches)){
+                    var_dump($char . ' ' . $pattern. " didn't match any words");
                     // no possible words found - reject this guess
                     return false;
                 }
@@ -156,23 +159,12 @@ die;
 
         // sort $frequencies to bring most common to the start of the array
         arsort($frequencies);
-        $index = 0;
-
-        $data = ['E','T','A','O','I','N','S','H','R','D','L','C','U','M','W','F','G','Y','P','B','V','K','J','X','Q','Z'];
 
         foreach($frequencies as $number => $count) {
             // test to see if $number is solved yet
             $cell = $cells->at($number);
-            $index++;
 
-            if ($character = $cell->getCharacter()){
-                print "Cell $number is $character\n";
-                $i = array_search($character, $data);
-                if ($i !== false) {
-                    unset($data[$i]);
-                }
-            } else {
-                print "Solving Cell $number at index $index\n";
+            if ($character !== $cell->getCharacter()){
                 // removed solved chars from $data
                 return $cell;
             }

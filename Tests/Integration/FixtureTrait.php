@@ -44,4 +44,11 @@ trait FixtureTrait
         }
         throw new Exception("File $file does not exist");
     }
+
+    public function getValidGameData()
+    {
+        return [
+            ['data-1.csv', 'data-1-expectation.html']
+        ];
+    }
 }

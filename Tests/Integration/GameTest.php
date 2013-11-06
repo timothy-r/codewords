@@ -13,13 +13,6 @@ class GameTest extends IntegrationTest
 {
     use FixtureTrait;
 
-    public function getValidGameData()
-    {
-        return [
-            ['data-1.csv', 'data-1-expectation.html']
-        ];
-    }
-    
     /**
     * @dataProvider getValidGameData
     */
