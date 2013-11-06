@@ -34,6 +34,8 @@ class Board
     }
 
     /**
+    * @deprecated use LetterCount class to do this
+    *
     * access Cell frequencies
     * @return array
     */

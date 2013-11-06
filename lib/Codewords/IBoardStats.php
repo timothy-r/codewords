@@ -5,7 +5,7 @@ use Codewords\Board;
 /**
 * interface to classes that generate Board statistics
 */
-class IBoardStats
+interface IBoardStats
 {
     /**
     * @return array

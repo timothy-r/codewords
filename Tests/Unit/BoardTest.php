@@ -4,12 +4,15 @@ require_once(__DIR__ . '/BaseTest.php');
 use Codewords\Board;
 use Codewords\Cell;
 use Codewords\Word;
+use Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit
 */
 class BoardTest extends BaseTest
 {
+    use UnitFixtureTrait;
+
     public function testCanAddCellToBoard()
     {
         $board = new Board(12);
@@ -182,13 +185,5 @@ class BoardTest extends BaseTest
                 $this->assertSame(substr($text, $i, 1), $cell->getCharacter());
             }
         }
-    }
-
-    protected function addCell($board, $number, $char, $x, $y)
-    {
-        $c = new Cell($number);
-        $c->setCharacter($char);
-        $board->addCell($c, $x, $y);
-        return $c;
     }
 }
