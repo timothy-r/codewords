@@ -48,7 +48,7 @@ trait UnitFixtureTrait
 
         $this->addCell($this->board, 3, 'S', 0, 2); 
         $this->addCell($this->board, 0, '',  1, 2); 
-        $this->addCell($this->board, 5, 'O', 2, 2); 
+        $this->addCell($this->board, 4, 'O', 2, 2); 
         $this->addCell($this->board, 7, 'I', 3, 2); 
 
         $this->addCell($this->board, 8, 'E', 0, 3); 
