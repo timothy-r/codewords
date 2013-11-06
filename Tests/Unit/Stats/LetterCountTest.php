@@ -12,9 +12,15 @@ class LetterCountTest extends BaseTest
     public function testGenerateCountsLettersInBoard()
     {
         $board = $this->createBoard();
+        $game = $this->getMock('Codewords\Game', ['getBoard'], [], '', false);
+        $game->expects($this->any())
+            ->method('getBoard')
+            ->will($this->returnValue($board));
+
         $letter_count = new LetterCount();
 
-        $stats = $letter_count->generate($board);
+        $stats = $letter_count->generate($game);
+
         $this->assertSame(1, $stats[1]);
         $this->assertSame(1, $stats[2]);
         $this->assertSame(2, $stats[3]);
