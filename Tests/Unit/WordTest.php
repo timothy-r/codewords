@@ -34,4 +34,18 @@ class WordTest extends BaseTest
         $word = new Word($cells);
         $this->assertSame(2, $word->length());
     }
+
+    public function testWordFirst()
+    {
+        $cells = [new Cell(1), new Cell(2)];
+        $word = new Word($cells);
+        $this->assertSame($cells[0], $word->first());
+    }
+
+    public function testWordLast()
+    {
+        $cells = [new Cell(1), new Cell(2)];
+        $word = new Word($cells);
+        $this->assertSame($cells[1], $word->last());
+    }
 }

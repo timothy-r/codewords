@@ -38,4 +38,14 @@ class Word
     {
         return count($this->cells);
     }
+
+    public function first()
+    {
+        return $this->cells[0];
+    }
+
+    public function last()
+    {
+        return $this->cells[$this->length()-1];
+    }
 }
