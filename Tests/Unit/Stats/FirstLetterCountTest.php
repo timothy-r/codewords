@@ -12,6 +12,7 @@ class FirstLetterCountTest extends BaseTest
     public function testGenerateCountsFirstLettersInEachWord()
     {
         $this->givenABoard();
+        $this->givenACellCollection();
         $this->givenAGame();
 
         $flc = new FirstLetterCount();
@@ -24,7 +25,7 @@ class FirstLetterCountTest extends BaseTest
         $this->assertSame(0, $stats[4]);
         $this->assertSame(0, $stats[5]);
         $this->assertSame(1, $stats[6]);
-        $this->assertSame(0, $stats[7]);
+        $this->assertSame(1, $stats[7]);
         $this->assertSame(0, $stats[8]);
         $this->assertSame(0, $stats[9]);
     }

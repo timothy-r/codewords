@@ -8,11 +8,24 @@ use Codewords\Game;
 */
 class FirstLetterCount implements IGameStats
 {
-    public function generate(Game $board)
+    public function generate(Game $game)
     {
         $counts = array_map(function($i){ return 0;}, range(1,26));
         unset($counts[0]);
-        
+
+        $cells = $game->getCells();
+        $board = $game->getBoard();
+
+        for($i = 1; $i < 27; $i++){
+            $cell = $cells->at($i);
+            $words = $board->getWordsContainingCell($cell);
+            foreach($words as $word){
+                if ($cell->matches($word->first())){
+                    $counts[$cell->getNumber()]++;
+                }
+            }
+        }
+
         return $counts;
     }
 
