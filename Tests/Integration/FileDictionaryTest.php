@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/IntegrationTest.php');
 
-use Codewords\FileDictionary;
+use Codewords\Dictionary\FileDictionary;
 
 /**
 * @group unit

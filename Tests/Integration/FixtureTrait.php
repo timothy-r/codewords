@@ -1,7 +1,7 @@
 <?php
 
 use Codewords\Game;
-use Codewords\FileDictionary;
+use Codewords\Dictionary\FileDictionary;
 
 trait FixtureTrait
 {

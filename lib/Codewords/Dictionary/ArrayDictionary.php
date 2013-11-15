@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Dictionary;
 
 use Codewords\IDictionary;
-use Codewords\Dictionary;
+use Codewords\Dictionary\Dictionary;
 
 /**
 * implements IDictionary using an in memory array of words

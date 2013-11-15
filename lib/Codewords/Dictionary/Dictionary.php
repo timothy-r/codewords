@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Dictionary;
 
 abstract class Dictionary
 {
