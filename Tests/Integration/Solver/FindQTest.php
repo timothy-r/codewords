@@ -27,7 +27,12 @@ class FindQTest extends IntegrationTest
         $solver = new FindQ($this->game);
         $results = $solver->solve();
 
+        var_dump($results);
+
         $this->assertTrue(is_array($results), "Expected solve() to return an array");
         $this->assertTrue(count($results) > 0, "Expected solve() to return 1+ results");
+        foreach($results as $result) {
+            $this->assertInstanceOf('Codewords\Cell', $result);
+        }
     }
 }

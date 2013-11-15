@@ -26,13 +26,16 @@ class FindQ
         $following_letters = $following_letter_count->generate($this->game);
         foreach ($following_letters as $number => $value){
             if (count($value) === 1){
-                $results []= $number;
+                // test if value can be a U or is a U
+                $cell = current($value);
+                if ($cell->getCharacter() === 'U' || $cell->getCharacter() === null){
+                    $result = $this->game->getCells()->at($number);
+                    $results []= $result;
+                }
             }
         }
 
         // check which Cells appear at the ends of Words - they are not Qs
-        
-        var_dump($results);
 
         return $results;
     }
