@@ -3,6 +3,7 @@
 use Codewords\CsvBoardReader;
 use Codewords\CellCollection;
 use Codewords\BoardFactory;
+use Codewords\Stats\StatsRepository;
 
 /**
 * The central class for a Codewords applications
@@ -46,5 +47,10 @@ class Game
     public function getDictionary()
     {
         return $this->dictionary;
+    }
+
+    public function getStatsRepository()
+    {
+        return new StatsRepository;
     }
 }

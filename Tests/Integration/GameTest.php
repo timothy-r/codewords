@@ -62,8 +62,19 @@ class GameTest extends IntegrationTest
         $this->givenAFileDictionary();
         $this->givenAGame($fixture);
 
-        //$game = new Game($this->getFixture($fixture), $this->dictionary);
         $dictionary = $this->game->getDictionary();
         $this->assertInstanceOf('Codewords\IDictionary', $dictionary);
+    }
+
+    /**
+    * @dataProvider getValidGameData
+    */
+    public function testGetStatsRepository($fixture)
+    {
+        $this->givenAFileDictionary();
+        $this->givenAGame($fixture);
+
+        $repo = $this->game->getStatsRepository();
+        $this->assertInstanceOf('Codewords\Stats\StatsRepository', $repo);
     }
 }
