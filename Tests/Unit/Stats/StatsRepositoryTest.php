@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../BaseTest.php');
 
 use Codewords\Stats\StatsRepository;
+use Codewords\Error\UnknownStatName;
 
 class StatsRepositoryTest extends BaseTest
 {
@@ -26,4 +27,21 @@ class StatsRepositoryTest extends BaseTest
         $this->assertInstanceOf('Codewords\IGameStats', $stat);
     }
 
+    public function getInvalidStatNames()
+    {
+        return [
+            [null],
+            ['Invalid'],
+        ];
+    }
+
+    /**
+    * @dataProvider getInvalidStatNames
+    * @expectedException Codewords\Error\UnknownStatName
+    */
+    public function testGetInvalidStatThrowsException($name)
+    {
+        $repo = new StatsRepository;
+        $stat = $repo->getStat($name);
+    }
 }
