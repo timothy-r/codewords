@@ -12,7 +12,7 @@ class FindQTest extends IntegrationTest
     public function getValidGameData()
     {
         return [
-            ['data-1.csv', ['3']]
+            ['data-1.csv', ['3']],
         ];
     }
     
