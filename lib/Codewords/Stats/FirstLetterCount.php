@@ -1,37 +1,23 @@
 <?php namespace Codewords\Stats;
 
-use Codewords\IGameStats;
+use Codewords\Stats\GameStats;
 use Codewords\Game;
+use Codewords\Cell;
 
 /**
 * Generates count of when Letters are first letter in a Word
 */
-class FirstLetterCount implements IGameStats
+class FirstLetterCount extends GameStats
 {
-    protected $counts;
-
-    public function generate(Game $game)
+    public function doGenerateForCell(Game $game, Cell $cell)
     {
-        if (!is_null($this->counts)){
-            return $this->counts;
-        }
-
-        $this->counts = array_map(function($i){ return 0;}, range(1,27));
-        unset($this->counts[0]);
-
-        $cells = $game->getCells();
-        $board = $game->getBoard();
-
-        for($i = 1; $i < 27; $i++){
-            $cell = $cells->at($i);
-            $words = $board->getWordsContainingCell($cell);
-            foreach($words as $word){
-                if ($cell->matches($word->first())){
-                    $this->counts[$cell->getNumber()]++;
-                }
+        $result = 0;
+        $words = $game->getBoard()->getWordsContainingCell($cell);
+        foreach($words as $word){
+            if ($cell->matches($word->first())){
+                $result++;
             }
         }
-
-        return $this->counts;
+        return $result;
     }
 }
