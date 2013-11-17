@@ -1,36 +1,23 @@
 <?php namespace Codewords\Stats;
 
-use Codewords\IGameStats;
+use Codewords\Stats\GameStats;
 use Codewords\Game;
+use Codewords\Cell;
 
 /**
 * Generates count of when Letters are the last letter in a Word
 */
-class LastLetterCount implements IGameStats
+class LastLetterCount extends GameStats
 {
-    protected $counts;
-
-    public function generate(Game $game)
+    public function doGenerateForCell(Game $game, Cell $cell)
     {
-        if (!is_null($this->counts)){
-            return $this->counts;
-        }
-
-        $this->counts = array_map(function($i){ return 0;}, range(1,27));
-        unset($this->counts[0]);
-
-        $cells = $game->getCells();
-        $board = $game->getBoard();
-
-        for($i = 1; $i < 27; $i++){
-            $cell = $cells->at($i);
-            $words = $board->getWordsContainingCell($cell);
-            foreach($words as $word){
-                if ($cell->matches($word->last())){
-                    $this->counts[$cell->getNumber()]++;
-                }
+        $result = 0;
+        $words = $game->getBoard()->getWordsContainingCell($cell);
+        foreach($words as $word){
+            if ($cell->matches($word->last())){
+                $result++;
             }
         }
-        return $this->counts;
+        return $result;
     }
 }

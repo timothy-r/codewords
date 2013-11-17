@@ -10,7 +10,10 @@ class FirstLetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;
 
-    public function testGenerateCountsFirstLettersInEachWord()
+    /**
+    * @dataProvider getFirstLetterFixture
+    */
+    public function testGenerateCountsFirstLettersInEachWord($number, $expected)
     {
         $this->givenABoard();
         $this->givenACellCollection();
@@ -20,19 +23,10 @@ class FirstLetterCountTest extends BaseTest
 
         $stats = $flc->generate($this->game);
         $this->assertSame(26, count($stats));
-
-        $this->assertSame(2, $stats[1]);
-        $this->assertSame(0, $stats[2]);
-        $this->assertSame(1, $stats[3]);
-        $this->assertSame(1, $stats[4]);
-        $this->assertSame(0, $stats[5]);
-        $this->assertSame(0, $stats[6]);
-        $this->assertSame(1, $stats[7]);
-        $this->assertSame(0, $stats[8]);
-        $this->assertSame(0, $stats[9]);
+        $this->assertSame($expected, $stats[$number]);
     }
 
-    public function getCellFixture()
+    public function getFirstLetterFixture()
     {
         return [
             [1, 2], 
@@ -48,7 +42,7 @@ class FirstLetterCountTest extends BaseTest
     }
 
     /**
-    * @dataProvider getCellFixture
+    * @dataProvider getFirstLetterFixture
     */
     public function testGenerateForCell($number, $expected)
     {
@@ -64,4 +58,3 @@ class FirstLetterCountTest extends BaseTest
         $this->assertSame($expected, $stats);
     }
 }
-

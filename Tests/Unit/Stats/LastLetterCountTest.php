@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../BaseTest.php');
 
 use Codewords\Board;
+use Codewords\Cell;
 use Codewords\Stats\LastLetterCount;
 use Codewords\Test\UnitFixtureTrait;
 
@@ -9,7 +10,10 @@ class LastLetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;
 
-    public function testGenerateCountsLastLettersInEachWord()
+    /**
+    * @dataProvider getLastLetterFixture
+    */
+    public function testGenerateCountsLastLettersInEachWord($number, $expected)
     {
         $this->givenABoard();
         $this->givenACellCollection();
@@ -20,15 +24,38 @@ class LastLetterCountTest extends BaseTest
         $stats = $flc->generate($this->game);
         
         $this->assertSame(26, count($stats));
-        $this->assertSame(0, $stats[1]);
-        $this->assertSame(0, $stats[2]);
-        $this->assertSame(0, $stats[3]);
-        $this->assertSame(2, $stats[4]);
-        $this->assertSame(0, $stats[5]);
-        $this->assertSame(0, $stats[6]);
-        $this->assertSame(1, $stats[7]);
-        $this->assertSame(1, $stats[8]);
-        $this->assertSame(1, $stats[9]);
+        $this->assertSame($expected, $stats[$number]);
+    }
+    
+    public function getLastLetterFixture()
+    {
+        return [
+            [1, 0],
+            [2, 0],
+            [3, 0],
+            [4, 2],
+            [5, 0],
+            [6, 0],
+            [7, 1],
+            [8, 1],
+            [9, 1],
+        ];
+    }
+
+    /**
+    * @dataProvider getLastLetterFixture
+    */
+    public function testGenerateForCell($number, $expected)
+    {
+        $this->givenABoard();
+        $this->givenACellCollection();
+        $this->givenAGame();
+
+        $flc = new LastLetterCount();
+        
+        $cell = new Cell($number);
+        $stats = $flc->generateForCell($this->game, $cell);
+        $this->assertSame($expected, $stats);
     }
 }
 
