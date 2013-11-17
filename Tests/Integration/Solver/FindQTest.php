@@ -13,6 +13,7 @@ class FindQTest extends IntegrationTest
     {
         return [
             ['data-1.csv', ['3']],
+            ['data-3.csv', ['3']],
         ];
     }
     
@@ -25,12 +26,14 @@ class FindQTest extends IntegrationTest
         $this->givenAGame($fixture);
 
         // fill out the Cells already solved 
-        $this->game->getCells()->at(13)->setCharacter('I');
-        $this->game->getCells()->at(14)->setCharacter('L');
-        $this->game->getCells()->at(24)->setCharacter('A');
+        $this->game->getCells()->at(3)->setCharacter('I');
+        $this->game->getCells()->at(6)->setCharacter('P');
+        $this->game->getCells()->at(17)->setCharacter('N');
 
         $solver = new FindQ($this->game);
         $results = $solver->solve();
+        
+        var_dump($results);
 
         $this->assertTrue(is_array($results), "Expected solve() to return an array");
         $this->assertSame(count($expected), count($results), "Expected solve() to return ".count($expected)." results");
