@@ -1,10 +1,5 @@
 <?php namespace Codewords\Stats;
 
-use Codewords\Stats\FirstLetterCount;
-use Codewords\Stats\FollowingLetterCount;
-use Codewords\Stats\DoubleLetterCount;
-use Codewords\Stats\LastLetterCount;
-use Codewords\Stats\LetterCount;
 use Codewords\Error\UnknownStatName;
 
 /**
@@ -12,20 +7,30 @@ use Codewords\Error\UnknownStatName;
 */
 class StatsRepository
 {
+    protected $stats = [];
+
     public function getStat($name)
     {
         switch ($name){
             case 'FirstLetter':
-                return new FirstLetterCount;
+                return $this->getStatInstance($name, 'Codewords\Stats\FirstLetterCount');
             case 'DoubleLetter':
-                return new DoubleLetterCount;
+                return $this->getStatInstance($name, 'Codewords\Stats\DoubleLetterCount');
             case 'LastLetter':
-                return new LastLetterCount;
+                return $this->getStatInstance($name, 'Codewords\Stats\LastLetterCount');
             case 'Letter':
-                return new LetterCount;
+                return $this->getStatInstance($name, 'Codewords\Stats\LetterCount');
             case 'FollowingLetter':
-                return new FollowingLetterCount;
+                return $this->getStatInstance($name, 'Codewords\Stats\FollowingLetterCount');
         }
         throw new UnknownStatName("'$name' is not an IGameStats class name");
+    }
+
+    protected function getStatInstance($name, $class)
+    {
+        if (!isset($this->stats[$name])){
+            $this->stats[$name] = new $class;
+        }
+        return $this->stats[$name];
     }
 }
