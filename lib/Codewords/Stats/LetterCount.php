@@ -8,10 +8,16 @@ use Codewords\Game;
 */
 class LetterCount implements IGameStats
 {
+    protected $counts;
+
     public function generate(Game $game)
     {
-        $counts = array_map(function($i){ return 0;}, range(1,27));
-        unset($counts[0]);
+        if (!is_null($this->counts)){
+            return $this->counts;
+        }
+
+        $this->counts = array_map(function($i){ return 0;}, range(1,27));
+        unset($this->counts[0]);
         
         $board = $game->getBoard();
 
@@ -20,11 +26,10 @@ class LetterCount implements IGameStats
             for ($x = 0; $x < $length; $x++) {
                 $cell = $board->getCell($x, $y);
                 if (!$cell->isNull()){
-                    $counts[$cell->getNumber()]++;
+                    $this->counts[$cell->getNumber()]++;
                 }
             }
         }
-        return $counts;
+        return $this->counts;
     }
-
 }

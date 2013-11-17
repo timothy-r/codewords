@@ -16,6 +16,8 @@ class Game
 
     protected $board;
 
+    protected $stats_repository;
+
     /**
     * @todo pass IBoardReader to contructor?
     */
@@ -26,6 +28,7 @@ class Game
         $factory = new BoardFactory($reader, $this->cells);
         $this->board = $factory->create();
         $this->dictionary = $dictionary;
+        $this->stats_repository = new StatsRepository;
     }
 
     /**
@@ -51,6 +54,6 @@ class Game
 
     public function getStatsRepository()
     {
-        return new StatsRepository;
+        return $this->stats_repository;
     }
 }

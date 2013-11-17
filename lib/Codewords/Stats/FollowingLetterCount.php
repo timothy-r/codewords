@@ -8,10 +8,16 @@ use Codewords\Game;
 */
 class FollowingLetterCount implements IGameStats
 {
+    protected $counts;
+
     public function generate(Game $game)
     {
-        $counts = array_map(function($i){ return [];}, range(1,27));
-        unset($counts[0]);
+        if (!is_null($this->counts)){
+            return $this->counts;
+        }
+
+        $this->counts = array_map(function($i){ return [];}, range(1,27));
+        unset($this->counts[0]);
 
         $cells = $game->getCells();
         $board = $game->getBoard();
@@ -24,13 +30,11 @@ class FollowingLetterCount implements IGameStats
                     if ($word->at($c)->matches($cell)){
                         $following = $word->at($c+1);
                         // add the following cell - but only once!
-                        $counts[$cell->getNumber()][$following->getNumber()]= $following;
+                        $this->counts[$cell->getNumber()][$following->getNumber()]= $following;
                     }
                 }
             }
         }
-
-        return $counts;
+        return $this->counts;
     }
-
 }
