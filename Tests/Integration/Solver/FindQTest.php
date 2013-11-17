@@ -13,7 +13,8 @@ class FindQTest extends IntegrationTest
     {
         return [
             ['data-1.csv', ['3']],
-            ['data-3.csv', ['3']],
+            // in data-3 Q is followed by I in IRAQI...
+            ['data-3.csv', ['25']],
         ];
     }
     
@@ -26,9 +27,9 @@ class FindQTest extends IntegrationTest
         $this->givenAGame($fixture);
 
         // fill out the Cells already solved 
-        $this->game->getCells()->at(3)->setCharacter('I');
-        $this->game->getCells()->at(6)->setCharacter('P');
-        $this->game->getCells()->at(17)->setCharacter('N');
+       // $this->game->getCells()->at(3)->setCharacter('I');
+       // $this->game->getCells()->at(6)->setCharacter('P');
+       // $this->game->getCells()->at(17)->setCharacter('N');
 
         $solver = new FindQ($this->game);
         $results = $solver->solve();
