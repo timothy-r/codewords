@@ -26,7 +26,7 @@ class FindU
         for ($c = 1; $c < 27; $c++) {
             $cell = $cells->at($c);
             if ($this->isOrCanBeU($cell)){
-                $result[]= $cell;
+                $results[]= $cell;
             }
         }
         return $results;
