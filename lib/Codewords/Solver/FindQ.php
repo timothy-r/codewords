@@ -31,12 +31,20 @@ class FindQ
                 $cell = current($value);
                 if ($this->isOrCanBeU($cell)){
                     $result = $this->game->getCells()->at($number);
-                    $results []= $result;
+                    $results[$number] = $result;
                 }
             }
         }
 
         // check which Cells appear at the ends of Words - they are not Qs
+        $stats = $this->game->getStatsRepository()->getStat('LastLetter');
+        $last_letters = $stats->generate($this->game);
+        foreach($results as $number => $result) {
+            if ($last_letters[$number] > 0){
+                // remove from results
+                unset($results[$number]);
+            }
+        }
 
         return $results;
     }
