@@ -23,7 +23,12 @@ class FindQTest extends IntegrationTest
     {
         $this->givenAFileDictionary();
         $this->givenAGame($fixture);
-        
+
+        // fill out the Cells already solved 
+        $this->game->getCells()->at(13)->setCharacter('I');
+        $this->game->getCells()->at(14)->setCharacter('L');
+        $this->game->getCells()->at(24)->setCharacter('A');
+
         $solver = new FindQ($this->game);
         $results = $solver->solve();
 
