@@ -19,6 +19,8 @@ class FollowingLetterCountTest extends BaseTest
 
         $stats = $flc->generate($this->game);
         $cells = $this->cell_collection; 
+
+        $this->assertSame(26, count($stats));
         $this->assertSameCells(['2' => $cells->at(2), '3' => $cells->at(3)], $stats[1]);
         $this->assertSameCells(['3' => $cells->at(3)], $stats[2]);
         $this->assertSameCells(['3' => $cells->at(3), '4' => $cells->at(4), '8' => $cells->at(8)], $stats[3]);

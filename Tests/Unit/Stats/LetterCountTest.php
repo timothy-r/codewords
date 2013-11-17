@@ -17,6 +17,7 @@ class LetterCountTest extends BaseTest
 
         $stats = $letter_count->generate($this->game);
 
+        $this->assertSame(26, count($stats));
         $this->assertSame(1, $stats[1]);
         $this->assertSame(1, $stats[2]);
         $this->assertSame(3, $stats[3]);

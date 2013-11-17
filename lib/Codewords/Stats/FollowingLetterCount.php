@@ -10,7 +10,7 @@ class FollowingLetterCount implements IGameStats
 {
     public function generate(Game $game)
     {
-        $counts = array_map(function($i){ return [];}, range(1,26));
+        $counts = array_map(function($i){ return [];}, range(1,27));
         unset($counts[0]);
 
         $cells = $game->getCells();

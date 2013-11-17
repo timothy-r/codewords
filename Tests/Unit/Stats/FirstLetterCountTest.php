@@ -18,6 +18,7 @@ class FirstLetterCountTest extends BaseTest
         $flc = new FirstLetterCount();
 
         $stats = $flc->generate($this->game);
+        $this->assertSame(26, count($stats));
 
         $this->assertSame(2, $stats[1]);
         $this->assertSame(0, $stats[2]);
