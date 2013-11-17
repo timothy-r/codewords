@@ -9,16 +9,34 @@ class LetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;
 
-    public function testGenerateCountsLettersInBoard()
+    public function getLetterCountFixture()
+    {
+        return [
+            [1, 2], 
+            [2, 1], 
+            [3, 4], 
+            [4, 4], 
+            [7, 2], 
+            [8, 1], 
+            [9, 1], 
+        ];
+    }
+    
+    /**
+    * @dataProvider getLetterCountFixture
+    */
+    public function testGenerateCountsLettersInBoard($number, $expected)
     {
         $this->givenABoard();
+        $this->givenACellCollection();
         $this->givenAGame();
         $letter_count = new LetterCount();
 
         $stats = $letter_count->generate($this->game);
 
         $this->assertSame(26, count($stats));
-        $this->assertSame(1, $stats[1]);
+        $this->assertSame($expected, $stats[$number]);
+        /*
         $this->assertSame(1, $stats[2]);
         $this->assertSame(3, $stats[3]);
         $this->assertSame(3, $stats[4]);
@@ -27,6 +45,7 @@ class LetterCountTest extends BaseTest
         $this->assertSame(1, $stats[7]);
         $this->assertSame(1, $stats[7]);
         $this->assertSame(1, $stats[9]);
+        */
     }
 }
 

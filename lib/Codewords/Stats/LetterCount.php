@@ -1,35 +1,26 @@
 <?php namespace Codewords\Stats;
 
-use Codewords\IGameStats;
+use Codewords\Stats\GameStats;
 use Codewords\Game;
+use Codewords\Cell;
 
 /**
 * Generates Letter count statistics for a Game
 */
-class LetterCount implements IGameStats
+class LetterCount extends GameStats
 {
-    protected $counts;
-
-    public function generate(Game $game)
+    public function doGenerateForCell(Game $game, Cell $cell)
     {
-        if (!is_null($this->counts)){
-            return $this->counts;
-        }
-
-        $this->counts = array_map(function($i){ return 0;}, range(1,27));
-        unset($this->counts[0]);
-        
-        $board = $game->getBoard();
-
-        $length = $board->getLength();
-        for ($y = 0; $y < $length; $y++){
-            for ($x = 0; $x < $length; $x++) {
-                $cell = $board->getCell($x, $y);
-                if (!$cell->isNull()){
-                    $this->counts[$cell->getNumber()]++;
+        $result = 0;
+        $words = $game->getBoard()->getWordsContainingCell($cell);
+        foreach($words as $word){
+            // iterate over Cells in word
+            for($i = 0; $i < $word->length(); $i++){
+                if ($word->at($i)->matches($cell)){
+                    $result++;
                 }
             }
         }
-        return $this->counts;
+        return $result;
     }
 }
