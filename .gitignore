@@ -3,3 +3,4 @@ phpunit
 vendor/
 *.swp
 coverage/
+files/
