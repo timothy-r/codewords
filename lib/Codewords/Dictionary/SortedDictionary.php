@@ -25,8 +25,8 @@ class SortedDictionary extends Dictionary implements IDictionary
 
     public function find($pattern)
     {
-        if (!$this->dict){
-            $this->dict = require_once($this->file);
+        if (!is_array($this->dict)){
+            $this->dict = require($this->file);
         }
 
         // assume that $pattern contains ^ and $ chars
