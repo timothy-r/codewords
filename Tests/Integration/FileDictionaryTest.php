@@ -4,7 +4,7 @@ require_once(__DIR__ . '/IntegrationTest.php');
 use Codewords\Dictionary\FileDictionary;
 
 /**
-* @group unit
+* @group integration
 */
 class FileDictionaryTest extends IntegrationTest
 {

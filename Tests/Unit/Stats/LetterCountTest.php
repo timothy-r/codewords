@@ -5,6 +5,9 @@ use Codewords\Board;
 use Codewords\Stats\LetterCount;
 use Codewords\Test\UnitFixtureTrait;
 
+/**
+* @group unit
+*/
 class LetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;

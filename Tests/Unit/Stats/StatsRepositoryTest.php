@@ -4,6 +4,9 @@ require_once(__DIR__ . '/../BaseTest.php');
 use Codewords\Stats\StatsRepository;
 use Codewords\Error\UnknownStatName;
 
+/**
+* @group unit
+*/
 class StatsRepositoryTest extends BaseTest
 {
     public function getStatNames()

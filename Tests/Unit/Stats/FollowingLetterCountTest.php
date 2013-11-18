@@ -6,6 +6,9 @@ use Codewords\Board\Cell;
 use Codewords\Stats\FollowingLetterCount;
 use Codewords\Test\UnitFixtureTrait;
 
+/**
+* @group unit
+*/
 class FollowingLetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;

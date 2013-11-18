@@ -6,6 +6,9 @@ use Codewords\Board\Cell;
 use Codewords\Stats\LastLetterCount;
 use Codewords\Test\UnitFixtureTrait;
 
+/**
+* @group unit
+*/
 class LastLetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;

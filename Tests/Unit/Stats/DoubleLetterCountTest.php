@@ -6,6 +6,9 @@ use Codewords\Board\Cell;
 use Codewords\Stats\DoubleLetterCount;
 use Codewords\Test\UnitFixtureTrait;
 
+/**
+* @group unit
+*/
 class DoubleLetterCountTest extends BaseTest
 {
     use UnitFixtureTrait;
