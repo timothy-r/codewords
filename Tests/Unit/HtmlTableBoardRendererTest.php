@@ -38,7 +38,7 @@ class HtmlTableBoardRendererTest extends BaseTest
     */
     public function testRenderAsHtml($length, $number, $character, $expected)
     {
-        $cell = $this->getMock('Codewords\Cell', ['getNumber', 'getCharacter', 'isNull'], [], '', false);
+        $cell = $this->getMock('Codewords\Board\Cell', ['getNumber', 'getCharacter', 'isNull'], [], '', false);
         $cell->expects($this->any())
             ->method('getNumber')
             ->will($this->returnValue($number));
@@ -49,7 +49,7 @@ class HtmlTableBoardRendererTest extends BaseTest
             ->method('isNull')
             ->will($this->returnValue($number == 0));
 
-        $board = $this->getMock('Codewords\Board', ['getLength', 'getCell'], [], '', false);
+        $board = $this->getMock('Codewords\Board\Board', ['getLength', 'getCell'], [], '', false);
         $board->expects($this->any())
             ->method('getLength')
             ->will($this->returnValue($length));

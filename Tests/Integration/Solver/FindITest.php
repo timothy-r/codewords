@@ -31,7 +31,7 @@ class FindITest extends IntegrationTest
         $this->assertTrue(is_array($results), "Expected solve() to return an array");
         $this->assertSame(count($expected), count($results), "Expected solve() to return ".count($expected)." results");
         foreach($results as $cell) {
-            $this->assertInstanceOf('Codewords\Cell', $cell);
+            $this->assertIsCell($cell);
             $this->assertTrue(in_array($cell->getNumber(), $expected), "Didn't expect " . $cell->getNumber() . " to be a possible I");
         }
     }

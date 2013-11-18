@@ -1,8 +1,8 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\Cell;
-use Codewords\CellCollection;
+use Codewords\Board\Cell;
+use Codewords\Board\CellCollection;
 
 /**
 * @group unit
@@ -13,7 +13,7 @@ class CellCollectionTest extends BaseTest
     {
         $cell_collection = new CellCollection;
         $cell = $cell_collection->at(1);
-        $this->assertInstanceOf('Codewords\Cell', $cell);
+        $this->assertInstanceOf('Codewords\Board\Cell', $cell);
     }
 
     public function testCallsToGetCellReturnsSameInstance()

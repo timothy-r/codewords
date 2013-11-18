@@ -1,6 +1,6 @@
 <?php namespace Codewords;
 
-use Codewords\Board;
+use Codewords\Board\Board;
 
 /**
 * Produces a HTML table version of a Board

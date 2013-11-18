@@ -1,8 +1,8 @@
 <?php namespace Codewords;
 
 use Codewords\CsvBoardReader;
-use Codewords\CellCollection;
-use Codewords\BoardFactory;
+use Codewords\Board\CellCollection;
+use Codewords\Board\BoardFactory;
 use Codewords\Stats\StatsRepository;
 
 /**

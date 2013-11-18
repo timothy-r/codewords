@@ -1,7 +1,7 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\Game;
-use Codewords\Cell;
+use Codewords\Board\Cell;
 
 /**
 * Finds Cells that may be a Q letter

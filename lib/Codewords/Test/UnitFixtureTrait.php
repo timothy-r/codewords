@@ -1,9 +1,9 @@
 <?php namespace Codewords\Test;
 
-use Codewords\Board;
-use Codewords\Cell;
-use Codewords\CellCollection;
-use Codewords\Word;
+use Codewords\Board\Board;
+use Codewords\Board\Cell;
+use Codewords\Board\CellCollection;
+use Codewords\Board\Word;
 
 trait UnitFixtureTrait
 {

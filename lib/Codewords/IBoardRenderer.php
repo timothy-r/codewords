@@ -1,6 +1,6 @@
 <?php namespace Codewords;
 
-use Codewords\Board;
+use Codewords\Board\Board;
 
 interface IBoardRenderer
 {

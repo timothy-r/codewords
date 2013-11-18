@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\Cell;
+use Codewords\Board\Cell;
 
 /**
 * @group unit

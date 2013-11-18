@@ -2,7 +2,7 @@
 
 use Codewords\Stats\GameStats;
 use Codewords\Game;
-use Codewords\Cell;
+use Codewords\Board\Cell;
 
 /**
 * Generates count of when Letters are the last letter in a Word

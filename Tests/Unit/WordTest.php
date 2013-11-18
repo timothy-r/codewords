@@ -1,8 +1,8 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\Word;
-use Codewords\Cell;
+use Codewords\Board\Word;
+use Codewords\Board\Cell;
 
 /**
 * @group unit

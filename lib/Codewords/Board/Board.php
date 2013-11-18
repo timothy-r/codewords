@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Board;
 
-use Codewords\Cell;
-use Codewords\Word;
+use Codewords\Board\Cell;
+use Codewords\Board\Word;
 use Codewords\Error\IllegalOperation;
 use Codewords\Error\InvalidCellLocation;
 

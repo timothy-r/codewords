@@ -2,9 +2,9 @@
 require_once(__DIR__ . '/IntegrationTest.php');
 require_once(__DIR__. '/FixtureTrait.php');
 
-use Codewords\Board;
-use Codewords\BoardFactory;
-use Codewords\CellCollection;
+use Codewords\Board\Board;
+use Codewords\Board\BoardFactory;
+use Codewords\Board\CellCollection;
 use Codewords\CsvBoardReader;
 
 /**
@@ -40,7 +40,7 @@ class BoardFactoryTest extends IntegrationTest
         
         $factory = new BoardFactory($reader, $cells);
         $product = $factory->create();
-        $this->assertInstanceOf('Codewords\Board', $product);
+        $this->assertInstanceOf('Codewords\Board\Board', $product);
     }
 
     /**

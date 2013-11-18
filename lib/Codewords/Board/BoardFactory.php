@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Board;
 
 use Codewords\IBoardReader;
-use Codewords\CellCollection;
+use Codewords\Board\CellCollection;
 use Codewords\Error\InvalidBoardData;
 
 class BoardFactory

@@ -22,10 +22,10 @@ class GameTest extends IntegrationTest
         $this->givenAGame($fixture);
 
         $board = $this->game->getBoard();
-        $this->assertInstanceOf('Codewords\Board', $board);
+        $this->assertInstanceOf('Codewords\Board\Board', $board);
 
         $cells = $this->game->getCells();
-        $this->assertInstanceOf('Codewords\CellCollection', $cells);
+        $this->assertInstanceOf('Codewords\Board\CellCollection', $cells);
     }
 
     /**

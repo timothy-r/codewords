@@ -2,7 +2,7 @@
 
 use Codewords\Stats\GameStats;
 use Codewords\Game;
-use Codewords\Cell;
+use Codewords\Board\Cell;
 
 /**
 * Generates Letter count statistics for a Game

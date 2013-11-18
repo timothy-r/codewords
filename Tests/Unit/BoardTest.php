@@ -1,9 +1,9 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\Board;
-use Codewords\Cell;
-use Codewords\Word;
+use Codewords\Board\Board;
+use Codewords\Board\Cell;
+use Codewords\Board\Word;
 use Codewords\Test\UnitFixtureTrait;
 
 /**
