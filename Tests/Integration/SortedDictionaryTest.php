@@ -11,11 +11,11 @@ class SortedDictionaryTest extends IntegrationTest
     public function testFindReturnsAllMatchingWords()
     {
         $pattern = '^.a.$';
-        $dictionary = new SortedDictionary(__DIR__.'/../../config/words');
+        $dictionary = new SortedDictionary(__DIR__.'/../../config/dict-2');
         $result = $dictionary->find($pattern);
-
+        
         $this->assertTrue(is_array($result));
-        $this->assertTrue(in_array('Ian', $result));
-        $this->assertTrue(in_array('lap', $result));
+        $this->assertTrue(in_array('bat', $result));
+        $this->assertTrue(in_array('mad', $result));
     }
 }
