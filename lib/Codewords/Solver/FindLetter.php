@@ -29,6 +29,12 @@ class FindLetter implements IFinder
         $cells = $game->getCells();
         for ($c = 1; $c < 27; $c++) {
             $cell = $cells->at($c);
+            $character = $cell->getCharacter();
+
+            if ($character === $this->letter){
+                return [$cell];
+            }
+
             if ($this->isOrCanBeLetter($cell)){
                 $results[]= $cell;
             }
@@ -39,11 +45,6 @@ class FindLetter implements IFinder
     protected function isOrCanBeLetter(Cell $cell)
     {
         $character = $cell->getCharacter();
-
-        if ($character === $this->letter){
-            return true;
-        }
-
         // char is set but it's not this one
         if ($character !== null) {
             return false;

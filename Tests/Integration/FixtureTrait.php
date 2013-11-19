@@ -2,6 +2,7 @@
 
 use Codewords\Game;
 use Codewords\Dictionary\FileDictionary;
+use Codewords\Dictionary\SortedDictionary;
 
 trait FixtureTrait
 {
@@ -20,6 +21,12 @@ trait FixtureTrait
         $file = __DIR__ . '/../../config/words';
         //$words = file(__DIR__.'/../../config/words');
         $this->dictionary = new FileDictionary($file);
+    }
+    
+    protected function givenASortedDictionary()
+    {
+        $file = __DIR__ . '/../../config/dict';
+        $this->dictionary = new SortedDictionary($file);
     }
 
     protected function givenAGame($data)
