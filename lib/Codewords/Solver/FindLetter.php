@@ -1,22 +1,20 @@
 <?php namespace Codewords\Solver;
 
+use Codewords\IFinder;
 use Codewords\Game;
 use Codewords\Board\Cell;
 
 /**
-* Finds Cells that may be an specified letter
+* Finds Cells that may be a specific Letter
 */
-class FindLetter
+class FindLetter implements IFinder
 {
-    protected $game;
-
     protected $letter;
 
     protected $rules;
 
-    public function __construct(Game $game, $letter, array $rules)
+    public function __construct($letter, array $rules)
     {
-        $this->game = $game;
         $this->letter = $letter;
         $this->rules = $rules;
     }
@@ -24,11 +22,11 @@ class FindLetter
     /**
     * @return array of Cell objects
     */
-    public function solve()
+    public function solve(Game $game)
     {
         $results = [];
         
-        $cells = $this->game->getCells();
+        $cells = $game->getCells();
         for ($c = 1; $c < 27; $c++) {
             $cell = $cells->at($c);
             if ($this->isOrCanBeLetter($cell)){
@@ -52,8 +50,14 @@ class FindLetter
         }
         
         // apply rules here
+        foreach($this->rules as $rule){
+            if (!$rule->passes($cell)){
+                return false;
+            }
+        }
 
         // use dictionary to test words that contain this cell
+
         return true;
     }
 }
