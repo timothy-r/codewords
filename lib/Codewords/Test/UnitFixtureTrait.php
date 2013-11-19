@@ -13,6 +13,8 @@ trait UnitFixtureTrait
 
     protected $cell_collection;
 
+    protected $stats_repository;
+
     protected function givenACellCollection()
     {
         $this->cell_collection = new CellCollection;

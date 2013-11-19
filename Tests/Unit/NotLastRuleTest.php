@@ -2,22 +2,23 @@
 require_once(__DIR__ . '/BaseTest.php');
 require_once(__DIR__ . '/RuleTest.php');
 
-use Codewords\Solver\NotDoubleRule;
+use Codewords\Solver\NotLastRule;
+use Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit
 */
-class NotDoubleTest extends RuleTest
+class NotLastTest extends RuleTest
 {
     protected $rule;
 
     public function setUp()
     {
         parent::setUp();
-        $this->rule = new NotDoubleRule($this->game);
+        $this->rule = new NotLastRule($this->game);
     }
 
-    public function testCellThatHasNoDoublesPassesRule()
+    public function testCellThatHasNoLastsPassesRule()
     {
         $result = [];
         $this->givenAStatObject($result);    
@@ -26,7 +27,7 @@ class NotDoubleTest extends RuleTest
         $this->assertTrue($passes, 'Expected rule to pass');
     }
 
-    public function testCellThatHasDoublesFailsRule()
+    public function testCellThatHasLastsFailsRule()
     {
         $result = [2,4,5];
         $this->givenAStatObject($result);    
