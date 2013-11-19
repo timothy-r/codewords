@@ -18,18 +18,26 @@ trait UnitFixtureTrait
         $this->cell_collection = new CellCollection;
     }
 
+    protected function givenAStatsRepository()
+    {
+        $this->stats_repository = $this->getMock('Codewords\Stats\StatsRepository', ['getStat']);
+    }
+
     protected function givenAGame()
     {
-        $this->game = $this->getMock('Codewords\Game', ['getBoard', 'getCells'], [], '', false);
+        $this->game = $this->getMock('Codewords\Game', ['getBoard', 'getCells', 'getStatsRepository'], [], '', false);
         $this->game->expects($this->any())
             ->method('getBoard')
             ->will($this->returnValue($this->board));
         $this->game->expects($this->any())
             ->method('getCells')
             ->will($this->returnValue($this->cell_collection));
+        $this->game->expects($this->any())
+            ->method('getStatsRepository')
+            ->will($this->returnValue($this->stats_repository));
     }
 
-    public function givenABoard()
+    protected function givenABoard()
     {
         $this->board = new Board(4);
         // ALSO
