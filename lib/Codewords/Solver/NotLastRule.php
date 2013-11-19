@@ -1,12 +1,13 @@
 <?php namespace Codewords\Solver;
 
+use Codewords\IRule;
 use Codewords\Game;
 use Codewords\Board\Cell;
 
 /**
 * Tests if a Cell appears as the last letter in any Word
 */
-class NotLastRule
+class NotLastRule implements IRule
 {
     protected $game;
 
