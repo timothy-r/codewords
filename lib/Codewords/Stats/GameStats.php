@@ -17,12 +17,12 @@ abstract class GameStats implements IGameStats
             return $this->counts;
         }
 
-        $this->counts = array_map(function($i){ return null;}, range(1,27));
+        $cells = $game->getCells();
+        $length = $cells->length();
+        $this->counts = array_map(function($i){ return null;}, range(1,$length+1));
         unset($this->counts[0]);
 
-        $cells = $game->getCells();
-
-        for($i = 1; $i < 27; $i++){
+        for($i = 1; $i < $length+1; $i++){
             $cell = $cells->at($i);
             $this->counts[$cell->getNumber()] = $this->generateForCell($game, $cell);
         }
