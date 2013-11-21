@@ -93,4 +93,21 @@ class CellCollectionTest extends BaseTest
             $this->assertFalse($cell->isSolved());
         }
     }
+    
+    public function getLengths()
+    {
+        return [
+            [26],
+            [13]
+        ];
+    }
+
+    /**
+    * @dataProvider getLengths
+    */
+    public function testLengthReturnsCollectionLength($length)
+    {
+        $cell_collection = new CellCollection($length);
+        $this->assertSame($length, $cell_collection->length());
+    }
 }

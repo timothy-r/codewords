@@ -55,4 +55,9 @@ class CellCollection
         }
         return $unsolved;
     }
+
+    public function length()
+    {
+        return $this->length;
+    }
 }
