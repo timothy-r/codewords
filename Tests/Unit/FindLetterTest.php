@@ -42,4 +42,32 @@ class FindLetterTest extends BaseTest
         $this->assertTrue(1 == count($result), "Expected only one result item");
         $this->assertSame(26, current($result)->getNumber());
     }
+
+    public function testSolveReturnsEmptyIfAllRulesFail()
+    {
+        $letter = 'T';
+        $this->givenACellCollection();
+        $this->givenAGame();
+        $failing_rule = $this->getMock('Codewords\IRule', ['passes']);
+        $failing_rule->expects($this->any())
+            ->method('passes')
+            ->will($this->returnValue(false));
+        $finder = new FindLetter($letter, [$failing_rule]);
+        $result = $finder->solve($this->game);
+        $this->assertSame(0, count($result));
+    }
+
+    public function testSolveReturnsAllIfAllRulesPass()
+    {
+        $letter = 'T';
+        $this->givenACellCollection();
+        $this->givenAGame();
+        $failing_rule = $this->getMock('Codewords\IRule', ['passes']);
+        $failing_rule->expects($this->any())
+            ->method('passes')
+            ->will($this->returnValue(true));
+        $finder = new FindLetter($letter, [$failing_rule]);
+        $result = $finder->solve($this->game);
+        $this->assertSame(26, count($result));
+    }
 }
