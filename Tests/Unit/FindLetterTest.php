@@ -17,6 +17,7 @@ class FindLetterTest extends BaseTest
         $this->givenACellCollection();
         // set one Cell to be A
         $this->cell_collection->at(1)->setCharacter($letter);
+        $this->givenAMockBoard();
         $this->givenAGame();
 
         $finder = new FindLetter($letter, []);
@@ -35,6 +36,7 @@ class FindLetterTest extends BaseTest
             // 66 = B
             $this->cell_collection->at($i)->setCharacter(chr($i+64));
         }
+        $this->givenAMockBoard();
         $this->givenAGame();
 
         $finder = new FindLetter($letter, []);
@@ -47,6 +49,7 @@ class FindLetterTest extends BaseTest
     {
         $letter = 'T';
         $this->givenACellCollection();
+        $this->givenAMockBoard();
         $this->givenAGame();
         $rule = $this->getMockRule(false);
         $finder = new FindLetter($letter, [$rule]);
@@ -58,7 +61,18 @@ class FindLetterTest extends BaseTest
     {
         $letter = 'T';
         $this->givenACellCollection();
+        $this->givenAMockDictionary();
+        $this->dictionary->expects($this->any())
+            ->method('find')
+            ->will($this->returnValue(['matchingword']));
+
+        $this->givenAMockBoard();
         $this->givenAGame();
+        $word = $this->getMockWord();
+        $this->board->expects($this->any())
+            ->method('getWordsContainingCell')
+            ->will($this->returnValue([$word]));
+
         $rule = $this->getMockRule(true);
         $finder = new FindLetter($letter, [$rule]);
         $result = $finder->solve($this->game);

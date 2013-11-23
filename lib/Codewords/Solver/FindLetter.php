@@ -49,8 +49,16 @@ class FindLetter implements IFinder
             if ($this->applyRules($cell)){
                 $results[]= $cell;
             }
+        }
 
-            // use dictionary to test words that contain this cell
+        // use dictionary to test words that contain this cell
+        if (count($results) !== 1){
+            $len = count($results);
+            for($i = 0; $i < $len; $i++){
+                if (!$this->testDictionary($game, $results[$i])){
+                    unset($results[$i]);
+                }
+            }
         }
         return $results;
     }
@@ -65,6 +73,27 @@ class FindLetter implements IFinder
                 return false;
             }
         }
+        return true;
+    }
+
+    protected function testDictionary(Game $game, Cell $cell)
+    {
+        // get words that contain Cell from Game's Board
+        $words = $game->getBoard()->getWordsContainingCell($cell);
+        $dictionary= $game->getDictionary();
+
+        foreach ($words as $word){
+            // create a pattern to test dictionary with
+            $pattern = '';
+            // call Dictionary->find($pattern)
+            $matches = $dictionary->find($pattern);
+            // if no results are returned then return false from this method
+            if (count($matches) == 0){
+                return false;
+            }
+        }
+
+        // we found matches in the dictionary for all the Words on the Board for this Cell
         return true;
     }
 }

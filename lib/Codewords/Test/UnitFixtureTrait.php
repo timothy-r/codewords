@@ -15,6 +15,8 @@ trait UnitFixtureTrait
 
     protected $stats_repository;
 
+    protected $dictionary;
+
     protected function givenACellCollection()
     {
         $this->cell_collection = new CellCollection;
@@ -27,7 +29,7 @@ trait UnitFixtureTrait
 
     protected function givenAGame()
     {
-        $this->game = $this->getMock('Codewords\Game', ['getBoard', 'getCells', 'getStatsRepository'], [], '', false);
+        $this->game = $this->getMockBuilder('Codewords\Game')->disableOriginalConstructor()->getMock();
         $this->game->expects($this->any())
             ->method('getBoard')
             ->will($this->returnValue($this->board));
@@ -37,6 +39,24 @@ trait UnitFixtureTrait
         $this->game->expects($this->any())
             ->method('getStatsRepository')
             ->will($this->returnValue($this->stats_repository));
+        $this->game->expects($this->any())
+            ->method('getDictionary')
+            ->will($this->returnValue($this->dictionary));
+    }
+
+    protected function givenAMockBoard()
+    {
+        $this->board = $this->getMock('Codewords\Board\Board', ['getWordsContainingCell'], [], '', false);
+    }
+
+    protected function getMockWord()
+    {
+        return $this->getMockBuilder('Codewords\Board\Word')->disableOriginalConstructor()->getMock();
+    }
+
+    protected function givenAMockDictionary()
+    {
+        $this->dictionary =  $this->getMockBuilder('Codewords\IDictionary')->disableOriginalConstructor()->getMock();
     }
 
     protected function givenABoard()
