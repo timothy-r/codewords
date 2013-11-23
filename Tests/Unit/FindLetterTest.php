@@ -48,11 +48,8 @@ class FindLetterTest extends BaseTest
         $letter = 'T';
         $this->givenACellCollection();
         $this->givenAGame();
-        $failing_rule = $this->getMock('Codewords\IRule', ['passes']);
-        $failing_rule->expects($this->any())
-            ->method('passes')
-            ->will($this->returnValue(false));
-        $finder = new FindLetter($letter, [$failing_rule]);
+        $rule = $this->getMockRule(false);
+        $finder = new FindLetter($letter, [$rule]);
         $result = $finder->solve($this->game);
         $this->assertSame(0, count($result));
     }
@@ -62,12 +59,23 @@ class FindLetterTest extends BaseTest
         $letter = 'T';
         $this->givenACellCollection();
         $this->givenAGame();
-        $failing_rule = $this->getMock('Codewords\IRule', ['passes']);
-        $failing_rule->expects($this->any())
-            ->method('passes')
-            ->will($this->returnValue(true));
-        $finder = new FindLetter($letter, [$failing_rule]);
+        $rule = $this->getMockRule(true);
+        $finder = new FindLetter($letter, [$rule]);
         $result = $finder->solve($this->game);
         $this->assertSame(26, count($result));
+    }
+
+    public function testSolveReturnsDictionaryMatches()
+    {
+
+    }
+
+    protected function getMockRule($passes)
+    {
+        $rule = $this->getMock('Codewords\IRule', ['passes']);
+        $rule->expects($this->any())
+            ->method('passes')
+            ->will($this->returnValue($passes));
+        return $rule;
     }
 }
