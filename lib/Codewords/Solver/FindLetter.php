@@ -76,6 +76,9 @@ class FindLetter implements IFinder
         return true;
     }
 
+    /**
+    * consider factoring this method out into a separate class
+    */
     protected function testDictionary(Game $game, Cell $cell)
     {
         // get words that contain Cell from Game's Board

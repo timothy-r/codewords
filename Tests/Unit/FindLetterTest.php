@@ -62,6 +62,8 @@ class FindLetterTest extends BaseTest
         $letter = 'T';
         $this->givenACellCollection();
         $this->givenAMockDictionary();
+
+        // matches can be found for all the Cells in all the Words
         $this->dictionary->expects($this->any())
             ->method('find')
             ->will($this->returnValue(['matchingword']));
