@@ -9,8 +9,14 @@ use Codewords\Board\Cell;
 */
 class FindLetter implements IFinder
 {
+    /**
+    * @var string
+    */
     protected $letter;
 
+    /**
+    * @var array
+    */
     protected $rules;
 
     public function __construct($letter, array $rules)
@@ -34,31 +40,31 @@ class FindLetter implements IFinder
             if ($character === $this->letter){
                 return [$cell];
             }
+            
+            // char is set but it's not this one
+            if ($character !== null) {
+                continue;
+            }
 
-            if ($this->isOrCanBeLetter($cell)){
+            if ($this->applyRules($cell)){
                 $results[]= $cell;
             }
+
+            // use dictionary to test words that contain this cell
         }
         return $results;
     }
-
-    protected function isOrCanBeLetter(Cell $cell)
+    
+    /**
+    * Test that all Rules of this Finder pass
+    */
+    protected function applyRules(Cell $cell)
     {
-        $character = $cell->getCharacter();
-        // char is set but it's not this one
-        if ($character !== null) {
-            return false;
-        }
-        
-        // apply rules here
         foreach($this->rules as $rule){
             if (!$rule->passes($cell)){
                 return false;
             }
         }
-
-        // use dictionary to test words that contain this cell
-
         return true;
     }
 }
