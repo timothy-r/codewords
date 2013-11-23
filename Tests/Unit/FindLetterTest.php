@@ -79,7 +79,7 @@ class FindLetterTest extends BaseTest
         $this->assertSame(26, count($result));
     }
 
-    public function testSolveReturnsDictionaryMatches()
+    public function testSolveReturnsCellsThatMatchAllWords()
     {
 
     }
