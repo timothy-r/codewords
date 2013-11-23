@@ -14,6 +14,20 @@ class WordPattern
 
     public function make($letter, Cell $cell, Word $word)
     {
-
+        $pattern = '';
+        // iterate over Word's cells
+        for ($i = 0; $i < $word->length(); $i++){
+            $other = $word->at($i);
+            if ($other->matches($cell)){
+                $pattern .= $letter;
+            } else {
+                if ($char = $other->getCharacter()){
+                    $pattern .= $char;
+                } else {
+                    $pattern .= '.';
+                }
+            }
+        }
+        return '^'.$pattern.'$';
     }
 }
