@@ -14,7 +14,7 @@ class WordPattern
     
     /**
     * return the pattern to use to match a Word using $letter in place of $cell
-    * @todo add support for back references
+    * @todo add support for back references to letters that appear multiple times
     * @todo restrict wild cards to chars that have still to be solved, eg replace . with [^A|B|C] if A, B and C have been solved
     * @return string
     */
