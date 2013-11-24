@@ -17,10 +17,8 @@ class DoubleLetterCount extends GameStats
         foreach($words as $word){
             // find each instance of $cell and see if next letter is same
             for($c = 0; $c < ($word->length() - 1); $c++){
-                if ($word->at($c)->matches($cell)){
-                    if ($word->at($c+1)->matches($cell)){
+                if ($word->at($c)->matches($cell) && $word->at($c+1)->matches($cell)){
                         $result++;
-                    }
                 }
             }
         }

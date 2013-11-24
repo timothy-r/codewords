@@ -15,8 +15,8 @@ class LetterCount extends GameStats
         $words = $game->getBoard()->getWordsContainingCell($cell);
         foreach($words as $word){
             // iterate over Cells in word
-            for($i = 0; $i < $word->length(); $i++){
-                if ($word->at($i)->matches($cell)){
+            foreach($word as $other_cell){
+                if ($other_cell->matches($cell)){
                     $result++;
                 }
             }

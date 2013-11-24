@@ -22,12 +22,11 @@ class WordPattern
     {
         $pattern = '';
         // iterate over Word's cells
-        for ($i = 0; $i < $word->length(); $i++){
-            $other = $word->at($i);
-            if ($other->matches($cell)){
+        foreach($word as $index => $other_cell){
+            if ($other_cell->matches($cell)){
                 $pattern .= $letter;
             } else {
-                if ($char = $other->getCharacter()){
+                if ($char = $other_cell->getCharacter()){
                     $pattern .= $char;
                 } else {
                     $pattern .= '.';

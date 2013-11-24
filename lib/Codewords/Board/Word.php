@@ -5,8 +5,13 @@ use Codewords\Board\Cell;
 /**
 * Represents a Word, set of Cells
 */
-class Word
+class Word implements \Iterator
 {
+    /**
+    * @var integer
+    */
+    protected $index = 0;
+
     /**
     * @var array
     */
@@ -48,4 +53,33 @@ class Word
     {
         return $this->cells[$this->length()-1];
     }
+
+    public function current()
+    {
+        return $this->cells[$this->index];
+    }
+
+    public function key()
+    {
+        return $this->index;
+    }
+
+    public function next()
+    {
+        $this->index++;
+    }
+
+    public function rewind()
+    {
+        $this->index = 0;
+    }
+    
+    /**
+    * Test if calling next() will make current() valid or not
+    */
+    public function valid()
+    {
+        return $this->index < count($this->cells);
+    }
+
 }

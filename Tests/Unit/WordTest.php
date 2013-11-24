@@ -48,4 +48,13 @@ class WordTest extends BaseTest
         $word = new Word($cells);
         $this->assertSame($cells[1], $word->last());
     }
+
+    public function testCanIterateOverWord()
+    {
+        $cells = [new Cell(1), new Cell(2), new Cell(3)];
+        $word = new Word($cells);
+        foreach($word as $index =>$cell){
+            $this->assertSame($index+1, $cell->getNumber());
+        }
+    }
 }
