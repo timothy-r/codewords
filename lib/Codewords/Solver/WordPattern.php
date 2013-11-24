@@ -21,13 +21,24 @@ class WordPattern
     public function make($letter, Cell $cell, Word $word)
     {
         $pattern = '';
+        $current = [];
+        $solved_index = 1;
         // iterate over Word's cells
         foreach($word as $index => $other_cell){
             if ($other_cell->matches($cell)){
-                $pattern .= $letter;
+                $pattern .= '(' . $letter . ')';
+                $solved_index++;
             } else {
                 if ($char = $other_cell->getCharacter()){
-                    $pattern .= $char;
+                    // check for back references
+                    if (isset($current[$other_cell->getNumber()])){
+                        // use \$num
+                        $pattern .= '\\' . $current[$other_cell->getNumber()];
+                    } else {
+                        $current[$other_cell->getNumber()] = $solved_index;
+                        $solved_index++;
+                        $pattern .= '('.$char.')';
+                    }
                 } else {
                     $pattern .= '.';
                 }

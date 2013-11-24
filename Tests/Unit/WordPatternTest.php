@@ -13,11 +13,13 @@ class WordPatternTest extends BaseTest
     public function getLetters()
     {
         return [
-            ['J', [[0, null], [1, 'O'], [2, null], [3, 'E']], '^JO.E$'],
-            ['W', [[0, null], [1, 'A'], [2, null], [4, null]], '^WA..$'],
-            ['D', [[0, null], [1, 'R'], [2, null], [3, null], [4, 'T'], [5, 'Y']], '^DR..TY$'],
-            ['W', [[0, null], [1, null], [2, 'L'], [2, 'L']], '^W.LL$'],
-            //['W', [[0, null], [1, null], [2, 'L'], [2, 'L']], '^W.(L)\1$'],
+            ['J', [[0, null], [1, 'O'], [2, null], [3, 'E']], '^(J)(O).(E)$'],
+            ['W', [[0, null], [1, 'A'], [2, null], [4, null]], '^(W)(A)..$'],
+            ['D', [[0, null], [1, 'R'], [2, null], [3, null], [4, 'T'], [5, 'Y']], '^(D)(R)..(T)(Y)$'],
+            ['W', [[0, null], [1, null], [2, 'L'], [2, 'L']], '^(W).(L)\2$'],
+            ['W', [[0, null], [1, 'E'], [2, null], [1, 'E']], '^(W)(E).\2$'],
+            ['D', [[0, null], [1, 'R'], [2, null], [1, 'R'], [4, 'T'], [5, 'Y']], '^(D)(R).\2(T)(Y)$'],
+            ['D', [[0, null], [1, 'R'], [2, null], [3, 'E'], [4, 'T'], [4, 'T']], '^(D)(R).(E)(T)\4$'],
         ];
     }
 
@@ -46,7 +48,7 @@ class WordPatternTest extends BaseTest
         $word = new Word([$cell_1, $cell_2, $cell_1, $cell_4]);
         $word_pattern = new WordPattern;
         $actual = $word_pattern->make($letter, $cell_1, $word); 
-        $expected = sprintf('^%sO%sE$', $letter, $letter);
+        $expected = sprintf('^(%s)(O)(%s)(E)$', $letter, $letter);
         $this->assertSame($expected, $actual);
     }
 

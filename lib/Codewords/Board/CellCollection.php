@@ -5,7 +5,6 @@ use Codewords\Error\InvalidCellLocation;
 
 /**
 * Produces and contains the Games Cells
-* @todo implement iterable
 */
 class CellCollection implements \Iterator
 {
