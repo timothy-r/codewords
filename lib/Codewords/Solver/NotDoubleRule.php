@@ -6,6 +6,9 @@ use Codewords\Board\Cell;
 
 /**
 * Tests if a Cell appears as a double letter in any Word
+*
+* @todo inject stats instance
+* @todo inject Words not Game
 */
 class NotDoubleRule implements IRule
 {
