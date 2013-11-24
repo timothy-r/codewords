@@ -7,11 +7,13 @@ use Codewords\Error\InvalidCellLocation;
 * Produces and contains the Games Cells
 * @todo implement iterable
 */
-class CellCollection
+class CellCollection implements \Iterator
 {
     protected $cells = [];
  
     protected $length;
+
+    protected $index = 1;
 
     public function __construct($length = 26)
     {
@@ -34,7 +36,7 @@ class CellCollection
 
     public function cellForCharacter($char)
     {
-        foreach($this->cells as $cell) {
+        foreach($this as $cell) {
             if ($cell->getCharacter() === $char){
                 return $cell;
             }
@@ -48,8 +50,7 @@ class CellCollection
     public function getUnsolved()
     {
         $unsolved = [];
-        for ($i = 1; $i <= $this->length; $i++) {
-            $cell = $this->at($i);
+        foreach($this as $cell){
             if (!$cell->isSolved()){
                 $unsolved[]= $cell;
             }
@@ -63,8 +64,7 @@ class CellCollection
     public function getSolved()
     {
         $solved = [];
-        for ($i = 1; $i <= $this->length; $i++) {
-            $cell = $this->at($i);
+        foreach($this as $cell){
             if ($cell->isSolved()){
                 $solved[]= $cell;
             }
@@ -75,5 +75,33 @@ class CellCollection
     public function length()
     {
         return $this->length;
+    }
+
+    public function current()
+    {
+        return $this->at($this->index);
+    }
+
+    public function key()
+    {
+        return $this->index;
+    }
+
+    public function next()
+    {
+        $this->index++;
+    }
+
+    public function rewind()
+    {
+        $this->index = 1;
+    }
+    
+    /**
+    * Test if calling next() will make current() valid or not
+    */
+    public function valid()
+    {
+        return $this->index <= $this->length;
     }
 }

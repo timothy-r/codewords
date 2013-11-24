@@ -22,8 +22,7 @@ abstract class GameStats implements IGameStats
         $this->counts = array_map(function($i){ return null;}, range(1,$length+1));
         unset($this->counts[0]);
 
-        for($i = 1; $i < $length+1; $i++){
-            $cell = $cells->at($i);
+        foreach($cells as $cell){
             $this->counts[$cell->getNumber()] = $this->generateForCell($game, $cell);
         }
 

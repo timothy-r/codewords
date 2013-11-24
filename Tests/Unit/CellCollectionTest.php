@@ -125,4 +125,12 @@ class CellCollectionTest extends BaseTest
             $this->assertTrue($cell->isSolved());
         }
     }
+
+    public function testCanIterateOverCellCollection()
+    {
+        $cell_collection = new CellCollection;
+        foreach($cell_collection as $cell){
+            $this->assertInstanceOf('Codewords\Board\Cell', $cell);
+        }
+    }
 }

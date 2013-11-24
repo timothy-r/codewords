@@ -33,8 +33,7 @@ class FindLetter implements IFinder
         $results = [];
         
         $cells = $game->getCells();
-        for ($c = 1; $c < 27; $c++) {
-            $cell = $cells->at($c);
+        foreach($cells as $cell){
             $character = $cell->getCharacter();
 
             if ($character === $this->letter){
