@@ -5,6 +5,7 @@ use Codewords\Error\InvalidCellLocation;
 
 /**
 * Produces and contains the Games Cells
+* @todo implement iterable
 */
 class CellCollection
 {
@@ -54,6 +55,21 @@ class CellCollection
             }
         }
         return $unsolved;
+    }
+
+    /**
+    * @return array of Cells which are solved
+    */
+    public function getSolved()
+    {
+        $solved = [];
+        for ($i = 1; $i <= $this->length; $i++) {
+            $cell = $this->at($i);
+            if ($cell->isSolved()){
+                $solved[]= $cell;
+            }
+        }
+        return $solved;
     }
 
     public function length()

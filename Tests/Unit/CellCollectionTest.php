@@ -110,4 +110,19 @@ class CellCollectionTest extends BaseTest
         $cell_collection = new CellCollection($length);
         $this->assertSame($length, $cell_collection->length());
     }
+
+    public function testGetSolvedDoesNotIncludeUnsolvedCells()
+    {
+        $cell_collection = new CellCollection;
+        $cell = $cell_collection->at(1);
+        $cell->setCharacter('S');
+        $cell = $cell_collection->at(2);
+        $cell->setCharacter('Y');
+        $solved = $cell_collection->getSolved();
+        $this->assertSame(2, count($solved));
+
+        foreach($solved as $cell) {
+            $this->assertTrue($cell->isSolved());
+        }
+    }
 }
