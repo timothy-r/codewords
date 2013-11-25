@@ -18,17 +18,24 @@ class Game
 
     protected $stats_repository;
 
+    protected $data;
+
     /**
     * @todo pass IBoardReader to contructor?
     */
     public function __construct($data, IDictionary $dictionary)
     {
-        $reader = new CsvBoardReader($data);
+        $this->data = $data;
+        $this->dictionary = $dictionary;
         $this->cells = new CellCollection;
+        $this->stats_repository = new StatsRepository;
+    }
+
+    protected function readBoard()
+    {
+        $reader = new CsvBoardReader($this->data);
         $factory = new BoardFactory($reader, $this->cells);
         $this->board = $factory->create();
-        $this->dictionary = $dictionary;
-        $this->stats_repository = new StatsRepository;
     }
 
     /**
@@ -36,6 +43,9 @@ class Game
     */
     public function getBoard()
     {
+        if (!$this->board){
+            $this->readBoard();
+        }
         return $this->board;
     }
 
