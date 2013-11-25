@@ -84,13 +84,18 @@ class FindLetter implements IFinder
         $words = $game->getBoard()->getWordsContainingCell($cell);
         $dictionary= $game->getDictionary();
         $word_pattern = new WordPattern($game->getCells());
+        
+        print __METHOD__ . " " . $cell->getNumber() . " {$this->letter}\n";
 
         foreach ($words as $word){
             // create a pattern to test dictionary with
-            $pattern = $word_pattern->make($this->letter, $cell, $word);
-            print "$pattern\n";
-            // call Dictionary->find($pattern)
+            $pattern = $word_pattern->make(strtolower($this->letter), $cell, $word);
+            #print "$pattern\n";
             $matches = $dictionary->find($pattern, $word->length());
+            if (count($matches) > 0){
+                print "$pattern\n";
+                var_dump($matches);
+            }
             // if no results are returned then return false from this method
             if (count($matches) == 0){
                 return false;
