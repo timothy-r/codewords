@@ -15,7 +15,7 @@ class FindLetterIntegrationTest extends IntegrationTest
             ['data-1.csv', 'I', [1,2,3,6,7,9,10,11,15,16,17,19,21,23], []], 
             ['data-3.csv', 'I', [4,5,7,9,12,13,16,26], [17 => 'n', 6 => 'p']],
             ['data-1.csv', 'Q', [3,16,19], []], 
-            ['data-3.csv', 'Q', [12,25,26], [17 => 'n', 6 => 'p']]
+            ['data-3.csv', 'Q', [12,25], [17 => 'n', 6 => 'p', 3 => 'i']]
         ];
     }
     
