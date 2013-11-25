@@ -1,6 +1,7 @@
 <?php namespace Codewords;
 
 use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
@@ -16,6 +17,6 @@ interface IGameStats
     /**
     * @return mixed
     */
-    public function generateForCell(Game $game, Cell $cell);
+    public function generateForCell(Board $board, Cell $cell);
 }
 

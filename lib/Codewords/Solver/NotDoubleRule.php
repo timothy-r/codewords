@@ -22,7 +22,7 @@ class NotDoubleRule implements IRule
     public function passes(Cell $cell)
     {
         $stats = $this->game->getStatsRepository()->getStat('DoubleLetter');
-        $result = $stats->generateForCell($this->game, $cell);
+        $result = $stats->generateForCell($this->game->getBoard(), $cell);
         return count($result) === 0;
     }
 }

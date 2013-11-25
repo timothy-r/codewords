@@ -1,7 +1,7 @@
 <?php namespace Codewords\Stats;
 
 use Codewords\Stats\GameStats;
-use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
@@ -9,10 +9,10 @@ use Codewords\Board\Cell;
 */
 class DoubleLetterCount extends GameStats
 {
-    public function doGenerateForCell(Game $game, Cell $cell)
+    public function doGenerateForCell(Board $board, Cell $cell)
     {
         $result = 0;
-        $words = $game->getBoard()->getWordsContainingCell($cell);
+        $words = $board->getWordsContainingCell($cell);
 
         foreach($words as $word){
             // find each instance of $cell and see if next letter is same

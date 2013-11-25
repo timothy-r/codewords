@@ -2,6 +2,7 @@
 
 use Codewords\IGameStats;
 use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
@@ -23,21 +24,21 @@ abstract class GameStats implements IGameStats
         unset($this->counts[0]);
 
         foreach($cells as $cell){
-            $this->counts[$cell->getNumber()] = $this->generateForCell($game, $cell);
+            $this->counts[$cell->getNumber()] = $this->generateForCell($game->getBoard(), $cell);
         }
 
         return $this->counts;
     }
 
-    public function generateForCell(Game $game, Cell $cell)
+    public function generateForCell(Board $board, Cell $cell)
     {
         // use cached value if it exists
         if ($this->counts[$cell->getNumber()] !== null){
             return $this->counts[$cell->getNumber()];
         }
-        return $this->doGenerateForCell($game, $cell);
+        return $this->doGenerateForCell($board, $cell);
     }
 
-    abstract public function doGenerateForCell(Game $game, Cell $cell);
+    abstract public function doGenerateForCell(Board $board, Cell $cell);
 }
 

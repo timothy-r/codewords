@@ -1,18 +1,18 @@
 <?php namespace Codewords\Stats;
 
 use Codewords\Stats\GameStats;
-use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
-* Generates stats on the Letters that follow each Letter in a Game
+* Generates stats on the Letters that follow each Letter in a Board
 */
 class FollowingLetterCount extends GameStats
 {
-    public function doGenerateForCell(Game $game, Cell $cell)
+    public function doGenerateForCell(Board $board, Cell $cell)
     {
         $result = [];
-        $words = $game->getBoard()->getWordsContainingCell($cell);
+        $words = $board->getWordsContainingCell($cell);
         foreach($words as $word){
             for($c = 0; $c < ($word->length() - 1); $c++){
                 if ($word->at($c)->matches($cell)){

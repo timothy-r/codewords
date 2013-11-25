@@ -56,7 +56,7 @@ class FirstLetterCountTest extends BaseTest
         $cell = new Cell($number);
         $flc = new FirstLetterCount();
 
-        $stats = $flc->generateForCell($this->game, $cell);
+        $stats = $flc->generateForCell($this->board, $cell);
 
         $this->assertSame($expected, $stats);
     }
