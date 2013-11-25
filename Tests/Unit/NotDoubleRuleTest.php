@@ -19,7 +19,7 @@ class NotDoubleTest extends RuleTest
 
     public function testCellThatHasNoDoublesPassesRule()
     {
-        $result = [];
+        $result = 0;
         $this->givenAStatObject($result);    
 
         $passes = $this->rule->passes($this->cell);
@@ -28,7 +28,7 @@ class NotDoubleTest extends RuleTest
 
     public function testCellThatHasDoublesFailsRule()
     {
-        $result = [2,4,5];
+        $result = 3;
         $this->givenAStatObject($result);    
         
         $passes = $this->rule->passes($this->cell);

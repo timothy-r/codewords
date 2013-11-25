@@ -23,6 +23,6 @@ class NotLastRule implements IRule
     {
         $stats = $this->stats_repo->getStat('LastLetter');
         $result = $stats->generateForCell($this->board, $cell);
-        return count($result) === 0;
+        return $result === 0;
     }
 }

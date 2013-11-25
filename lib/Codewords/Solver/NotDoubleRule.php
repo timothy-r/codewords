@@ -26,6 +26,6 @@ class NotDoubleRule implements IRule
     {
         $stats = $this->stats_repo->getStat('DoubleLetter');
         $result = $stats->generateForCell($this->board, $cell);
-        return count($result) === 0;
+        return $result === 0;
     }
 }
