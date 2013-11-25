@@ -20,7 +20,7 @@ class NotLastTest extends RuleTest
 
     public function testCellThatHasNoLastsPassesRule()
     {
-        $result = [];
+        $result = 0;
         $this->givenAStatObject($result);    
 
         $passes = $this->rule->passes($this->cell);
@@ -29,7 +29,7 @@ class NotLastTest extends RuleTest
 
     public function testCellThatHasLastsFailsRule()
     {
-        $result = [2,4,5];
+        $result = 3;
         $this->givenAStatObject($result);    
         
         $passes = $this->rule->passes($this->cell);
