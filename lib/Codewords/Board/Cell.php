@@ -21,7 +21,7 @@ class Cell
 
     protected $max = 26;
 
-    public function __construct($number)
+    public function __construct($number, $character = null)
     {
         if (!is_numeric($number)){
             throw new InvalidCellNumber("$number is out of range, ({$this->min} - {$this->max})");
@@ -34,6 +34,9 @@ class Cell
         }
 
         $this->number = $number;
+        if (!is_null($character)){
+            $this->setCharacter($character);
+        }
     }
 
     public function getNumber()
