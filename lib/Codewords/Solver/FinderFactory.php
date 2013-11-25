@@ -6,11 +6,11 @@ use Codewords\Solver\NotDoubleRule;
 /**
 * Supplies IFinder instances for specific Letters
 */
-class FinderRepository
+class FinderFactory
 {
     protected $finders = [];
 
-    public function getFinder($letter)
+    public function create($letter)
     {
         // get rules for Letter here
         $rules = $this->getRules($letter);

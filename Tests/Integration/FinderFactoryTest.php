@@ -2,12 +2,12 @@
 require_once(__DIR__ . '/IntegrationTest.php');
 require_once(__DIR__. '/FixtureTrait.php');
 
-use Codewords\Solver\FinderRepository;
+use Codewords\Solver\FinderFactory;
 
 /**
 * @group integration
 */
-class FinderRepositoryTest extends IntegrationTest
+class FinderFactoryTest extends IntegrationTest
 {
     public function getLetterFixtures()
     {
@@ -19,10 +19,10 @@ class FinderRepositoryTest extends IntegrationTest
     /**
     * @dataProvider getLetterFixtures
     */
-    public function testGetFinderForLetter($letter)
+    public function testCreateForLetterReturnsIFinder($letter)
     {
-        $repo = new FinderRepository;
-        $finder = $repo->getFinder($letter);
+        $repo = new FinderFactory;
+        $finder = $repo->create($letter);
         $this->assertInstanceOf('Codewords\IFinder', $finder);
     }
 }
