@@ -1,6 +1,6 @@
 <?php
-require_once(__DIR__ . '/IntegrationTest.php');
-require_once(__DIR__. '/FixtureTrait.php');
+require_once(__DIR__ . '/../IntegrationTest.php');
+require_once(__DIR__. '/../FixtureTrait.php');
 
 use Codewords\Solver\FinderFactory;
 
