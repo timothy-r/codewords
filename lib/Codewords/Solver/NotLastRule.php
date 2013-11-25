@@ -1,7 +1,8 @@
 <?php namespace Codewords\Solver;
 
+use Codewords\Board\Board;
+use Codewords\Stats\StatsRepository;
 use Codewords\IRule;
-use Codewords\Game;
 use Codewords\Board\Cell;
 
 /**
@@ -9,17 +10,19 @@ use Codewords\Board\Cell;
 */
 class NotLastRule implements IRule
 {
-    protected $game;
+    protected $board;
+    protected $stats_repo;
 
-    public function __construct(Game $game)
+    public function __construct(Board $board, StatsRepository $stats_repo)
     {
-        $this->game = $game;
+        $this->board = $board;
+        $this->stats_repo = $stats_repo;
     }
 
     public function passes(Cell $cell)
     {
-        $stats = $this->game->getStatsRepository()->getStat('LastLetter');
-        $result = $stats->generateForCell($this->game->getBoard(), $cell);
+        $stats = $this->stats_repo->getStat('LastLetter');
+        $result = $stats->generateForCell($this->board, $cell);
         return count($result) === 0;
     }
 }
