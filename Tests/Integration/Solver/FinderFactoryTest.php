@@ -9,6 +9,8 @@ use Codewords\Solver\FinderFactory;
 */
 class FinderFactoryTest extends IntegrationTest
 {
+    use FixtureTrait;
+
     public function getLetterFixtures()
     {
         return [
@@ -21,7 +23,9 @@ class FinderFactoryTest extends IntegrationTest
     */
     public function testCreateForLetterReturnsIFinder($letter)
     {
-        $repo = new FinderFactory;
+        $this->givenASortedDictionary();
+        $this->givenAGame('data-1.csv');
+        $repo = new FinderFactory($this->game);
         $finder = $repo->create($letter);
         $this->assertInstanceOf('Codewords\IFinder', $finder);
     }
