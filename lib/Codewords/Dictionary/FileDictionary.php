@@ -27,7 +27,7 @@ class FileDictionary extends Dictionary implements IDictionary
     *
     * @return array of matching words
     */
-    public function find($pattern)
+    public function find($pattern, $length)
     {
         if (!$this->words){
             $this->words = file($this->file);

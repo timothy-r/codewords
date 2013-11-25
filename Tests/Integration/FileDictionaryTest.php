@@ -12,7 +12,7 @@ class FileDictionaryTest extends IntegrationTest
     {
         $pattern = '^.a.$';
         $dictionary = new FileDictionary(__DIR__.'/../../config/words');
-        $result = $dictionary->find($pattern);
+        $result = $dictionary->find($pattern, 3);
 
         $this->assertTrue(is_array($result));
         $this->assertTrue(in_array('Ian', $result));

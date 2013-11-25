@@ -22,7 +22,7 @@ class ArrayDictionary extends Dictionary implements IDictionary
     *
     * @return array of matching words
     */
-    public function find($pattern)
+    public function find($pattern, $length)
     {
         return $this->lookup($this->words, $pattern);
     }

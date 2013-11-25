@@ -23,7 +23,7 @@ class SortedDictionaryTest extends IntegrationTest
     public function testFindReturnsAllMatchingWords($pattern, $expected)
     {
         $dictionary = new SortedDictionary(__DIR__.'/../../config/dict-2');
-        $result = $dictionary->find($pattern);
+        $result = $dictionary->find($pattern, strlen($expected[0]));
         
         $this->assertTrue(is_array($result));
         foreach ($expected as $exp) {

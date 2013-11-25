@@ -5,5 +5,5 @@
 */
 interface IDictionary
 {
-    public function find($pattern);
+    public function find($pattern, $length);
 }

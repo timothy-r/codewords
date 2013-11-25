@@ -23,15 +23,14 @@ class SortedDictionary extends Dictionary implements IDictionary
         $this->file = $file;
     }
 
-    public function find($pattern)
+    public function find($pattern, $length)
     {
         if (!is_array($this->dict)){
             $this->dict = require($this->file);
         }
 
         // assume that $pattern contains ^ and $ chars
-        $len = strlen($pattern) - 2;
-        $words = $this->dict[$len];
+        $words = $this->dict[$length];
         preg_match_all('#'.$pattern.'#m', $words, $matches);
         return $matches[0];
     }
