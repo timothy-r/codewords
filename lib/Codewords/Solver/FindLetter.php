@@ -101,6 +101,9 @@ class FindLetter implements IFinder
             }
             // if no results are returned then return false from this method
             if (count($matches) == 0){
+                #if ('n' == $this->letter){
+                #    print "cell {$cell->getNumber()} no matches for n with $pattern\n";
+                #}
                 return false;
             }
         }

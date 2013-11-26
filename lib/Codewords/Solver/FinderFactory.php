@@ -28,7 +28,6 @@ class FinderFactory
     protected function getRules($letter)
     {
         $rules = [];
-        #§var_dump(__METHOD__ . " $letter");
         switch($letter){
             case 'i':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
@@ -37,6 +36,7 @@ class FinderFactory
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
                 $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
                 // q can be followed by at most 2 different Cells, u & i
+                // rather than specify the number of followers specify their Characters
                 $rules []= new FollowedByRule($this->game->getBoard(), $this->game->getStatsRepository(), 2);
                 break;
             case 'u':

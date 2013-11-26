@@ -1,7 +1,9 @@
 <?php namespace Codewords;
 
 use Codewords\Game;
+use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
+use Codewords\Board\HtmlTableBoardRenderer;
 
 class CellOptions
 {
@@ -49,9 +51,9 @@ class CellOptions
         foreach($this->cells_to_letters as $index => $letters){
             if (count($letters) === 1){
                 $letter = current($letters);
-                print __METHOD__ . " Setting Cell $index to $letter\n";
 
-                $cell_collection->at($index)->setCharacter($letter); 
+                $this->setCellCharacter($cell_collection->at($index), $letter);
+                //$cell_collection->at($index)->setCharacter($letter); 
                 // remove item from letters_to_cells
                 unset($this->letters_to_cells[$letter]);
 
@@ -71,8 +73,8 @@ class CellOptions
         foreach($this->letters_to_cells as $letter => $cells){
             if (count($cells) == 1){
                 $cell = current($cells);
-                print __METHOD__ . " Setting Cell {$cell->getNumber()} to {$letter}\n";
-                $cell->setCharacter($letter);
+                //print __METHOD__ . " Setting Cell {$cell->getNumber()} to {$letter}\n";
+                $this->setCellCharacter($cell, $letter);
                 $clear []= $letter;
             }
         }
@@ -81,5 +83,14 @@ class CellOptions
         foreach ($clear as $letter){
             unset($this->letters_to_cells[$letter]);
         }
+    }
+
+    protected function setCellCharacter(Cell $cell, $letter)
+    {
+        print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
+        $cell->setCharacter($letter);
+        $renderer = new HtmlTableBoardRenderer;
+        $file = 'results-' . $letter . '.html';
+       // file_put_contents($file, $renderer->render($this->game->getBoard()));
     }
 }
