@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\HtmlTableBoardRenderer;
+use Codewords\Board\HtmlTableBoardRenderer;
 
 /**
 * @group unit

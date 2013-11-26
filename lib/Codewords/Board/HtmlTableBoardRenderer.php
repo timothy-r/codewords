@@ -1,5 +1,6 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Board;
 
+use Codewords\IBoardRenderer;
 use Codewords\Board\Board;
 
 /**

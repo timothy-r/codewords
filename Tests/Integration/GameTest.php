@@ -4,7 +4,7 @@ require_once(__DIR__. '/FixtureTrait.php');
 
 use Codewords\Game;
 use Codewords\FileDictionary;
-use Codewords\HtmlTableBoardRenderer;
+use Codewords\Board\HtmlTableBoardRenderer;
 
 /**
 * @group integration
