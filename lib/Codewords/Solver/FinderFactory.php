@@ -29,12 +29,16 @@ class FinderFactory
     {
         $rules = [];
         switch($letter){
-            case 'Q':
+            case 'i':
+                $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
+                break;
+            case 'q':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
                 $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
                 break;
-            case 'I':
+            case 'u':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
+                $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
                 break;
         }
         return $rules;
