@@ -29,6 +29,7 @@ class FinderFactory
     protected function getRules($letter)
     {
         $rules = [];
+        var_dump(__METHOD__ . " $letter");
         switch($letter){
             case 'i':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
@@ -36,10 +37,13 @@ class FinderFactory
             case 'q':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
                 $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
+                // q can be followed by at most 2 different Cells, u & i
                 $rules []= new FollowedByRule($this->game->getBoard(), $this->game->getStatsRepository(), 2);
                 break;
             case 'u':
+                // vacuum has a double u, and continuum
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
+                // you ends in a u and bijou and fondu
                 $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
                 break;
         }
