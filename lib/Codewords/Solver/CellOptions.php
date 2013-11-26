@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Solver;
 
 use Codewords\Game;
 use Codewords\Board\Cell;

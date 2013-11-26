@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Solver;
 
 use Codewords\Game;
-use Codewords\CellOptions;
+use Codewords\Solver\CellOptions;
 use Codewords\Board\CellCollection;
 use Codewords\Solver\FinderFactory;
 

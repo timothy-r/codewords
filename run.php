@@ -1,9 +1,8 @@
 <?php
-
 require_once(__DIR__. '/vendor/autoload.php');
 
 use Codewords\Game;
-use Codewords\StrategyB;
+use Codewords\Solver\StrategyB;
 use Codewords\Dictionary\SortedDictionary;
 use Codewords\Board\HtmlTableBoardRenderer;
 
@@ -29,11 +28,11 @@ $data = file_get_contents($file);
 
 $dict = new SortedDictionary(__DIR__."/config/dict-3");
 $game = new Game($data, $dict);
-$renderer = new HtmlTableBoardRenderer;
-print $renderer->render($game->getBoard());
+//print $renderer->render($game->getBoard());
 
 $strategy = new StrategyB;
 
 $strategy->solve($game);
 
+$renderer = new HtmlTableBoardRenderer;
 print $renderer->render($game->getBoard());
