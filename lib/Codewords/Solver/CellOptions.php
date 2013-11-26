@@ -8,23 +8,26 @@ use Codewords\Board\HtmlTableBoardRenderer;
 class CellOptions
 {
     protected $game;
-    
+    protected $factory;
+
     protected $letters_to_cells = [];
     protected $cells_to_letters = [];
 
     public function __construct(Game $game)
     {
         $this->game = $game;
+        $this->factory = new FinderFactory($this->game);
     }
 
     public function solveAll($letters)
     {
-        $factory = new FinderFactory($this->game);
+        // generate data on the values Cells could be
+        // these should be refactored to separate classes?
         $this->letters_to_cells = [];
         $this->cells_to_letters = [];
 
         foreach($letters as $letter){
-            $finder = $factory->create($letter);
+            $finder = $this->factory->create($letter);
             $cells = $finder->solve($this->game);
             $this->letters_to_cells [$letter]= $cells;
 
@@ -38,12 +41,15 @@ class CellOptions
             $numbers = array_map(function($cell){ return $cell->getNumber();}, $cells);
             printf("%s results %s\n", $letter, implode(',', $numbers));
         }
-
+        
         $this->setUniqueCells();
         $this->setSingleOptionCells();
         return $this->letters_to_cells;
     }
 
+    /**
+    * solve Cells that have a single possible Letter
+    */
     protected function setUniqueCells()
     {
         $cell_collection = $this->game->getCells();
@@ -65,7 +71,10 @@ class CellOptions
             }
         }
     }
-
+    
+    /**
+    * solve Letters that have a single possible Cell
+    */
     protected function setSingleOptionCells()
     {
         $clear = [];
@@ -91,6 +100,6 @@ class CellOptions
         $cell->setCharacter($letter);
         $renderer = new HtmlTableBoardRenderer;
         $file = 'results-' . $letter . '.html';
-       // file_put_contents($file, $renderer->render($this->game->getBoard()));
+        file_put_contents($file, $renderer->render($this->game->getBoard()));
     }
 }
