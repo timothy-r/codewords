@@ -1,10 +1,11 @@
-<?php
+<?php namespace Codewords\Test;
 
 use Codewords\Game;
 use Codewords\Dictionary\FileDictionary;
 use Codewords\Dictionary\SortedDictionary;
+use Exception;
 
-trait FixtureTrait
+trait IntegrationFixtureTrait
 {
     /**
     * @var Codewords\IDictionary
@@ -18,14 +19,14 @@ trait FixtureTrait
 
     protected function givenAFileDictionary()
     {
-        $file = __DIR__ . '/../../config/words';
+        $file = __DIR__ . '/../../../config/words';
         //$words = file(__DIR__.'/../../config/words');
         $this->dictionary = new FileDictionary($file);
     }
     
     protected function givenASortedDictionary()
     {
-        $file = __DIR__ . '/../../config/dict-2';
+        $file = __DIR__ . '/../../../config/dict-2';
         $this->dictionary = new SortedDictionary($file);
     }
 
@@ -36,7 +37,7 @@ trait FixtureTrait
 
     protected function getFixture($name)
     {
-        $file = __DIR__ . '/../fixtures/' . $name;
+        $file = __DIR__ . '/../../../Tests/fixtures/' . $name;
         if (is_file($file)){
             return file_get_contents($file);
         }
@@ -45,7 +46,7 @@ trait FixtureTrait
 
     protected function requireFixture($name)
     {
-        $file = __DIR__ . '/../fixtures/' . $name;
+        $file = __DIR__ . '/../../../Tests/fixtures/' . $name;
         if (is_file($file)){
             return require_once($file);
         }

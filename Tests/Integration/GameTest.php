@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/IntegrationTest.php');
-require_once(__DIR__. '/FixtureTrait.php');
 
+use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Game;
 use Codewords\FileDictionary;
 use Codewords\Board\HtmlTableBoardRenderer;
@@ -11,7 +11,7 @@ use Codewords\Board\HtmlTableBoardRenderer;
 */
 class GameTest extends IntegrationTest
 {
-    use FixtureTrait;
+    use IntegrationFixtureTrait;
 
     /**
     * @dataProvider getValidGameData
