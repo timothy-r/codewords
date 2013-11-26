@@ -9,20 +9,30 @@ use Codewords\Solver\FollowedByRule;
 */
 class FollowedByTest extends RuleTest
 {
-    public function testCellThatHasFollowerPassesRule()
+    public function testCellThatHasSameFollowersPassesRule()
     {
         $rule = new FollowedByRule($this->board, $this->stats_repository, 1);
-        $result = 1;
+        $result = [1];
         $this->givenAStatObject($result);    
 
         $passes = $rule->passes($this->cell);
         $this->assertTrue($passes, 'Expected rule to pass');
     }
 
-    public function testCellThatHasManyFollowersFailsRule()
+    public function testCellThatHasLessFollowersPassesRule()
     {
         $rule = new FollowedByRule($this->board, $this->stats_repository, 2);
-        $result = 3;
+        $result = [4];
+        $this->givenAStatObject($result);    
+
+        $passes = $rule->passes($this->cell);
+        $this->assertTrue($passes, 'Expected rule to pass');
+    }
+
+    public function testCellThatHasMoreFollowersFailsRule()
+    {
+        $rule = new  FollowedByRule($this->board, $this->stats_repository, 2);
+        $result = [3,5,9];
         $this->givenAStatObject($result);    
         
         $passes = $rule->passes($this->cell);

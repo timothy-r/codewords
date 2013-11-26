@@ -4,6 +4,7 @@ use Codewords\Game;
 use Codewords\Solver\FindLetter;
 use Codewords\Solver\NotDoubleRule;
 use Codewords\Solver\NotLastRule;
+use Codewords\Solver\FollowedByRule;
 
 /**
 * Supplies IFinder instances for specific Letters
@@ -35,6 +36,7 @@ class FinderFactory
             case 'q':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());
                 $rules []= new NotLastRule($this->game->getBoard(), $this->game->getStatsRepository());
+                $rules []= new FollowedByRule($this->game->getBoard(), $this->game->getStatsRepository(), 2);
                 break;
             case 'u':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());

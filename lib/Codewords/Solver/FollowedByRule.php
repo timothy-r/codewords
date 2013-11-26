@@ -19,19 +19,19 @@ class FollowedByRule implements IRule
     /**
     * @var integer number of acceptable following letters
     */
-    protected $number;
+    protected $followers;
 
-    public function __construct(Board $board, StatsRepository $stats_repo, $number)
+    public function __construct(Board $board, StatsRepository $stats_repo, $followers)
     {
         $this->board = $board;
         $this->stats_repo = $stats_repo;
-        $this->number = $number;
+        $this->followers = $followers;
     }
 
     public function passes(Cell $cell)
     {
         $stats = $this->stats_repo->getStat('FollowingLetter');
         $result = $stats->generateForCell($this->board, $cell);
-        return $result === $this->number;
+        return count($result) <= $this->followers;
     }
 }
