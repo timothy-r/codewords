@@ -26,7 +26,7 @@ trait IntegrationFixtureTrait
     
     protected function givenASortedDictionary()
     {
-        $file = __DIR__ . '/../../../config/dict-2';
+        $file = __DIR__ . '/../../../config/dict-3';
         $this->dictionary = new SortedDictionary($file);
     }
 
