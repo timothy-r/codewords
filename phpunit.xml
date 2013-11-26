@@ -14,12 +14,14 @@
         <testsuite name="All">
             <directory>./</directory>
             <exclude>./vendor</exclude>
+            <exclude>./lib/Codewords/Test/</exclude>
         </testsuite>
     </testsuites>
     <filter>
         <blacklist>
             <directory suffix=".php">./Tests/</directory>
             <directory suffix=".php">./vendor/</directory>
+            <directory suffix=".php">./lib/Codewords/Test/</directory>
             <file>./config/dict-2</file>
             <file>./config/words</file>
         </blacklist>

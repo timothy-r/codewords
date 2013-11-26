@@ -129,7 +129,7 @@ class CellCollectionTest extends BaseTest
     public function testCanIterateOverCellCollection()
     {
         $cell_collection = new CellCollection;
-        foreach($cell_collection as $cell){
+        foreach($cell_collection as $key => $cell){
             $this->assertInstanceOf('Codewords\Board\Cell', $cell);
         }
     }
