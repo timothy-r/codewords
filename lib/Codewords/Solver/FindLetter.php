@@ -34,6 +34,8 @@ class FindLetter implements IFinder
         
         $cells = $game->getCells();
         foreach($cells as $cell){
+            #print __METHOD__."\n";
+            #var_dump($cell->getNumber());
             $character = $cell->getCharacter();
 
             if ($character === $this->letter){
@@ -69,6 +71,7 @@ class FindLetter implements IFinder
     {
         foreach($this->rules as $rule){
             if (!$rule->passes($cell)){
+                print __METHOD__. " fails for {$cell->getNumber()}\n";
                 return false;
             }
         }
@@ -85,7 +88,7 @@ class FindLetter implements IFinder
         $dictionary= $game->getDictionary();
         $word_pattern = new WordPattern($game->getCells());
         
-        print __METHOD__ . " " . $cell->getNumber() . " {$this->letter}\n";
+        print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";
 
         foreach ($words as $word){
             // create a pattern to test dictionary with
@@ -93,8 +96,8 @@ class FindLetter implements IFinder
             #print "$pattern\n";
             $matches = $dictionary->find($pattern, $word->length());
             if (count($matches) > 0){
-                print "$pattern\n";
-                var_dump($matches);
+                #print "$pattern\n";
+                #var_dump($matches);
             }
             // if no results are returned then return false from this method
             if (count($matches) == 0){
