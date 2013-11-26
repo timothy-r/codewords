@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<parameters>
+    <parameter key="codewords.data">data-1.csv</parameter>
+    <parameter key="codewords.dict">dict-2</parameter>
+    <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
+</parameters>
+
+<services>
+    <service id="game" class="Codewords\Game">
+        <argument>%codewords.data%</argument>
+        <argument type="service" id="dictionary" />
+    </service>
+
+    <service id="dictionary" class="%codewords.dictionary.class%">
+        <argument>%codewords.dict%</argument>
+    </service>
+
+    <service id="cells" class="Codewords\Board\CellCollection"/>
+    <service id="stats_repository" class="Codewords\Stats\StatsRepository"/>
+
+</services>
+
