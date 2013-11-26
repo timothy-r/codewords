@@ -57,4 +57,23 @@ class WordTest extends BaseTest
             $this->assertSame($index+1, $cell->getNumber());
         }
     }
+    
+    public function getInvalidIndexes()
+    {
+        return [
+            [-1],
+            [10000000]
+        ];
+    }
+    
+    /**
+    * @dataProvider getInvalidIndexes
+    */
+    public function testCellAtReturnsNullForInvalidIndexes($index)
+    {
+        $cells = [new Cell(1), new Cell(2)];
+        $word = new Word($cells);
+        $result = $word->at($index);
+        $this->assertNull($result);
+    }
 }

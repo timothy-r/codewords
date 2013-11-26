@@ -27,6 +27,7 @@ class Word implements \Iterator
         if ($index >= 0 && $index < count($this->cells)){
             return $this->cells[$index];
         }
+        return null;
     }
 
     public function contains(Cell $other)
@@ -73,7 +74,7 @@ class Word implements \Iterator
     {
         $this->index = 0;
     }
-    
+
     /**
     * Test if calling next() will make current() valid or not
     */
@@ -81,5 +82,4 @@ class Word implements \Iterator
     {
         return $this->index < count($this->cells);
     }
-
 }
