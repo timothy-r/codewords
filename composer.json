@@ -4,6 +4,7 @@
 	"keywords": ["puzzle", "codewords"],
 	"license": "",
 	"require": {
+        "monolog/monolog": "1.7.*@dev"
 	},
     "require-dev" : {
         "phpunit/phpunit" : "3.7.*",
