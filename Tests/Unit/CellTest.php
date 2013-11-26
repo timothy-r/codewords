@@ -31,6 +31,13 @@ class CellTest extends BaseTest
         $this->assertSame($char, $cell->getCharacter());
     }
 
+    public function testCanCellSetCharacterInConstructor()
+    {
+        $char = 'Z';
+        $cell = new Cell(1, $char);
+        $this->assertSame($char, $cell->getCharacter());
+    }
+
     public function testCellZeroIsNull()
     {
         $cell = new Cell(0);
