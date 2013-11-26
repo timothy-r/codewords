@@ -1,6 +1,6 @@
 <?php namespace Codewords;
 
-use Codewords\CsvBoardReader;
+use Codewords\Board\CsvBoardReader;
 use Codewords\Board\CellCollection;
 use Codewords\Board\BoardFactory;
 use Codewords\Stats\StatsRepository;

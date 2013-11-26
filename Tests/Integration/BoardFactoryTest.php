@@ -5,7 +5,7 @@ require_once(__DIR__. '/FixtureTrait.php');
 use Codewords\Board\Board;
 use Codewords\Board\BoardFactory;
 use Codewords\Board\CellCollection;
-use Codewords\CsvBoardReader;
+use Codewords\Board\CsvBoardReader;
 
 /**
 * @group integration

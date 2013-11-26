@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Codewords\Board;
 
 use Codewords\IBoardReader;
 use Codewords\Error\InvalidBoardLocation;

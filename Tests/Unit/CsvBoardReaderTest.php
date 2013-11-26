@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Codewords\CsvBoardReader;
+use Codewords\Board\CsvBoardReader;
 
 /**
 * @group unit
