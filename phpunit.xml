@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
-         backupStaticAttributes="false"
+        backupStaticAttributes="false"
          bootstrap="Tests/bootstrap.php"
          colors="true"
          convertErrorsToExceptions="true"
@@ -12,7 +12,16 @@
 >
     <testsuites>
         <testsuite name="All">
-            <directory>./Tests/</directory>
+            <directory>./</directory>
+            <exclude>./vendor</exclude>
         </testsuite>
     </testsuites>
+    <filter>
+        <blacklist>
+            <directory suffix=".php">./Tests/</directory>
+            <directory suffix=".php">./vendor/</directory>
+            <file>./config/dict-2</file>
+            <file>./config/words</file>
+        </blacklist>
+    </filter>
 </phpunit>
