@@ -8,7 +8,6 @@ use Codewords\Solver\FollowedByRule;
 
 /**
 * Supplies IFinder instances for specific Letters
-* @todo pass Game to constructor
 */
 class FinderFactory
 {
@@ -29,7 +28,7 @@ class FinderFactory
     protected function getRules($letter)
     {
         $rules = [];
-        var_dump(__METHOD__ . " $letter");
+        #§var_dump(__METHOD__ . " $letter");
         switch($letter){
             case 'i':
                 $rules []= new NotDoubleRule($this->game->getBoard(), $this->game->getStatsRepository());

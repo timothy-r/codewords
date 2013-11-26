@@ -71,7 +71,7 @@ class FindLetter implements IFinder
     {
         foreach($this->rules as $rule){
             if (!$rule->passes($cell)){
-                print __METHOD__. " fails for {$cell->getNumber()}\n";
+                #print __METHOD__. " fails for {$cell->getNumber()}\n";
                 return false;
             }
         }
@@ -88,7 +88,7 @@ class FindLetter implements IFinder
         $dictionary= $game->getDictionary();
         $word_pattern = new WordPattern($game->getCells());
         
-        print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";
+        #print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";
 
         foreach ($words as $word){
             // create a pattern to test dictionary with
