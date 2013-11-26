@@ -35,3 +35,5 @@ print $renderer->render($game->getBoard());
 $strategy = new StrategyB;
 
 $strategy->solve($game);
+
+print $renderer->render($game->getBoard());
