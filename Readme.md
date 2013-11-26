@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/timothy-r/codewords.png)](https://travis-ci.org/timothy-r/codewords) 
+
+
 # A codewords solving app
 
 * Read file / input into a Board in memory - based on grid cells which have a number which can map to a character
