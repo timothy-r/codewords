@@ -27,7 +27,7 @@ if (!is_readable($file)){
 
 $data = file_get_contents($file);
 
-$dict = new SortedDictionary(__DIR__."/config/dict-2");
+$dict = new SortedDictionary(__DIR__."/config/dict-3");
 $game = new Game($data, $dict);
 $renderer = new HtmlTableBoardRenderer;
 print $renderer->render($game->getBoard());
