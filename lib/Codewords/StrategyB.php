@@ -24,6 +24,19 @@ class StrategyB
         // pass two - starting with the letters that have the fewest options
         // try setting each one in turn and test all the other letters
         // if we find a cell with only one possible value set it
+        foreach ($total as $item){
+            // try setting cells to their possible values then generate options for each other Cell
+            $options = $item['results'];
+            print "Second pass for {$item['letter']}\n";
+            foreach ($options as $cell){
+                print "Testing cell {$cell->getNumber()} with letter {$item['letter']}\n";
+                $cell->setCharacter($item['letter']);
+                $results = $this->generateCellOptions($game, $factory, $data);
+                // check results
+                $cell->setCharacter(null);
+            }
+
+        }
 
         // carry on
     }
