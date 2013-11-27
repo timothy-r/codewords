@@ -32,7 +32,8 @@ trait IntegrationFixtureTrait
 
     protected function givenAGame($data)
     {
-        $this->game = new Game($this->getFixture($data), $this->dictionary);
+        $this->game = new Game($this->dictionary);
+        $this->game->load($this->getFixture($data));
     }
 
     protected function getFixture($name)
