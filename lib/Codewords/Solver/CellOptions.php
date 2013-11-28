@@ -4,10 +4,22 @@ use Codewords\Game;
 use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
 use Codewords\Board\HtmlTableBoardRenderer;
+use Timer\Clock;
 
+/**
+* Applies Finders to the Cells in a Game
+* For a set of Letters it makes one pass and solves any that it can
+*/
 class CellOptions
 {
+    /**
+    * @var Codewords\Game
+    */
     protected $game;
+
+    /**
+    * @var Codewords\Solver\FinderFactory
+    */
     protected $factory;
 
     protected $letters_to_cells = [];
@@ -25,8 +37,9 @@ class CellOptions
         // these should be refactored to separate classes?
         $this->letters_to_cells = [];
         $this->cells_to_letters = [];
-
+        $clock = new Clock;
         foreach($letters as $letter){
+            $clock->start();
             $finder = $this->factory->create($letter);
             $cells = $finder->solve($this->game);
             $this->letters_to_cells [$letter]= $cells;
@@ -39,18 +52,20 @@ class CellOptions
             }
 
             $numbers = array_map(function($cell){ return $cell->getNumber();}, $cells);
+            printf("Letter $letter took %f\n", $clock->stop());
             //printf("%s results %s\n", $letter, implode(',', $numbers));
         }
         
-        $this->setUniqueCells();
-        $this->setSingleOptionCells();
+        $this->solveCellsWithOneLetter();
+        $this->solveLettersWithOneCell();
+
         return $this->letters_to_cells;
     }
 
     /**
     * solve Cells that have a single possible Letter
     */
-    protected function setUniqueCells()
+    protected function solveCellsWithOneLetter()
     {
         $cell_collection = $this->game->getCells();
 
@@ -75,7 +90,7 @@ class CellOptions
     /**
     * solve Letters that have a single possible Cell
     */
-    protected function setSingleOptionCells()
+    protected function solveLettersWithOneCell()
     {
         $clear = [];
 

@@ -4,6 +4,7 @@ use Codewords\Game;
 use Codewords\Solver\CellOptions;
 use Codewords\Board\CellCollection;
 use Codewords\Solver\FinderFactory;
+use Timer\Clock;
 
 class StrategyB
 {
@@ -15,9 +16,11 @@ class StrategyB
     public function solve()
     {
         $letters = ['e','t','a','o','i','n','s','h','r','d','l','c','u','m','w','f','g','y','p','b','v','k','j','x','q','z'];
-
+        $clock = new Clock;
         while (count($letters)) {
+            $clock->start();
             $results = $this->options->solveAll($letters);
+            printf("One iteration took %f\n", $clock->stop());
             $letters = array_keys($results);
         }
     }
