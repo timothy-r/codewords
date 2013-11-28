@@ -4,3 +4,4 @@ vendor/
 *.swp
 coverage/
 files/
+config/dict-files/
