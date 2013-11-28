@@ -11,7 +11,7 @@ class CodeWordServerTest extends BaseTest
     public function getFixtures()
     {
         return [
-            ['CodeWordServer.aspx', 'CodeWordServer.csv'],
+            ['data-9.aspx', 'data-9.csv'],
         ];
     }
     

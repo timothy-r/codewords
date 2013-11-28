@@ -12,9 +12,9 @@ class Code2Test extends BaseTest
     {
         return [
             ['data-5.js', 'data-5.csv'],
-            ['code2_xml.js', 'code2.csv'],
-            ['CODEWORDPUZZLE_XML.js', 'CODEWORDPUZZLE_XML.csv'],
-            ['httpusernamefilename_xml.js', 'httpusernamefilename_xml.csv']
+            ['data-6.js', 'data-6.csv'],
+            ['data-7.js', 'data-7.csv'],
+            ['data-8.js', 'data-8.csv'],
         ];
     }
     

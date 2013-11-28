@@ -53,7 +53,7 @@ class StrategyBIntegrationTest extends IntegrationTest
     public function getInvalidFixtures()
     {
         return [
-            ['CodeWordServer.csv', 'abroletkfqiyvpgdxnzjshwucm'],
+            ['data-9.csv', 'abroletkfqiyvpgdxnzjshwucm'],
         ];
     }
 
