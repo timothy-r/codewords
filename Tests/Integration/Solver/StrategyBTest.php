@@ -21,6 +21,7 @@ class StrategyBIntegrationTest extends IntegrationTest
     public function getFixtures()
     {
         return [
+            ['cb1-2013-11-28.csv', 'abcdefghijklmnopqrstuvwxyz'],
             ['data-4.csv', 'abroletkfqiyvpgdxnzjshwucm'],
         ];
     }

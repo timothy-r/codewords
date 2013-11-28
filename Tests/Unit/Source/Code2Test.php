@@ -11,6 +11,7 @@ class Code2Test extends BaseTest
     public function getFixtures()
     {
         return [
+            ['cb1-2013-11-28.js', 'cb1-2013-11-28.csv'],
             ['code2_xml.js', 'code2.csv'],
             ['CODEWORDPUZZLE_XML.js', 'CODEWORDPUZZLE_XML.csv'],
             ['httpusernamefilename_xml.js', 'httpusernamefilename_xml.csv']
