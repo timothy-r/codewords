@@ -41,7 +41,7 @@ class FindLetterIntegrationTest extends IntegrationTest
 
         $numbers = array_map(function($cell){ return $cell->getNumber();}, $results);
         // debug 
-        var_dump(implode(',', $numbers));
+        #var_dump(implode(',', $numbers));
 
         $this->assertTrue(is_array($results), "Expected solve() to return an array");
         $this->assertSame(count($expected), count($results), "Expected solve() to return ".implode(',', $expected)." not " . implode(',',$numbers));

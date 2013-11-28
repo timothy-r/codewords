@@ -39,7 +39,7 @@ class CellOptions
             }
 
             $numbers = array_map(function($cell){ return $cell->getNumber();}, $cells);
-            printf("%s results %s\n", $letter, implode(',', $numbers));
+            //printf("%s results %s\n", $letter, implode(',', $numbers));
         }
         
         $this->setUniqueCells();
@@ -96,7 +96,7 @@ class CellOptions
 
     protected function setCellCharacter(Cell $cell, $letter)
     {
-        print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
+        //print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
         $cell->setCharacter($letter);
         $renderer = new HtmlTableBoardRenderer;
         $file = 'results-' . $letter . '.html';
