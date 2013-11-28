@@ -5,6 +5,8 @@ require_once(__DIR__ . '/../IntegrationTest.php');
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Solver\StrategyB;
 use Codewords\Board\Cell;
+use Codewords\Solver\FinderFactory;
+use Codewords\Solver\CellOptions;
 
 class StrategyBIntegrationTest extends IntegrationTest
 {
@@ -15,8 +17,10 @@ class StrategyBIntegrationTest extends IntegrationTest
         $fixture = 'data-4.csv';
         $this->givenASortedDictionary();
         $this->givenAGame($fixture);
+        $finder_factory = new FinderFactory($this->game);
+        $cell_options = new CellOptions($this->game, $finder_factory);
+        $strategy = new StrategyB($cell_options);
 
-        $strategy = new StrategyB;
         $result = $strategy->solve($this->game);
         $cells = $this->game->getCells();
         $this->assertCellCharacter($cells->at(1), 'a');

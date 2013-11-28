@@ -13,10 +13,10 @@ class CellOptions
     protected $letters_to_cells = [];
     protected $cells_to_letters = [];
 
-    public function __construct(Game $game)
+    public function __construct(Game $game, FinderFactory $factory)
     {
         $this->game = $game;
-        $this->factory = new FinderFactory($this->game);
+        $this->factory = $factory;
     }
 
     public function solveAll($letters)

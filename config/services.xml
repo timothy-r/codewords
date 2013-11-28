@@ -37,7 +37,14 @@
             <argument type="service" id="cells" />
         </service>
 
-        <service id="strategy_b" class="Codewords\Solver\StrategyB"/>
+        <service id="strategy" class="Codewords\Solver\StrategyB">
+            <argument type="service" id="cell_options" />
+        </service>
+
+        <service id="cell_options" class="Codewords\Solver\CellOptions">
+            <argument type="service" id="game" />
+            <argument type="service" id="finder_factory" />
+        </service>
 
         <service id="renderer" class="Codewords\Board\HtmlTableBoardRenderer"/>
 

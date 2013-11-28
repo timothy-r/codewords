@@ -42,7 +42,7 @@ $game->load($data);
 $renderer = $container->get('renderer');
 //print $renderer->render($game->getBoard());
 
-$strategy = $container->get('strategy_b');
-$strategy->solve($game);
+$strategy = $container->get('strategy');
+$strategy->solve();
 
 print $renderer->render($game->getBoard());
