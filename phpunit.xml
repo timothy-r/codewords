@@ -12,7 +12,7 @@
 >
     <testsuites>
         <testsuite name="All">
-            <directory>./</directory>
+            <directory suffix="Test.php">./</directory>
             <exclude>./vendor</exclude>
             <exclude>./lib/Codewords/Test/</exclude>
         </testsuite>
