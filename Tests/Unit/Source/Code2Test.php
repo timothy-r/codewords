@@ -12,6 +12,7 @@ class Code2Test extends BaseTest
     {
         return [
             ['code2_xml.js', 'code2.csv'],
+            ['CODEWORDPUZZLE_XML.js', 'CODEWORDPUZZLE_XML.csv'],
         ];
     }
     
