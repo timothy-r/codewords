@@ -1,0 +1,7 @@
+For the CodeWordServer.aspx data
+
+wget --post-data=action=GenPuzzle http://www.dkmsoftware.com/CodeWordServer.aspx
+
+For the code2_xml.js data
+
+wget http://crossword.info/puzzles/vs268053/code2/code2_xml.js
