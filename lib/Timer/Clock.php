@@ -16,11 +16,6 @@ class Clock
         return $result;
     }
 
-    public function restart()
-    {
-        $this->start();
-    }
-
     public function elapsed()
     {
         if ($this->start){
