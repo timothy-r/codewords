@@ -27,6 +27,8 @@ class Board
     */
     protected $words;
 
+    protected $words_for_cell = [];
+
     public function __construct($length)
     {
         $this->length = $length;
@@ -94,6 +96,7 @@ class Board
         }
 
         $this->words = [];
+
         // iterate along each row first
         $word = [];
         foreach($this->rows as $row){
@@ -107,7 +110,7 @@ class Board
             $word = [];
         }
 
-        // now add vertical words
+        // add vertical words
         for ($x = 0; $x < $this->length; $x++){
             for ($y = 0; $y < $this->length; $y++){
                 $cell = $this->rows[$y][$x];
@@ -127,13 +130,20 @@ class Board
     */
     public function getWordsContainingCell(Cell $cell)
     {
+        if (isset($this->words_for_cell[$cell->getNumber()])){
+            return $this->words_for_cell[$cell->getNumber()];
+        }
+
         $words = [];
         $all_words = $this->getWords();
+
         foreach ($all_words as $word){
             if ($word->contains($cell)){
                 $words []= $word;
             }
         }
+        
+        $this->words_for_cell[$cell->getNumber()] = $words;
         return $words;
     }
 
