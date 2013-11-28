@@ -98,6 +98,7 @@ class CellOptions
     {
         //print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
         $cell->setCharacter($letter);
+        return;
         $renderer = new HtmlTableBoardRenderer;
         $file = 'results-' . $letter . '.html';
         file_put_contents($file, $renderer->render($this->game->getBoard()));
