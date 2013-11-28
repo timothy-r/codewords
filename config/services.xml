@@ -4,7 +4,8 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="codewords.dict">dict-3</parameter>
+        <!-- should really state where the config dir is explictly -->
+        <parameter key="codewords.dict">config/dict-3</parameter>
         <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
         <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
     </parameters>
@@ -25,12 +26,20 @@
         <service id="finder_factory" class="Codewords\Solver\FinderFactory">
             <argument type="service" id="game" />
         </service>
-
+        
+        <!-- 
+            not sure this is a service - a reader factory would be more flexible 
+            as it could produce different IBoardReaders depending on the data to be read
+        -->
         <service id="board_reader" class="%codewords.board_reader.class%"/>
 
         <service id="board_factory" class="Codewords\Board\BoardFactory">
             <argument type="service" id="cells" />
         </service>
+
+        <service id="strategy_b" class="Codewords\Solver\StrategyB"/>
+
+        <service id="renderer" class="Codewords\Board\HtmlTableBoardRenderer"/>
 
     </services>
 </container>
