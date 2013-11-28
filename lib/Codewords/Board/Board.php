@@ -23,6 +23,10 @@ class Board
     */
     protected $length;
 
+    /**
+    */
+    protected $words;
+
     public function __construct($length)
     {
         $this->length = $length;
@@ -85,16 +89,20 @@ class Board
     */
     public function getWords()
     {
-        $words = [];
+        if ($this->words){
+            return $this->words;
+        }
+
+        $this->words = [];
         // iterate along each row first
         $word = [];
         foreach($this->rows as $row){
             foreach($row as $cell){
-                $this->addCellToWord($cell, $word, $words);
+                $this->addCellToWord($cell, $word, $this->words);
             }
             // end of line
             if (count($word) > 1){
-                $words []= new Word($word);
+                $this->words []= new Word($word);
             }
             $word = [];
         }
@@ -103,15 +111,15 @@ class Board
         for ($x = 0; $x < $this->length; $x++){
             for ($y = 0; $y < $this->length; $y++){
                 $cell = $this->rows[$y][$x];
-                $this->addCellToWord($cell, $word, $words);
+                $this->addCellToWord($cell, $word, $this->words);
             }
             // end of line
             if (count($word) > 1){
-                $words []= new Word($word);
+                $this->words []= new Word($word);
             }
             $word = [];
         }
-        return $words;
+        return $this->words;
     }
     
     /**
