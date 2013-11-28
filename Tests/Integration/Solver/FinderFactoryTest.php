@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
+use Codewords\Test\FixtureTrait;
 use Codewords\Solver\FinderFactory;
 
 /**
@@ -10,6 +11,7 @@ use Codewords\Solver\FinderFactory;
 class FinderFactoryTest extends IntegrationTest
 {
     use IntegrationFixtureTrait;
+    use FixtureTrait;
 
     public function getLetterFixtures()
     {

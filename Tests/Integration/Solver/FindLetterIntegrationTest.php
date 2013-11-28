@@ -3,11 +3,13 @@
 require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
+use Codewords\Test\FixtureTrait;
 use Codewords\Solver\FinderFactory;
 
 class FindLetterIntegrationTest extends IntegrationTest
 {
     use IntegrationFixtureTrait;
+    use FixtureTrait;
 
     public function getValidGameData()
     {

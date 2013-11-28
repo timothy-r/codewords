@@ -3,6 +3,7 @@
 require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
+use Codewords\Test\FixtureTrait;
 use Codewords\Solver\StrategyB;
 use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
@@ -11,6 +12,7 @@ use Codewords\Solver\CellOptions;
 class StrategyBIntegrationTest extends IntegrationTest
 {
     use IntegrationFixtureTrait;
+    use FixtureTrait;
 
     public function testSolve()
     {
