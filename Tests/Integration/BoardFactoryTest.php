@@ -34,9 +34,10 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateReturnsABoard($fixture)
     {
-        $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
+        $reader = new CsvBoardReader;
+        $data = $this->getFixture($fixture);
+        $reader->read($data);
         
         $factory = new BoardFactory($cells);
         $product = $factory->create($reader);
@@ -48,9 +49,10 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateReturnsABoardWithCorrectFrequencies($fixture, $expectation)
     {
-        $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
+        $reader = new CsvBoardReader;
+        $data = $this->getFixture($fixture);
+        $reader->read($data);
         
         $factory = new BoardFactory($cells);
         $product = $factory->create($reader);
@@ -68,9 +70,10 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateValidatesBoard($fixture)
     {
-        $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
+        $reader = new CsvBoardReader;
+        $data = $this->getFixture($fixture);
+        $reader->read($data);
         
         $factory = new BoardFactory($cells);
         $product = $factory->create($reader);

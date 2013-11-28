@@ -30,7 +30,8 @@ class Game
 
     public function load($data)
     {
-        $reader = new CsvBoardReader($data);
+        $reader = new CsvBoardReader;
+        $reader->read($data);
         $factory = new BoardFactory($this->cells);
         $this->board = $factory->create($reader);
     }

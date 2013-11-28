@@ -14,7 +14,12 @@ class CsvBoardReader implements IBoardReader
     */
     protected $length = 13;
 
-    public function __construct($data)
+    public function __construct($length = 13)
+    {
+        $this->length = 13;
+    }
+
+    public function read($data)
     {
         $this->data = [];
         $lines = str_getcsv($data, "\n");
