@@ -4,14 +4,13 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-         <parameter key="codewords.data">data-1.csv</parameter>
-         <parameter key="codewords.dict">dict-2</parameter>
+        <parameter key="codewords.dict">dict-3</parameter>
         <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
+        <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
     </parameters>
 
     <services>
         <service id="game" class="Codewords\Game">
-            <argument>%codewords.data%</argument>
             <argument type="service" id="dictionary" />
         </service>
 
@@ -20,7 +19,18 @@
         </service>
 
         <service id="cells" class="Codewords\Board\CellCollection"/>
+
         <service id="stats_repository" class="Codewords\Stats\StatsRepository"/>
+
+        <service id="finder_factory" class="Codewords\Solver\FinderFactory">
+            <argument type="service" id="game" />
+        </service>
+
+        <service id="board_reader" class="%codewords.board_reader.class%"/>
+
+        <service id="board_factory" class="Codewords\Board\BoardFactory">
+            <argument type="service" id="cells" />
+        </service>
 
     </services>
 </container>

@@ -7,6 +7,9 @@ use Codewords\Stats\StatsRepository;
 
 /**
 * The central class for a Codewords applications
+* @deprecated
+* The only real functionality it provides is to load a Board
+* All other class instances can be provided by di
 */
 class Game
 {
@@ -28,8 +31,8 @@ class Game
     public function load($data)
     {
         $reader = new CsvBoardReader($data);
-        $factory = new BoardFactory($reader, $this->cells);
-        $this->board = $factory->create();
+        $factory = new BoardFactory($this->cells);
+        $this->board = $factory->create($reader);
     }
 
     /**

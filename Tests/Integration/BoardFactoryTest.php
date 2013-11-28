@@ -38,8 +38,8 @@ class BoardFactoryTest extends IntegrationTest
         $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
         
-        $factory = new BoardFactory($reader, $cells);
-        $product = $factory->create();
+        $factory = new BoardFactory($cells);
+        $product = $factory->create($reader);
         $this->assertInstanceOf('Codewords\Board\Board', $product);
     }
 
@@ -52,8 +52,8 @@ class BoardFactoryTest extends IntegrationTest
         $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
         
-        $factory = new BoardFactory($reader, $cells);
-        $product = $factory->create();
+        $factory = new BoardFactory($cells);
+        $product = $factory->create($reader);
         $frequencies = $product->getFrequencies();
         // test the frequency values
         $expected = $this->requireFixture($expectation);
@@ -72,7 +72,7 @@ class BoardFactoryTest extends IntegrationTest
         $reader = new CsvBoardReader($data);
         $cells = new CellCollection;
         
-        $factory = new BoardFactory($reader, $cells);
-        $product = $factory->create();
+        $factory = new BoardFactory($cells);
+        $product = $factory->create($reader);
     }
 }
