@@ -52,7 +52,7 @@ class CellOptions
             }
 
             $numbers = array_map(function($cell){ return $cell->getNumber();}, $cells);
-            printf("Letter $letter took %f\n", $clock->stop());
+            #printf("Letter $letter took %f\n", $clock->stop());
             //printf("%s results %s\n", $letter, implode(',', $numbers));
         }
         

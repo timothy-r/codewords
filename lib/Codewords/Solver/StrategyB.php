@@ -20,7 +20,7 @@ class StrategyB
         while (count($letters)) {
             $clock->start();
             $results = $this->options->solveAll($letters);
-            printf("One iteration took %f\n", $clock->stop());
+            #printf("One iteration took %f\n", $clock->stop());
             $letters = array_keys($results);
         }
     }
