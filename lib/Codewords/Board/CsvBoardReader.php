@@ -10,22 +10,14 @@ use Codewords\Error\InvalidBoardData;
 class CsvBoardReader implements IBoardReader
 {
     /**
-    * initial value of width and height of board
+    * @var integer the side of the square board
     */
-    protected $length = 13;
+    protected $length;
 
-    public function __construct($length = 13)
-    {
-        $this->length = 13;
-    }
-
-    public function read($data)
+    public function __construct($data)
     {
         $this->data = [];
         $lines = str_getcsv($data, "\n");
-        if (count($lines) < $this->length){
-            throw new InvalidBoardData("'$data' is invalid");
-        }
 
         // allow for longer lines than default
         // boards must be square

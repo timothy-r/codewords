@@ -31,8 +31,7 @@ class Game
     public function load($data)
     {
         // passing the Reader to the Factory means we can switch Reader without affecting Factory
-        $reader = new CsvBoardReader;
-        $reader->read($data);
+        $reader = new CsvBoardReader($data);
         $factory = new BoardFactory($this->cells);
         $this->board = $factory->create($reader);
     }

@@ -30,8 +30,7 @@ class CsvBoardReaderTest extends BaseTest
     */
     public function testNumberAt($data, $x, $y, $expected)
     {
-        $reader = new CsvBoardReader;
-        $reader->read($data);
+        $reader = new CsvBoardReader($data);
         $number = $reader->numberAt($x, $y);
         $this->assertSame($expected, $number);
     }
@@ -52,16 +51,13 @@ class CsvBoardReaderTest extends BaseTest
     */
     public function testNumberAtValidatesInput($x, $y)
     {
-        $reader = new CsvBoardReader;
-        $reader->read($this->data_13);
+        $reader = new CsvBoardReader($this->data_13);
         $number = $reader->numberAt($x, $y);
     }
     
     public function getInvalidBoardData()
     {
         return [
-            [''],
-            [null],
             ["1,2,3,4,5,6,7,8,9,10,11,12,13\n"],
             ["1,2,3,4,5,6,7,8,9,10,11,12,13\n".
             "1,2,3,4,5,6,7,8,9,10,11,12,13\n".
@@ -99,8 +95,7 @@ class CsvBoardReaderTest extends BaseTest
     */
     public function testCsvBoardReaderValidatesData($invalid_data)
     {
-        $reader = new CsvBoardReader;
-        $reader->read($invalid_data);
+        $reader = new CsvBoardReader($invalid_data);
     }
 
     public function getBoardLengths()
@@ -116,8 +111,7 @@ class CsvBoardReaderTest extends BaseTest
     */
     public function testLengthReturnsBoardLength($data, $expected)
     {
-        $reader = new CsvBoardReader;
-        $reader->read($data);
+        $reader = new CsvBoardReader($data);
         $length = $reader->length();
         $this->assertSame($expected, $length);
     }
