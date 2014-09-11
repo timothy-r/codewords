@@ -8,6 +8,8 @@
         <parameter key="codewords.dict">config/dict-3</parameter>
         <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
         <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
+        <parameter key="codewords.solver.class">Codewords\Solver\StrategyB</parameter>
+        <parameter key="codewords.renderer.class">Codewords\Board\HtmlTableBoardRenderer</parameter>
     </parameters>
 
     <services>
@@ -37,7 +39,7 @@
             <argument type="service" id="cells" />
         </service>
 
-        <service id="strategy" class="Codewords\Solver\StrategyB">
+        <service id="strategy" class="%codewords.solver.class%">
             <argument type="service" id="cell_options" />
         </service>
 
@@ -46,7 +48,7 @@
             <argument type="service" id="finder_factory" />
         </service>
 
-        <service id="renderer" class="Codewords\Board\HtmlTableBoardRenderer"/>
+        <service id="renderer" class="%codewords.renderer.class%"/>
 
     </services>
 </container>
