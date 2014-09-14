@@ -31,13 +31,14 @@ class FindLetterIntegrationTest extends IntegrationTest
     {
         $this->givenASortedDictionary();
         $this->givenAGame($fixture);
+        $this->givenAStatsRepository();
         
         $cells = $this->game->getCells();
         foreach($solved as $number => $value){
             $cells->at($number)->setCharacter($value);
         }
         
-        $factory = new FinderFactory($this->game);
+        $factory = new FinderFactory($this->game, $this->stats_repository);
         $solver = $factory->create($letter);
         $results = $solver->solve($this->game);
 

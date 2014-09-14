@@ -10,12 +10,15 @@
         <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
         <parameter key="codewords.solver.class">Codewords\Solver\StrategyB</parameter>
         <parameter key="codewords.renderer.class">Codewords\Board\HtmlTableBoardRenderer</parameter>
+        <parameter key="codewords.board_loader.class">Codewords\BoardLoader</parameter>
     </parameters>
 
     <services>
         <service id="game" class="Codewords\Game">
             <argument type="service" id="dictionary" />
         </service>
+
+        <service id="loader" class="%codewords.board_loader.class%"/>
 
         <service id="dictionary" class="%codewords.dictionary.class%">
             <argument>%codewords.dict%</argument>
@@ -27,6 +30,7 @@
 
         <service id="finder_factory" class="Codewords\Solver\FinderFactory">
             <argument type="service" id="game" />
+            <argument type="service" id="stats_repository" />
         </service>
         
         <!-- 

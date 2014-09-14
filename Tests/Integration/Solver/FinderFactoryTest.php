@@ -27,7 +27,8 @@ class FinderFactoryTest extends IntegrationTest
     {
         $this->givenASortedDictionary();
         $this->givenAGame('data-1.csv');
-        $repo = new FinderFactory($this->game);
+        $this->givenAStatsRepository();
+        $repo = new FinderFactory($this->game, $this->stats_repository);
         $finder = $repo->create($letter);
         $this->assertInstanceOf('Codewords\IFinder', $finder);
     }

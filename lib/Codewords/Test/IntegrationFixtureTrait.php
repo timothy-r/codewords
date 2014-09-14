@@ -3,6 +3,7 @@
 use Codewords\Game;
 use Codewords\Dictionary\FileDictionary;
 use Codewords\Dictionary\SortedDictionary;
+use Codewords\Stats\StatsRepository;
 use Exception;
 
 trait IntegrationFixtureTrait
@@ -16,6 +17,11 @@ trait IntegrationFixtureTrait
     * @var Codewords\Game
     */
     protected $game;
+    
+    /**
+    * @var Codewords\Stats\StatsRepository
+    */
+    protected $stats_repository;
 
     protected function givenAFileDictionary()
     {
@@ -34,6 +40,11 @@ trait IntegrationFixtureTrait
     {
         $this->game = new Game($this->dictionary);
         $this->game->load($this->getFixture($data));
+    }
+    
+    protected function givenAStatsRepository()
+    {
+        $this->stats_repository = new StatsRepository;
     }
 
     public function getValidGameData()
