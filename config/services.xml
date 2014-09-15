@@ -24,8 +24,6 @@
             <argument>%codewords.dict%</argument>
         </service>
 
-        <service id="cells" class="Codewords\Board\CellCollection"/>
-
         <service id="stats_repository" class="Codewords\Stats\StatsRepository"/>
 
         <service id="finder_factory" class="Codewords\Solver\FinderFactory">
