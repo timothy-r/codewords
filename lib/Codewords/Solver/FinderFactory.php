@@ -1,6 +1,7 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Solver\FindLetter;
 use Codewords\Solver\NotDoubleRule;
 use Codewords\Solver\NotLastRule;
@@ -25,29 +26,29 @@ class FinderFactory
     public function create($letter)
     {
         // get rules for Letter here
-        $rules = $this->getRules($letter);
+        $rules = $this->getRules($letter, $this->game->getBoard());
         return new FindLetter($letter, $rules);
     }
 
-    protected function getRules($letter)
+    protected function getRules($letter, Board $board)
     {
         $rules = [];
         switch($letter){
             case 'i':
-                $rules []= new NotDoubleRule($this->game->getBoard(), $this->stats_repository);
+                $rules []= new NotDoubleRule($board, $this->stats_repository);
                 break;
             case 'q':
-                $rules []= new NotDoubleRule($this->game->getBoard(), $this->stats_repository);
-                $rules []= new NotLastRule($this->game->getBoard(), $this->stats_repository);
+                $rules []= new NotDoubleRule($board, $this->stats_repository);
+                $rules []= new NotLastRule($board, $this->stats_repository);
                 // q can be followed by at most 2 different Cells, u & i
                 // rather than specify the number of followers specify their Characters
-                $rules []= new FollowedByRule($this->game->getBoard(), $this->stats_repository, 2);
+                $rules []= new FollowedByRule($board, $this->stats_repository, 2);
                 break;
             case 'u':
                 // vacuum has a double u, and continuum
-                $rules []= new NotDoubleRule($this->game->getBoard(), $this->stats_repository);
+                $rules []= new NotDoubleRule($board, $this->stats_repository);
                 // you ends in a u and bijou and fondu
-                $rules []= new NotLastRule($this->game->getBoard(), $this->stats_repository);
+                $rules []= new NotLastRule($board, $this->stats_repository);
                 break;
         }
         return $rules;

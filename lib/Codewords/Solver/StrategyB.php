@@ -1,9 +1,6 @@
 <?php namespace Codewords\Solver;
 
-use Codewords\Game;
 use Codewords\Solver\CellOptions;
-use Codewords\Board\CellCollection;
-use Codewords\Solver\FinderFactory;
 use Timer\Clock;
 
 class StrategyB
