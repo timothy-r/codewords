@@ -23,7 +23,7 @@ class BoardFactoryTest extends IntegrationTest
         ];
     }
 
-    public function getInvalidGameData()
+    public function getInvalidBoardData()
     {
         return [
             // has no instance of character 3
@@ -66,7 +66,7 @@ class BoardFactoryTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getInvalidGameData
+    * @dataProvider getInvalidBoardData
     * @expectedException Codewords\Error\InvalidBoardData
     */
     public function testCreateValidatesBoard($fixture)
