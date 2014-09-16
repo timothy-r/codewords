@@ -16,7 +16,7 @@ class BoardFactoryTest extends IntegrationTest
     use IntegrationFixtureTrait;
     use FixtureTrait;
 
-    public function getValidGameData()
+    public function getValidBoardData()
     {
         return [
             ['data-1.csv', 'data-1-expectation.php']
@@ -32,7 +32,7 @@ class BoardFactoryTest extends IntegrationTest
     }
     
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testCreateReturnsABoard($fixture)
     {
@@ -46,7 +46,7 @@ class BoardFactoryTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testCreateReturnsABoardWithCorrectFrequencies($fixture, $expectation)
     {

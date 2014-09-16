@@ -59,7 +59,7 @@ trait IntegrationFixtureTrait
         $this->stats_repository = new StatsRepository;
     }
 
-    public function getValidGameData()
+    public function getValidBoardData()
     {
         return [
             ['data-1.csv', 'data-1-expectation.html']

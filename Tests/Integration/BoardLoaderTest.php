@@ -14,7 +14,7 @@ class BoardLoaderTest extends IntegrationTest
     use FixtureTrait;
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testLoadBoard($data)
     {

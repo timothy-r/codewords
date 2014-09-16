@@ -11,7 +11,7 @@ class FindLetterIntegrationTest extends IntegrationTest
     use IntegrationFixtureTrait;
     use FixtureTrait;
 
-    public function getValidGameData()
+    public function getValidBoardData()
     {
         return [
             ['data-1.csv', 'i', [1,2,3,6,7,9,10,11,15,16,17,19,21,23], []], 
@@ -25,12 +25,11 @@ class FindLetterIntegrationTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testSolveReturnsArrayOfPossibleCells($fixture, $letter, $expected, $solved)
     {
         $this->givenASortedDictionary();
-        $this->givenAGame($fixture);
         $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         

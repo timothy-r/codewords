@@ -57,14 +57,4 @@ class StrategyBIntegrationTest extends IntegrationTest
             ['data-9.csv', 'abroletkfqiyvpgdxnzjshwucm'],
         ];
     }
-
-    /**
-    * @dataProvider getInvalidFixtures
-    * @expectedException Codewords\Error\InvalidBoardData
-    */
-    public function testSolveDetectsInvalidBoards($fixture)
-    {
-        $this->givenASortedDictionary();
-        $this->givenAGame($fixture);
-    }
 }

@@ -16,7 +16,7 @@ class GameTest extends IntegrationTest
     use FixtureTrait;
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testMakeGame($fixture)
     {
@@ -31,7 +31,7 @@ class GameTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testRenderBoard($fixture, $expectation)
     {
@@ -45,7 +45,7 @@ class GameTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testGetFrequencies($fixture, $expectation)
     {
@@ -57,7 +57,7 @@ class GameTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testGetDictionary($fixture)
     {
@@ -69,7 +69,7 @@ class GameTest extends IntegrationTest
     }
 
     /**
-    * @dataProvider getValidGameData
+    * @dataProvider getValidBoardData
     */
     public function testGetStatsRepository($fixture)
     {
