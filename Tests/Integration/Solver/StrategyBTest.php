@@ -35,7 +35,7 @@ class StrategyBIntegrationTest extends IntegrationTest
         $this->givenAGame($fixture);
         $this->givenAStatsRepository();
         $finder_factory = new FinderFactory($this->stats_repository, $this->dictionary);
-        $cell_options = new CellOptions($this->game, $finder_factory);
+        $cell_options = new CellOptions($this->game->getBoard(), $finder_factory);
         $strategy = new StrategyB($cell_options);
 
         $result = $strategy->solve($this->game);

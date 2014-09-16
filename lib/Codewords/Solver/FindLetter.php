@@ -87,9 +87,8 @@ class FindLetter implements IFinder
     */
     protected function testDictionary(Board $board, Cell $cell)
     {
-        // get words that contain Cell from Game's Board
+        // get words that contain $cell from Board
         $words = $board->getWordsContainingCell($cell);
-        //$dictionary= $game->getDictionary();
         $word_pattern = new WordPattern($board->getCells());
         
         #print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";

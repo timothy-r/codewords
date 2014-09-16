@@ -1,21 +1,21 @@
 <?php namespace Codewords\Solver;
 
-use Codewords\Game;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
 use Codewords\Board\HtmlTableBoardRenderer;
 use Timer\Clock;
 
 /**
-* Applies Finders to the Cells in a Game
+* Applies Finders to the Cells in a Board
 * For a set of Letters it makes one pass and solves any that it can
 */
 class CellOptions
 {
     /**
-    * @var Codewords\Game
+    * @var Codewords\Board
     */
-    protected $game;
+    protected $board;
 
     /**
     * @var Codewords\Solver\FinderFactory
@@ -25,9 +25,9 @@ class CellOptions
     protected $letters_to_cells = [];
     protected $cells_to_letters = [];
 
-    public function __construct(Game $game, FinderFactory $factory)
+    public function __construct(Board $board, FinderFactory $factory)
     {
-        $this->game = $game;
+        $this->board = $board;
         $this->factory = $factory;
     }
 
@@ -40,8 +40,8 @@ class CellOptions
         $clock = new Clock;
         foreach($letters as $letter){
             $clock->start();
-            $finder = $this->factory->create($this->game->getBoard(), $letter);
-            $cells = $finder->solve($this->game->getBoard());
+            $finder = $this->factory->create($this->board, $letter);
+            $cells = $finder->solve($this->board);
             $this->letters_to_cells [$letter]= $cells;
 
             foreach($cells as $cell){
@@ -67,7 +67,7 @@ class CellOptions
     */
     protected function solveCellsWithOneLetter()
     {
-        $cell_collection = $this->game->getCells();
+        $cell_collection = $this->board->getCells();
 
         foreach($this->cells_to_letters as $index => $letters){
             if (count($letters) === 1){
@@ -116,6 +116,6 @@ class CellOptions
         return;
         $renderer = new HtmlTableBoardRenderer;
         $file = 'results-' . $letter . '.html';
-        file_put_contents($file, $renderer->render($this->game->getBoard()));
+        file_put_contents($file, $renderer->render($this->board));
     }
 }
