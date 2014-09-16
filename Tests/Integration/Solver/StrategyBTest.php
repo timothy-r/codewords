@@ -32,14 +32,14 @@ class StrategyBIntegrationTest extends IntegrationTest
     public function testSolve($fixture, $soln)
     {
         $this->givenASortedDictionary();
-        $this->givenAGame($fixture);
+        $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         $finder_factory = new FinderFactory($this->stats_repository, $this->dictionary);
-        $cell_options = new CellOptions($this->game->getBoard(), $finder_factory);
+        $cell_options = new CellOptions($this->board, $finder_factory);
         $strategy = new StrategyB($cell_options);
 
-        $result = $strategy->solve($this->game);
-        $cells = $this->game->getCells();
+        $result = $strategy->solve();
+        $cells = $this->board->getCells();
         for($i = 1; $i < 26; $i++){
             $letter = substr($soln, $i-1, 1);
             $this->assertCellCharacter($cells->at($i), $letter);
