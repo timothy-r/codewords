@@ -32,10 +32,9 @@ class LetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
         $letter_count = new LetterCount();
 
-        $stats = $letter_count->generate($this->game);
+        $stats = $letter_count->generate($this->board);
 
         $this->assertSame(26, count($stats));
         $this->assertSame($expected, $stats[$number]);

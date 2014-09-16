@@ -20,11 +20,10 @@ class LastLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $llc = new LastLetterCount();
 
-        $stats = $llc->generate($this->game);
+        $stats = $llc->generate($this->board);
         
         $this->assertSame(26, count($stats));
         $this->assertSame($expected, $stats[$number]);
@@ -52,7 +51,6 @@ class LastLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $llc = new LastLetterCount();
         

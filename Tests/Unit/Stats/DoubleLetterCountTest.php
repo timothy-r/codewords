@@ -35,11 +35,10 @@ class DoubleLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $dlc = new DoubleLetterCount();
 
-        $stats = $dlc->generate($this->game);
+        $stats = $dlc->generate($this->board);
         $this->assertSame(26, count($stats));
         $this->assertSame($expected, $stats[$number]);
     }
@@ -51,7 +50,6 @@ class DoubleLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $dlc = new DoubleLetterCount();
         $cell = new Cell($number);

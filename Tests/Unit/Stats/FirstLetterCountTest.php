@@ -20,11 +20,10 @@ class FirstLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $flc = new FirstLetterCount();
 
-        $stats = $flc->generate($this->game);
+        $stats = $flc->generate($this->board);
         $this->assertSame(26, count($stats));
         $this->assertSame($expected, $stats[$number]);
     }
@@ -51,7 +50,6 @@ class FirstLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
         
         $cell = new Cell($number);
         $flc = new FirstLetterCount();

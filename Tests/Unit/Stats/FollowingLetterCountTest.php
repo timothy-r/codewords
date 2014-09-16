@@ -35,11 +35,10 @@ class FollowingLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $flc = new FollowingLetterCount();
 
-        $stats = $flc->generate($this->game);
+        $stats = $flc->generate($this->board);
 
         $this->assertSame(26, count($stats));
         $this->assertSameCells($expected, $stats[$number]);
@@ -52,7 +51,6 @@ class FollowingLetterCountTest extends BaseTest
     {
         $this->givenABoard();
         $this->givenACellCollection();
-        $this->givenAGame();
 
         $flc = new FollowingLetterCount();
         $cell = new Cell($number);
