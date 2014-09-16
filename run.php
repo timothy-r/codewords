@@ -36,13 +36,16 @@ $data = file_get_contents($file);
 
 $container = getDiContainer(__DIR__ . '/config/services.xml');
 
-$game = $container->get('game');
-$game->load($data);
-
+//$game = $container->get('game');
+//$game->load($data);
+$board = $container->get('loader')->load($data);
 $renderer = $container->get('renderer');
+//print $renderer->render($board);
+
+//$strategy = $container->get('strategy');
+//$strategy->solve();
+$result = $container->get('strategy')->solve($board);
+
+#print $renderer->render($result, $board);
+print $renderer->render($board);
 //print $renderer->render($game->getBoard());
-
-$strategy = $container->get('strategy');
-$strategy->solve();
-
-print $renderer->render($game->getBoard());

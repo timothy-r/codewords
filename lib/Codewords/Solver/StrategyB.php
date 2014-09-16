@@ -18,7 +18,7 @@ class StrategyB implements StrategyInterface
         $clock = new Clock;
         while (count($letters)) {
             $clock->start();
-            $results = $this->options->solveAll($letters);
+            $results = $this->options->solveAll($board, $letters);
             #printf("One iteration took %f\n", $clock->stop());
             $letters = array_keys($results);
         }

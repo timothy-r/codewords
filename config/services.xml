@@ -44,7 +44,6 @@
         </service>
 
         <service id="cell_options" class="Codewords\Solver\CellOptions">
-            <argument type="service" id="game" />
             <argument type="service" id="finder_factory" />
         </service>
 

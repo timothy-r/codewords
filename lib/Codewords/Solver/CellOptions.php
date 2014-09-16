@@ -25,14 +25,15 @@ class CellOptions
     protected $letters_to_cells = [];
     protected $cells_to_letters = [];
 
-    public function __construct(Board $board, FinderFactory $factory)
+    public function __construct(FinderFactory $factory)
     {
-        $this->board = $board;
         $this->factory = $factory;
     }
 
-    public function solveAll($letters)
+    public function solveAll(Board $board, $letters)
     {
+        $this->board = $board;
+
         // generate data on the values Cells could be
         // these should be refactored to separate classes?
         $this->letters_to_cells = [];
