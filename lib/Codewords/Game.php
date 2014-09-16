@@ -13,8 +13,6 @@ use Codewords\Stats\StatsRepository;
 */
 class Game
 {
-    protected $cells;
-
     protected $dictionary;
 
     protected $board;
@@ -24,7 +22,6 @@ class Game
     public function __construct(IDictionary $dictionary)
     {
         $this->dictionary = $dictionary;
-        $this->cells = new CellCollection;
         $this->stats_repository = new StatsRepository;
     }
 
@@ -32,7 +29,7 @@ class Game
     {
         // passing the Reader to the Factory means we can switch Reader without affecting Factory
         $reader = new CsvBoardReader($data);
-        $factory = new BoardFactory($this->cells);
+        $factory = new BoardFactory();
         $this->board = $factory->create($reader);
     }
 
@@ -49,7 +46,7 @@ class Game
     */
     public function getCells()
     {
-        return $this->cells;
+        return $this->board->getCells();
     }
 
     public function getDictionary()
