@@ -2,6 +2,7 @@
 
 use Codewords\Board\Cell;
 use Codewords\Board\Word;
+use Codewords\Board\CellCollection;
 use Codewords\Error\IllegalOperation;
 use Codewords\Error\InvalidCellLocation;
 
@@ -28,10 +29,13 @@ class Board
     protected $words;
 
     protected $words_for_cell = [];
+    
+    protected $cells;
 
     public function __construct($length)
     {
         $this->length = $length;
+        $this->cells = new CellCollection;
     }
 
     public function getLength()
@@ -60,8 +64,13 @@ class Board
 
         return $frequencies; 
     }
-
-    public function addCell(Cell $cell, $x, $y)
+    
+    public function getCells()
+    {
+        return $this->cells;
+    }
+ 
+    public function addCell($index, $x, $y)
     {
         $this->validateLocation($x);
         $this->validateLocation($y);
@@ -71,7 +80,7 @@ class Board
             }
         }
 
-        $this->rows[$y][$x] = $cell;
+        $this->rows[$y][$x] = $this->getCells()->at($index);
     }
 
     public function getCell($x, $y)

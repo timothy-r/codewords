@@ -1,6 +1,7 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\Game;
+use Codewords\IDictionary;
 use Codewords\Board\Board;
 use Codewords\Solver\FindLetter;
 use Codewords\Solver\NotDoubleRule;
@@ -17,20 +18,22 @@ class FinderFactory
     
     protected $stats_repository;
 
-    public function __construct(Game $game, StatsRepository $stats_repository)
+    protected $dictonary;
+
+    public function __construct(StatsRepository $stats_repository, IDictionary $dictionary)
     {
-        $this->game = $game;
         $this->stats_repository = $stats_repository;
+        $this->dictionary = $dictionary;
     }
 
-    public function create($letter)
+    public function create(Board $board, $letter)
     {
         // get rules for Letter here
-        $rules = $this->getRules($letter, $this->game->getBoard());
-        return new FindLetter($letter, $rules);
+        $rules = $this->createRules($letter, $board);
+        return new FindLetter($this->dictionary, $letter, $rules);
     }
 
-    protected function getRules($letter, Board $board)
+    protected function createRules($letter, Board $board)
     {
         $rules = [];
         switch($letter){

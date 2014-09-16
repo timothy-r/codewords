@@ -27,8 +27,8 @@
         <service id="stats_repository" class="Codewords\Stats\StatsRepository"/>
 
         <service id="finder_factory" class="Codewords\Solver\FinderFactory">
-            <argument type="service" id="game" />
             <argument type="service" id="stats_repository" />
+            <argument type="service" id="dictionary" />
         </service>
         
         <!-- 
@@ -37,9 +37,7 @@
         -->
         <service id="board_reader" class="%codewords.board_reader.class%"/>
 
-        <service id="board_factory" class="Codewords\Board\BoardFactory">
-            <argument type="service" id="cells" />
-        </service>
+        <service id="board_factory" class="Codewords\Board\BoardFactory" />
 
         <service id="strategy" class="%codewords.solver.class%">
             <argument type="service" id="cell_options" />

@@ -46,7 +46,10 @@ trait UnitFixtureTrait
 
     protected function givenAMockBoard()
     {
-        $this->board = $this->getMock('Codewords\Board\Board', ['getWordsContainingCell'], [], '', false);
+        $this->board = $this->getMock('Codewords\Board\Board', ['getWordsContainingCell', 'getCells'], [], '', false);
+        $this->board->expects($this->any())
+            ->method('getCells')
+            ->will($this->returnValue($this->cell_collection));
     }
 
     protected function getMockWord()
@@ -91,9 +94,11 @@ trait UnitFixtureTrait
 
     protected function addCell(Board $board, $number, $char, $x, $y)
     {
-        $c = new Cell($number);
-        $c->setCharacter($char);
-        $board->addCell($c, $x, $y);
-        return $c;
+        $board->addCell($number, $x, $y);
+        $cell = $board->getCells()->at($number);
+        if ($char){
+            $cell->setCharacter($char);
+        }
+        return $number;
     }
 }

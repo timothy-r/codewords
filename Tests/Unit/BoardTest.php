@@ -17,7 +17,7 @@ class BoardTest extends BaseTest
     {
         $board = new Board(12);
         $cell = new Cell(1);
-        $board->addCell($cell, 0, 0);
+        $board->addCell(1, 0, 0);
     }
     
     public function getValidCellLocations()
@@ -38,19 +38,17 @@ class BoardTest extends BaseTest
     {
         $board = new Board(12);
         $cell = new Cell(1);
-        $board->addCell($cell, $x, $y);
+        $board->addCell(1, $x, $y);
         $result = $board->getCell($x, $y);
-        $this->assertsame($cell, $result);
+        $this->assertEquals($cell, $result);
     }
    
     public function getInvalidCellLocations()
     {
         return [
             [-2, 0],
-            [13, 2],
             [40, 2],
             [3, -4],
-            [10, 13],
             [10, 33],
         ];
     }
@@ -63,7 +61,7 @@ class BoardTest extends BaseTest
     {
         $board = new Board(12);
         $cell = new Cell(1);
-        $board->addCell($cell, $x, $y);
+        $board->addCell(1, $x, $y);
     }
 
     /**
@@ -84,8 +82,8 @@ class BoardTest extends BaseTest
         $x = $y = 1;
         $board = new Board(12);
         $cell = new Cell(1);
-        $board->addCell($cell, $x, $y);
-        $board->addCell($cell, $x, $y);
+        $board->addCell(1, $x, $y);
+        $board->addCell(1, $x, $y);
     }
 
     public function testCanGetWords()
@@ -178,11 +176,11 @@ class BoardTest extends BaseTest
         for($i = 0; $i < $word->length(); $i++){
             $char = substr($text, $i, 1);
             $cell = $word->at($i);
-
             if ('*' == $char){
-                $this->assertSame('', $cell->getCharacter());
+                $this->assertNull( $cell->getCharacter());
             } else  {
-                $this->assertSame(substr($text, $i, 1), $cell->getCharacter());
+                $char = substr($text, $i, 1);
+                $this->assertSame($char, $cell->getCharacter(), "Expected '$char' got '" . $cell->getCharacter() . "'");
             }
         }
     }

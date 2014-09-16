@@ -7,16 +7,6 @@ use Codewords\Error\InvalidBoardData;
 class BoardFactory
 {
     /**
-    * @var Codewords\CellCollection
-    */
-    protected $cells;
-
-    public function __construct(CellCollection $cells)
-    {
-        $this->cells = $cells;
-    }
-
-    /**
     * Creates a Board from the data supplied by IBoardReader
     * Validate the Board after creation
     *
@@ -31,8 +21,8 @@ class BoardFactory
             for($x = 0; $x <= $length - 1; $x++) {
                 // get each cell value from reader and add the Cell to the Board
                 $number = $reader->numberAt($x, $y);
-                $cell = $this->cells->at($number);
-                $board->addCell($cell, $x, $y);
+                //$cell = $this->cells->at($number);
+                $board->addCell($number, $x, $y);
             }
         }
         

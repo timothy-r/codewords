@@ -40,8 +40,8 @@ class CellOptions
         $clock = new Clock;
         foreach($letters as $letter){
             $clock->start();
-            $finder = $this->factory->create($letter);
-            $cells = $finder->solve($this->game);
+            $finder = $this->factory->create($this->game->getBoard(), $letter);
+            $cells = $finder->solve($this->game->getBoard());
             $this->letters_to_cells [$letter]= $cells;
 
             foreach($cells as $cell){

@@ -26,10 +26,10 @@ class FinderFactoryTest extends IntegrationTest
     public function testCreateForLetterReturnsIFinder($letter)
     {
         $this->givenASortedDictionary();
-        $this->givenAGame('data-1.csv');
+        $this->givenABoard('data-1.csv');
         $this->givenAStatsRepository();
-        $repo = new FinderFactory($this->game, $this->stats_repository);
-        $finder = $repo->create($letter);
+        $factory = new FinderFactory($this->stats_repository, $this->dictionary);
+        $finder = $factory->create($this->board, $letter);
         $this->assertInstanceOf('Codewords\IFinder', $finder);
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace Codewords\Test;
 
 use Codewords\Game;
+use Codewords\BoardLoader;
 use Codewords\Dictionary\FileDictionary;
 use Codewords\Dictionary\SortedDictionary;
 use Codewords\Stats\StatsRepository;
@@ -18,6 +19,11 @@ trait IntegrationFixtureTrait
     */
     protected $game;
     
+    /**
+    * @var Codewords\Board\Board
+    */
+    protected $board;
+
     /**
     * @var Codewords\Stats\StatsRepository
     */
@@ -42,6 +48,12 @@ trait IntegrationFixtureTrait
         $this->game->load($this->getFixture($data));
     }
     
+    protected function givenABoard($data)
+    {
+        $loader = new BoardLoader();
+        $this->board = $loader->load($this->getFixture($data));
+    }
+
     protected function givenAStatsRepository()
     {
         $this->stats_repository = new StatsRepository;

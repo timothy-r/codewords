@@ -1,8 +1,8 @@
 <?php namespace Codewords;
 
-use Codewords\Game;
+use Codewords\Board\Board;
 
 interface IFinder
 {
-    public function solve(Game $game);
+    public function solve(Board $board);
 }

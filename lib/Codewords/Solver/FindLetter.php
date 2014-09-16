@@ -1,7 +1,8 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\IFinder;
-use Codewords\Game;
+use Codewords\IDictionary;
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
@@ -18,9 +19,12 @@ class FindLetter implements IFinder
     * @var array
     */
     protected $rules;
+    
+    protected $dictionary;
 
-    public function __construct($letter, array $rules)
+    public function __construct(IDictionary $dictionary, $letter, array $rules)
     {
+        $this->dictionary = $dictionary;
         $this->letter = $letter;
         $this->rules = $rules;
     }
@@ -28,11 +32,11 @@ class FindLetter implements IFinder
     /**
     * @return array of Cell objects
     */
-    public function solve(Game $game)
+    public function solve(Board $board)
     {
         $results = [];
         
-        $cells = $game->getCells();
+        $cells = $board->getCells();
         foreach($cells as $cell){
             #print __METHOD__."\n";
             #var_dump($cell->getNumber());
@@ -56,7 +60,7 @@ class FindLetter implements IFinder
         if (count($results) !== 1){
             $len = count($results);
             for($i = 0; $i < $len; $i++){
-                if (!$this->testDictionary($game, $results[$i])){
+                if (!$this->testDictionary($board, $results[$i])){
                     unset($results[$i]);
                 }
             }
@@ -79,14 +83,14 @@ class FindLetter implements IFinder
     }
 
     /**
-    * consider factoring this method out into a separate class
+    * consider factoring this method out into a separate class - a rule class?
     */
-    protected function testDictionary(Game $game, Cell $cell)
+    protected function testDictionary(Board $board, Cell $cell)
     {
         // get words that contain Cell from Game's Board
-        $words = $game->getBoard()->getWordsContainingCell($cell);
-        $dictionary= $game->getDictionary();
-        $word_pattern = new WordPattern($game->getCells());
+        $words = $board->getWordsContainingCell($cell);
+        //$dictionary= $game->getDictionary();
+        $word_pattern = new WordPattern($board->getCells());
         
         #print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";
 
@@ -94,7 +98,7 @@ class FindLetter implements IFinder
             // create a pattern to test dictionary with
             $pattern = $word_pattern->make(strtolower($this->letter), $cell, $word);
             #print "$pattern\n";
-            $matches = $dictionary->find($pattern, $word->length());
+            $matches = $this->dictionary->find($pattern, $word->length());
             if (count($matches) > 0){
                 #print "$pattern\n";
                 #var_dump($matches);
