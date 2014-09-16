@@ -38,7 +38,7 @@ class StrategyBIntegrationTest extends IntegrationTest
         $cell_options = new CellOptions($this->board, $finder_factory);
         $strategy = new StrategyB($cell_options);
 
-        $result = $strategy->solve();
+        $result = $strategy->solve($this->board);
         $cells = $this->board->getCells();
         for($i = 1; $i < 26; $i++){
             $letter = substr($soln, $i-1, 1);
