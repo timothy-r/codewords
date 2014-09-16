@@ -8,8 +8,7 @@ use Codewords\Board\Cell;
 /**
 * Tests if a Cell is always followed by a single cell
 *
-* @todo inject stats instance or stats repo
-* @todo inject Words not Game
+* @todo inject Words not Board - or use Cell::getBoard() accessor?
 */
 class FollowedByRule implements IRule
 {

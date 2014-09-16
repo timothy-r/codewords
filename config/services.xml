@@ -14,9 +14,6 @@
     </parameters>
 
     <services>
-        <service id="game" class="Codewords\Game">
-            <argument type="service" id="dictionary" />
-        </service>
 
         <service id="loader" class="%codewords.board_loader.class%"/>
 
