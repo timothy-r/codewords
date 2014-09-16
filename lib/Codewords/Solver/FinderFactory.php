@@ -1,6 +1,5 @@
 <?php namespace Codewords\Solver;
 
-use Codewords\Game;
 use Codewords\IDictionary;
 use Codewords\Board\Board;
 use Codewords\Solver\FindLetter;

@@ -1,6 +1,5 @@
 <?php namespace Codewords\Test;
 
-use Codewords\Game;
 use Codewords\BoardLoader;
 use Codewords\Dictionary\FileDictionary;
 use Codewords\Dictionary\SortedDictionary;
@@ -13,11 +12,6 @@ trait IntegrationFixtureTrait
     * @var Codewords\IDictionary
     */
     protected $dictionary;
-    
-    /**
-    * @var Codewords\Game
-    */
-    protected $game;
     
     /**
     * @var Codewords\Board\Board
@@ -42,12 +36,6 @@ trait IntegrationFixtureTrait
         $this->dictionary = new SortedDictionary($file);
     }
 
-    protected function givenAGame($data)
-    {
-        $this->game = new Game($this->dictionary);
-        $this->game->load($this->getFixture($data));
-    }
-    
     protected function givenABoard($data)
     {
         $loader = new BoardLoader();

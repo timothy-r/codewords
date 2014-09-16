@@ -33,7 +33,6 @@ class FindLetterIntegrationTest extends IntegrationTest
         $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         
-        //$board = $this->game->getBoard();
         $cells = $this->board->getCells();
         foreach($solved as $number => $value){
             $cells->at($number)->setCharacter($value);

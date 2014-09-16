@@ -7,8 +7,6 @@ use Codewords\Board\Word;
 
 trait UnitFixtureTrait
 {
-    protected $game;
-
     protected $board;
 
     protected $cell_collection;
@@ -25,23 +23,6 @@ trait UnitFixtureTrait
     protected function givenAStatsRepository()
     {
         $this->stats_repository = $this->getMock('Codewords\Stats\StatsRepository', ['getStat']);
-    }
-
-    protected function givenAGame()
-    {
-        $this->game = $this->getMockBuilder('Codewords\Game')->disableOriginalConstructor()->getMock();
-        $this->game->expects($this->any())
-            ->method('getBoard')
-            ->will($this->returnValue($this->board));
-        $this->game->expects($this->any())
-            ->method('getCells')
-            ->will($this->returnValue($this->cell_collection));
-        $this->game->expects($this->any())
-            ->method('getStatsRepository')
-            ->will($this->returnValue($this->stats_repository));
-        $this->game->expects($this->any())
-            ->method('getDictionary')
-            ->will($this->returnValue($this->dictionary));
     }
 
     protected function givenAMockBoard()
