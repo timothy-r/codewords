@@ -30,7 +30,7 @@ class FollowedByRule implements IRule
     public function passes(Cell $cell)
     {
         $stats = $this->stats_repo->getStat('FollowingLetter');
-        $result = $stats->generateForCell($this->board, $cell);
+        $result = $stats->generateForCell($cell);
         return count($result) <= $this->followers;
     }
 }

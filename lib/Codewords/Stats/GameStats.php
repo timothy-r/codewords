@@ -23,21 +23,21 @@ abstract class GameStats implements IGameStats
         unset($this->counts[0]);
 
         foreach($cells as $cell){
-            $this->counts[$cell->getNumber()] = $this->generateForCell($board, $cell);
+            $this->counts[$cell->getNumber()] = $this->generateForCell($cell);
         }
 
         return $this->counts;
     }
 
-    public function generateForCell(Board $board, Cell $cell)
+    public function generateForCell(Cell $cell)
     {
         // use cached value if it exists
         if ($this->counts[$cell->getNumber()] !== null){
             return $this->counts[$cell->getNumber()];
         }
-        return $this->doGenerateForCell($board, $cell);
+        return $this->doGenerateForCell($cell);
     }
 
-    abstract public function doGenerateForCell(Board $board, Cell $cell);
+    abstract protected function doGenerateForCell(Cell $cell);
 }
 

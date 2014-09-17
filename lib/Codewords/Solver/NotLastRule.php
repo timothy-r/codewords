@@ -22,7 +22,7 @@ class NotLastRule implements IRule
     public function passes(Cell $cell)
     {
         $stats = $this->stats_repo->getStat('LastLetter');
-        $result = $stats->generateForCell($this->board, $cell);
+        $result = $stats->generateForCell($cell);
         return $result === 0;
     }
 }

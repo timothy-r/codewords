@@ -56,7 +56,7 @@ class LastLetterCountTest extends BaseTest
         
         $cell = new Cell($this->board, $number);
 
-        $stats = $llc->generateForCell($this->board, $cell);
+        $stats = $llc->generateForCell($cell);
         $this->assertSame($expected, $stats);
     }
 }

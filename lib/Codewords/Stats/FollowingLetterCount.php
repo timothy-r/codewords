@@ -1,7 +1,6 @@
 <?php namespace Codewords\Stats;
 
 use Codewords\Stats\GameStats;
-use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
@@ -9,10 +8,10 @@ use Codewords\Board\Cell;
 */
 class FollowingLetterCount extends GameStats
 {
-    public function doGenerateForCell(Board $board, Cell $cell)
+    protected function doGenerateForCell(Cell $cell)
     {
         $result = [];
-        $words = $board->getWordsContainingCell($cell);
+        $words = $cell->getWords();
         foreach($words as $word){
             for($c = 0; $c < ($word->length() - 1); $c++){
                 if ($word->at($c)->matches($cell)){

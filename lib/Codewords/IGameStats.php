@@ -16,6 +16,6 @@ interface IGameStats
     /**
     * @return mixed
     */
-    public function generateForCell(Board $board, Cell $cell);
+    public function generateForCell(Cell $cell);
 }
 

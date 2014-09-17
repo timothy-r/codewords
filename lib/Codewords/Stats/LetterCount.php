@@ -1,18 +1,17 @@
 <?php namespace Codewords\Stats;
 
 use Codewords\Stats\GameStats;
-use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
-* Generates Letter count statistics for a Game
+* Generates Letter count statistics for a Game - really CellCount?
 */
 class LetterCount extends GameStats
 {
-    public function doGenerateForCell(Board $board, Cell $cell)
+    protected function doGenerateForCell(Cell $cell)
     {
         $result = 0;
-        $words = $board->getWordsContainingCell($cell);
+        $words = $cell->getWords();
         foreach($words as $word){
             // iterate over Cells in word
             foreach($word as $other_cell){

@@ -55,7 +55,7 @@ class FollowingLetterCountTest extends BaseTest
         $flc = new FollowingLetterCount();
         $cell = new Cell($this->board, $number);
 
-        $stats = $flc->generateForCell($this->board, $cell);
+        $stats = $flc->generateForCell($cell);
         $this->assertSameCells($expected, $stats);
     }
 
