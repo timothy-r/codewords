@@ -5,7 +5,7 @@
 
     <parameters>
         <!-- should really state where the config dir is explictly -->
-        <parameter key="codewords.dict">config/dict-3</parameter>
+        <parameter key="codewords.dict.file">config/dict-3</parameter>
         <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
         <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
         <parameter key="codewords.solver.class">Codewords\Solver\StrategyB</parameter>
@@ -18,7 +18,7 @@
         <service id="loader" class="%codewords.board_loader.class%"/>
 
         <service id="dictionary" class="%codewords.dictionary.class%">
-            <argument>%codewords.dict%</argument>
+            <argument>%codewords.dict.file%</argument>
         </service>
 
         <service id="stats_repository" class="Codewords\Stats\StatsRepository"/>
@@ -37,10 +37,6 @@
         <service id="board_factory" class="Codewords\Board\BoardFactory" />
 
         <service id="strategy" class="%codewords.solver.class%">
-            <argument type="service" id="cell_options" />
-        </service>
-
-        <service id="cell_options" class="Codewords\Solver\CellOptions">
             <argument type="service" id="finder_factory" />
         </service>
 

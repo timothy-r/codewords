@@ -7,7 +7,6 @@ use Codewords\Test\FixtureTrait;
 use Codewords\Solver\StrategyB;
 use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
-use Codewords\Solver\CellOptions;
 
 /**
 * @group slow
@@ -35,8 +34,7 @@ class StrategyBIntegrationTest extends IntegrationTest
         $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         $finder_factory = new FinderFactory($this->stats_repository, $this->dictionary);
-        $cell_options = new CellOptions($finder_factory);
-        $strategy = new StrategyB($cell_options);
+        $strategy = new StrategyB($finder_factory);
 
         $result = $strategy->solve($this->board);
         $cells = $this->board->getCells();
