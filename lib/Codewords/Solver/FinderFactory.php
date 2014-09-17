@@ -52,6 +52,9 @@ class FinderFactory
                 // you ends in a u and bijou and fondu
                 $rules []= new NotLastRule($board, $this->stats_repository);
                 break;
+            case 'x':
+                $rules []= new NotDoubleRule($board, $this->stats_repository);
+                break;
         }
         return $rules;
     }
