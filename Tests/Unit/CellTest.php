@@ -109,14 +109,16 @@ class CellTest extends BaseTest
 
     public function testGetWords()
     {
-        $cell = $this->getCell(1);
+        $this->givenABoard();
+        $cell = new Cell($this->board, 1);
         $words = $cell->getWords();
-        //$this->assertTrue(is_array($words), "Expected getWords to return an array");
+        $this->assertTrue(is_array($words), "Expected getWords to return an array");
     }
 
     public function testGetBoard()
     {
         $cell = $this->getCell(1);
         $board = $cell->getBoard();
+        $this->assertInstanceOf('Codewords\Board\Board', $board);
     }
 }

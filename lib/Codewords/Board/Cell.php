@@ -85,13 +85,18 @@ class Cell
     {
         return !is_null($this->character);
     }
-
+    
+    /**
+    * Returns the words that contain this Cell
+    * @return array
+    */
     public function getWords()
     {
-        
+        return $this->board->getWordsContainingCell($this);    
     }
 
     public function getBoard()
     {
+        return $this->board;
     }
 }
