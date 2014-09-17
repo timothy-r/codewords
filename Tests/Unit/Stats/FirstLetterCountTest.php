@@ -51,7 +51,7 @@ class FirstLetterCountTest extends BaseTest
         $this->givenABoard();
         $this->givenACellCollection();
         
-        $cell = new Cell($number);
+        $cell = new Cell($this->board, $number);
         $flc = new FirstLetterCount();
 
         $stats = $flc->generateForCell($this->board, $cell);

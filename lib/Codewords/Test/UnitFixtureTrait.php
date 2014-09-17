@@ -15,9 +15,14 @@ trait UnitFixtureTrait
 
     protected $dictionary;
 
+    protected function getCell($number, $letter = null)
+    {
+        return new Cell($this->board, $number, $letter); 
+    }
+
     protected function givenACellCollection()
     {
-        $this->cell_collection = new CellCollection;
+        $this->cell_collection = new CellCollection($this->board);
     }
 
     protected function givenAStatsRepository()
@@ -28,9 +33,6 @@ trait UnitFixtureTrait
     protected function givenAMockBoard()
     {
         $this->board = $this->getMock('Codewords\Board\Board', ['getWordsContainingCell', 'getCells'], [], '', false);
-        $this->board->expects($this->any())
-            ->method('getCells')
-            ->will($this->returnValue($this->cell_collection));
     }
 
     protected function getMockWord()

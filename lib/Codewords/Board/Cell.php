@@ -1,5 +1,6 @@
 <?php namespace Codewords\Board;
 
+use Codewords\Board\Board;
 use Codewords\Error\InvalidCellNumber;
 
 /**
@@ -7,6 +8,11 @@ use Codewords\Error\InvalidCellNumber;
 */
 class Cell
 {
+    /**
+    * @var Codewords\Board\Board
+    */
+    protected $board;
+
     /**
     * @var integer
     */
@@ -21,7 +27,7 @@ class Cell
 
     protected $max = 26;
 
-    public function __construct($number, $character = null)
+    public function __construct(Board $board, $number, $character = null)
     {
         if (!is_numeric($number)){
             throw new InvalidCellNumber("$number is out of range, ({$this->min} - {$this->max})");
@@ -37,6 +43,8 @@ class Cell
         if (!is_null($character)){
             $this->setCharacter($character);
         }
+
+        $this->board = $board;
     }
 
     public function getNumber()
@@ -76,5 +84,14 @@ class Cell
     public function isSolved()
     {
         return !is_null($this->character);
+    }
+
+    public function getWords()
+    {
+        
+    }
+
+    public function getBoard()
+    {
     }
 }

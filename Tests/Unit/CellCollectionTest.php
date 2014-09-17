@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
+use Codewords\Test\UnitFixtureTrait;
 use Codewords\Board\Cell;
 use Codewords\Board\CellCollection;
 
@@ -9,16 +10,29 @@ use Codewords\Board\CellCollection;
 */
 class CellCollectionTest extends BaseTest
 {
+    use UnitFixtureTrait;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->givenABoard();
+    }
+    
+    protected function getCellCollection($length = 26)
+    {
+        return new CellCollection($this->board, $length);
+    }
+
     public function testGetCellReturnsACell()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
         $this->assertInstanceOf('Codewords\Board\Cell', $cell);
     }
 
     public function testCallsToGetCellReturnsSameInstance()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell_1 = $cell_collection->at(1);
         $cell_2 = $cell_collection->at(1);
         // assertSame tests that the two objects reference the same instance
@@ -39,13 +53,13 @@ class CellCollectionTest extends BaseTest
     */
     public function testGetCellRespectsValidCellRange($number)
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at($number);
     }
 
     public function testGetCellReturnsAReferenceToACell()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell_1 = $cell_collection->at(1);
         $cell_1->setCharacter('A');
         $cell_2 = $cell_collection->at(1);
@@ -54,7 +68,7 @@ class CellCollectionTest extends BaseTest
 
     public function testCellForCharacter()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
         $cell->setCharacter('S');
         $other_cell = $cell_collection->cellForCharacter('S');
@@ -63,7 +77,7 @@ class CellCollectionTest extends BaseTest
 
     public function testCellForCharacterReturnsSameResultOnMultipleCalls()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
         $cell->setCharacter('S');
         $other_cell = $cell_collection->cellForCharacter('S');
@@ -79,14 +93,14 @@ class CellCollectionTest extends BaseTest
 
     public function testCellForCharacterReturnsNullWhenNoneFound()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->cellForCharacter('S');
         $this->assertSame(null, $cell);
     }
 
     public function testAllCellsInNewCollectionAreUnsolved()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $unsolved = $cell_collection->getUnsolved();
         $this->assertSame(26, count($unsolved));
 
@@ -97,7 +111,7 @@ class CellCollectionTest extends BaseTest
 
     public function testGetUnsolvedDoesNotIncludeSolvedCells()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
         $cell->setCharacter('S');
         $cell = $cell_collection->at(2);
@@ -123,13 +137,13 @@ class CellCollectionTest extends BaseTest
     */
     public function testLengthReturnsCollectionLength($length)
     {
-        $cell_collection = new CellCollection($length);
+        $cell_collection = $this->getCellCollection($length);
         $this->assertSame($length, $cell_collection->length());
     }
 
     public function testGetSolvedDoesNotIncludeUnsolvedCells()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
         $cell->setCharacter('S');
         $cell = $cell_collection->at(2);
@@ -144,7 +158,7 @@ class CellCollectionTest extends BaseTest
 
     public function testCanIterateOverCellCollection()
     {
-        $cell_collection = new CellCollection;
+        $cell_collection = $this->getCellCollection();
         foreach($cell_collection as $key => $cell){
             $this->assertInstanceOf('Codewords\Board\Cell', $cell);
         }

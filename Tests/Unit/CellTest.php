@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . '/BaseTest.php');
 
+use Codewords\Test\UnitFixtureTrait;
 use Codewords\Board\Cell;
 
 /**
@@ -9,24 +10,32 @@ use Codewords\Board\Cell;
 */
 class CellTest extends BaseTest
 {
+    use UnitFixtureTrait;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->givenAMockBoard();
+    }
+
     public function getValidCellNumbers()
     {
         return array_map(function($i){ return [$i];}, range(1,26));
     }
-
+    
     /**
     * @dataProvider getValidCellNumbers
     */
     public function testCellHasANumber($number)
     {
-        $cell = new Cell($number);
+        $cell = $this->getCell($number);
         $this->assertSame($number, $cell->getNumber());
     }
 
     public function testCanCellSetCharacter()
     {
         $char = 'Z';
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $cell->setCharacter($char);
         $this->assertSame($char, $cell->getCharacter());
     }
@@ -34,13 +43,13 @@ class CellTest extends BaseTest
     public function testCanCellSetCharacterInConstructor()
     {
         $char = 'Z';
-        $cell = new Cell(1, $char);
+        $cell = $this->getCell(1, $char);
         $this->assertSame($char, $cell->getCharacter());
     }
 
     public function testCellZeroIsNull()
     {
-        $cell = new Cell(0);
+        $cell = $this->getCell(0);
         $this->assertTrue($cell->isNull());
     }
 
@@ -49,7 +58,7 @@ class CellTest extends BaseTest
     */
     public function testNonZeroCellsAreNotNull($number)
     {
-        $cell = new Cell($number);
+        $cell = $this->getCell($number);
         $this->assertFalse($cell->isNull());
     }
     
@@ -66,35 +75,48 @@ class CellTest extends BaseTest
     */
     public function testCellsValidateNumberRange($number)
     {
-        $cell = new Cell($number);
+        $cell = $this->getCell($number);
     }
 
     public function testTwoCellsWithSameNumberMatch()
     {
-        $cell_1 = new Cell(1);
-        $cell_2 = new Cell(1);
+        $cell_1 = $this->getCell(1);
+        $cell_2 = $this->getCell(1);
         $this->assertTrue($cell_1->matches($cell_2));
         $this->assertTrue($cell_2->matches($cell_1));
     }
 
     public function testTwoCellsWithDifferentNumbersDontMatch()
     {
-        $cell_1 = new Cell(1);
-        $cell_2 = new Cell(5);
+        $cell_1 = $this->getCell(1);
+        $cell_2 = $this->getCell(5);
         $this->assertFalse($cell_1->matches($cell_2));
         $this->assertFalse($cell_2->matches($cell_1));
     }
 
     public function testCellWithoutLetterIsNotSolved()
     {
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $this->assertFalse($cell->isSolved());
     }
 
     public function testCellWithLetterIsSolved()
     {
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $cell->setCharacter('W');
         $this->assertTrue($cell->isSolved());
+    }
+
+    public function testGetWords()
+    {
+        $cell = $this->getCell(1);
+        $words = $cell->getWords();
+        //$this->assertTrue(is_array($words), "Expected getWords to return an array");
+    }
+
+    public function testGetBoard()
+    {
+        $cell = $this->getCell(1);
+        $board = $cell->getBoard();
     }
 }

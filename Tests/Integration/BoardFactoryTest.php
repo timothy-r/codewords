@@ -5,7 +5,6 @@ use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
 use Codewords\Board\Board;
 use Codewords\Board\BoardFactory;
-use Codewords\Board\CellCollection;
 use Codewords\Board\CsvBoardReader;
 
 /**
@@ -36,11 +35,10 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateReturnsABoard($fixture)
     {
-        $cells = new CellCollection;
         $data = $this->getFixture($fixture);
         $reader = new CsvBoardReader($data);
         
-        $factory = new BoardFactory($cells);
+        $factory = new BoardFactory();
         $product = $factory->create($reader);
         $this->assertInstanceOf('Codewords\Board\Board', $product);
     }
@@ -50,12 +48,11 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateReturnsABoardWithCorrectFrequencies($fixture, $expectation)
     {
-        $cells = new CellCollection;
         $data = $this->getFixture($fixture);
         $reader = new CsvBoardReader($data);
 
         
-        $factory = new BoardFactory($cells);
+        $factory = new BoardFactory();
         $product = $factory->create($reader);
         $frequencies = $product->getFrequencies();
         // test the frequency values
@@ -71,11 +68,10 @@ class BoardFactoryTest extends IntegrationTest
     */
     public function testCreateValidatesBoard($fixture)
     {
-        $cells = new CellCollection;
         $data = $this->getFixture($fixture);
         $reader = new CsvBoardReader($data);
         
-        $factory = new BoardFactory($cells);
+        $factory = new BoardFactory();
         $product = $factory->create($reader);
     }
 }

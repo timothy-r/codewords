@@ -1,5 +1,6 @@
 <?php namespace Codewords\Board;
 
+use Codewords\Board\Board;
 use Codewords\Board\Cell;
 use Codewords\Error\InvalidCellLocation;
 
@@ -8,14 +9,20 @@ use Codewords\Error\InvalidCellLocation;
 */
 class CellCollection implements \Iterator
 {
+    /**
+    * @var Codewords\Board\Board
+    */
+    protected $board;
+
     protected $cells = [];
  
     protected $length;
 
     protected $index = 1;
 
-    public function __construct($length = 26)
+    public function __construct(Board $board, $length = 26)
     {
+        $this->board = $board;
         $this->length = $length;
     }
 
@@ -28,14 +35,17 @@ class CellCollection implements \Iterator
         $number = (integer)$number;
 
         if (!isset($this->cells[$number])){
-            $this->cells[$number] = new Cell($number);
+            $this->cells[$number] = new Cell($this->board, $number);
         }
         return $this->cells[$number];
     }
-
+    
+    /**
+    * @deprecated - this method is not in use
+    */
     public function cellForCharacter($char)
     {
-        foreach($this as $cell) {
+        foreach($this->cells as $cell) {
             if ($cell->getCharacter() === $char){
                 return $cell;
             }
@@ -49,7 +59,9 @@ class CellCollection implements \Iterator
     public function getUnsolved()
     {
         $unsolved = [];
-        foreach($this as $cell){
+        // foreach($this) fails here, why?
+        for($i = 1; $i <= $this->length; $i++){
+            $cell = $this->at($i);
             if (!$cell->isSolved()){
                 $unsolved[]= $cell;
             }
@@ -63,7 +75,7 @@ class CellCollection implements \Iterator
     public function getSolved()
     {
         $solved = [];
-        foreach($this as $cell){
+        foreach($this->cells as $cell){
             if ($cell->isSolved()){
                 $solved[]= $cell;
             }

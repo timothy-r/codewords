@@ -13,10 +13,16 @@ class BoardTest extends BaseTest
 {
     use UnitFixtureTrait;
 
+   public function setUp()
+    {
+        parent::setUp();
+        $this->givenAMockBoard();
+    }
+
     public function testCanAddCellToBoard()
     {
         $board = new Board(12);
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $board->addCell(1, 0, 0);
     }
     
@@ -37,7 +43,9 @@ class BoardTest extends BaseTest
     public function testCanGetCellFromBoard($x, $y)
     {
         $board = new Board(12);
-        $cell = new Cell(1);
+        $cell = $board->getCells()->at(1);
+        //$cell = new Cell($board, 1); 
+        //$cell = $this->getCell(1);
         $board->addCell(1, $x, $y);
         $result = $board->getCell($x, $y);
         $this->assertEquals($cell, $result);
@@ -60,7 +68,7 @@ class BoardTest extends BaseTest
     public function testMustAddCellAtValidLocation($x, $y)
     {
         $board = new Board(12);
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $board->addCell(1, $x, $y);
     }
 
@@ -81,7 +89,7 @@ class BoardTest extends BaseTest
     {
         $x = $y = 1;
         $board = new Board(12);
-        $cell = new Cell(1);
+        $cell = $this->getCell(1);
         $board->addCell(1, $x, $y);
         $board->addCell(1, $x, $y);
     }
@@ -134,7 +142,7 @@ class BoardTest extends BaseTest
     public function testCanGetWordsContainingCell($number, $count)
     {
         $board = $this->generateTestBoard();
-        $cell = new Cell($number);
+        $cell = $this->getCell($number);
         $words = $board->getWordsContainingCell($cell);
         $this->assertSame($count, count($words));
         foreach($words as $word) {

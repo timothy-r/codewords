@@ -35,7 +35,7 @@ class Board
     public function __construct($length)
     {
         $this->length = $length;
-        $this->cells = new CellCollection;
+        $this->cells = new CellCollection($this);
     }
 
     public function getLength()
@@ -69,7 +69,10 @@ class Board
     {
         return $this->cells;
     }
- 
+    
+    /**
+    * rename to setCellAtLocation($x, $y, $index)
+    */
     public function addCell($index, $x, $y)
     {
         $this->validateLocation($x);
@@ -82,7 +85,11 @@ class Board
 
         $this->rows[$y][$x] = $this->getCells()->at($index);
     }
-
+    
+    /**
+    * rename to getCellAtLocation($x, $y)
+    * add a new getCell($index) method
+    */
     public function getCell($x, $y)
     {
         $this->validateLocation($x);

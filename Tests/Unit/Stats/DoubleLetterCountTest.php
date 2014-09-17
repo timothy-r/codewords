@@ -52,7 +52,7 @@ class DoubleLetterCountTest extends BaseTest
         $this->givenACellCollection();
 
         $dlc = new DoubleLetterCount();
-        $cell = new Cell($number);
+        $cell = new Cell($this->board, $number);
 
         $stats = $dlc->generateForCell($this->board, $cell);
         $this->assertSame($expected, $stats);

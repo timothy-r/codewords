@@ -5,18 +5,21 @@ use Codewords\Board\Cell;
 use Codewords\Board\CellCollection;
 use Codewords\Board\Word;
 use Codewords\Solver\WordPattern;
-
+use Codewords\Test\UnitFixtureTrait;
 /**
 * @group unit
 */
 class WordPatternTest extends BaseTest
 {
+    use UnitFixtureTrait;
+
     protected $cells;
 
     public function setUp()
     {
         parent::setUp();
-        $this->cells = new CellCollection;
+        $this->givenAMockBoard();
+        $this->cells = new CellCollection($this->board);
     }
 
     public function getLetters()
