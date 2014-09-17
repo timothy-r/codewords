@@ -5,12 +5,14 @@ use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
-* Generates count of when Letters are first letter in a Word
 */
 abstract class GameStats implements IGameStats
 {
     protected $counts;
-
+    
+    /**
+    * @todo is this a useful method? only executed by tests right now
+    */
     public function generate(Board $board)
     {
         if (!is_null($this->counts)){
@@ -28,7 +30,10 @@ abstract class GameStats implements IGameStats
 
         return $this->counts;
     }
-
+    
+    /**
+    * @todo shouldn't this method cache the result?
+    */
     public function generateForCell(Cell $cell)
     {
         // use cached value if it exists
