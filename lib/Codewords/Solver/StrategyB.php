@@ -9,6 +9,7 @@ use Timer\Clock;
 class StrategyB implements StrategyInterface
 {
     protected $factory;
+    protected $board;
     protected $letters_to_cells = [];
     protected $cells_to_letters = [];
 
@@ -19,20 +20,20 @@ class StrategyB implements StrategyInterface
 
     public function solve(Board $board)
     {
+        $this->board = $board;
         $letters = ['e','t','a','o','i','n','s','h','r','d','l','c','u','m','w','f','g','y','p','b','v','k','j','x','q','z'];
         $clock = new Clock;
         while (count($letters)) {
             $clock->start();
-            $results = $this->solveAll($board, $letters);
-            #printf("One iteration took %f\n", $clock->stop());
+            $results = $this->solveAll($letters);
+            printf("One iteration took %f\n", $clock->stop());
             $letters = array_keys($results);
+            printf("%d letters left\n", count($letters));
         }
     }
 
-    protected function solveAll(Board $board, $letters)
+    protected function solveAll($letters)
     {
-        $this->board = $board;
-
         // generate data on the values Cells could be
         // these should be refactored to separate classes?
         $this->letters_to_cells = [];
