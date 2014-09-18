@@ -1,13 +1,13 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\Stats\StatsRepository;
-use Codewords\IRule;
+use Codewords\RuleInterface;
 use Codewords\Board\Cell;
 
 /**
 * Tests if a Cell appears as the last letter in any Word
 */
-class NotLastRule implements IRule
+class NotLastRule implements RuleInterface
 {
     protected $stats_repo;
 

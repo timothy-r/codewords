@@ -1,7 +1,7 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\Stats\StatsRepository;
-use Codewords\IRule;
+use Codewords\RuleInterface;
 use Codewords\Board\Cell;
 
 /**
@@ -9,7 +9,7 @@ use Codewords\Board\Cell;
 *
 * @todo inject Words not Board - or use Cell::getBoard() accessor?
 */
-class FollowedByRule implements IRule
+class FollowedByRule implements RuleInterface
 {
     protected $stats_repo;
 

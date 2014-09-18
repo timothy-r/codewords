@@ -2,7 +2,7 @@
 
 use Codewords\Board\Board;
 use Codewords\Stats\StatsRepository;
-use Codewords\IRule;
+use Codewords\RuleInterface;
 use Codewords\Board\Cell;
 
 /**
@@ -11,7 +11,7 @@ use Codewords\Board\Cell;
 * @todo inject stats instance or stats repo
 * @todo inject Words not Game
 */
-class NotDoubleRule implements IRule
+class NotDoubleRule implements RuleInterface
 {
     protected $stats_repo;
 
