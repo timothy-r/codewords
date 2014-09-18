@@ -60,10 +60,13 @@ class FindLetter implements IFinder
         if (count($results) !== 1){
             $len = count($results);
             for($i = 0; $i < $len; $i++){
-                if (!$this->testDictionary($board, $results[$i])){
+                if (!$this->testDictionary($results[$i])){
                     unset($results[$i]);
                 }
             }
+        } else {
+            //printf("Only one result for '%s' so not testing dictionary\n", current($results)->getCharacter());
+
         }
         return $results;
     }
@@ -85,11 +88,11 @@ class FindLetter implements IFinder
     /**
     * consider factoring this method out into a separate class - a rule class?
     */
-    protected function testDictionary(Board $board, Cell $cell)
+    protected function testDictionary(Cell $cell)
     {
-        // get words that contain $cell from Board
-        $words = $board->getWordsContainingCell($cell);
-        $word_pattern = new WordPattern($board->getCells());
+        // get words that contain $cell
+        $words = $cell->getWords();
+        $word_pattern = new WordPattern($cell->getBoard()->getCells());
         
         #print __METHOD__ . " cell = " . $cell->getNumber() . " {$this->letter} words = " . count($words)."\n";
 
