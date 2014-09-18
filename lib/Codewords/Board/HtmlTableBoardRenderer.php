@@ -10,7 +10,7 @@ class HtmlTableBoardRenderer implements IBoardRenderer
 {
     public function render(Board $board)
     {
-        $result = "<table>\n";
+        $result = '<table style="border-color: #000; border-width: 1px;">';
 
         $length = $board->getLength();
         for ($y = 0; $y < $length; $y++){
@@ -18,7 +18,7 @@ class HtmlTableBoardRenderer implements IBoardRenderer
             for ($x = 0; $x < $length; $x++) {
                 $cell = $board->getCell($x, $y);
                 if ($cell->isNull()){
-                    $result .= '<td></td>';
+                    $result .= '<td style="background-color:#000"></td>';
                 } else if ($character = $cell->getCharacter()){
                     $result .= sprintf('<td>%s</td>', $character);
                 } else {
