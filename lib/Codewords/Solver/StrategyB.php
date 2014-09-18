@@ -93,26 +93,19 @@ class StrategyB implements StrategyInterface
     */
     protected function solveLettersWithOneCell()
     {
-        $clear = [];
-
         foreach($this->letters_to_cells as $letter => $cells){
             if (count($cells) == 1){
                 $cell = current($cells);
-                //print __METHOD__ . " Setting Cell {$cell->getNumber()} to {$letter}\n";
+                # print __METHOD__ . " Setting Cell {$cell->getNumber()} to {$letter}\n";
                 $this->setCellCharacter($cell, $letter);
-                $clear []= $letter;
+                unset($this->letters_to_cells[$letter]);
             }
-        }
-
-        // remove items here
-        foreach ($clear as $letter){
-            unset($this->letters_to_cells[$letter]);
         }
     }
 
     protected function setCellCharacter(Cell $cell, $letter)
     {
-        //print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
+        # print __METHOD__ . " Setting Cell {$cell->getNumber()} to $letter\n";
         $cell->setCharacter($letter);
         return;
         $renderer = new HtmlTableBoardRenderer;
