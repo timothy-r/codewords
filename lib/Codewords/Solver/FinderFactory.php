@@ -1,7 +1,6 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\IDictionary;
-use Codewords\Board\Board;
 use Codewords\Solver\FindLetter;
 use Codewords\Solver\NotDoubleRule;
 use Codewords\Solver\NotLastRule;
@@ -25,35 +24,36 @@ class FinderFactory
         $this->dictionary = $dictionary;
     }
 
-    public function create(Board $board, $letter)
+    public function create($letter)
     {
+        //printf("%s letter %s\n", __METHOD__, $letter);
         // get rules for Letter here
-        $rules = $this->createRules($letter, $board);
+        $rules = $this->createRules($letter);
         return new FindLetter($this->dictionary, $letter, $rules);
     }
 
-    protected function createRules($letter, Board $board)
+    protected function createRules($letter)
     {
         $rules = [];
         switch($letter){
             case 'i':
-                $rules []= new NotDoubleRule($board, $this->stats_repository);
+                $rules []= new NotDoubleRule($this->stats_repository);
                 break;
             case 'q':
-                $rules []= new NotDoubleRule($board, $this->stats_repository);
-                $rules []= new NotLastRule($board, $this->stats_repository);
+                $rules []= new NotDoubleRule($this->stats_repository);
+                $rules []= new NotLastRule($this->stats_repository);
                 // q can be followed by at most 2 different Cells, u & i
                 // rather than specify the number of followers specify their Characters
-                $rules []= new FollowedByRule($board, $this->stats_repository, 2);
+                $rules []= new FollowedByRule($this->stats_repository, 2);
                 break;
             case 'u':
                 // vacuum has a double u, and continuum
-                $rules []= new NotDoubleRule($board, $this->stats_repository);
+                $rules []= new NotDoubleRule($this->stats_repository);
                 // you ends in a u and bijou and fondu
-                $rules []= new NotLastRule($board, $this->stats_repository);
+                $rules []= new NotLastRule($this->stats_repository);
                 break;
             case 'x':
-                $rules []= new NotDoubleRule($board, $this->stats_repository);
+                $rules []= new NotDoubleRule($this->stats_repository);
                 break;
         }
         return $rules;

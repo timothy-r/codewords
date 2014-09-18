@@ -39,7 +39,7 @@ class FindLetterIntegrationTest extends IntegrationTest
         }
         
         $factory = new FinderFactory($this->stats_repository, $this->dictionary);
-        $solver = $factory->create($this->board, $letter);
+        $solver = $factory->create($letter);
         $results = $solver->solve($this->board);
 
         $numbers = array_map(function($cell){ return $cell->getNumber();}, $results);

@@ -11,7 +11,7 @@ class FollowedByTest extends RuleTest
 {
     public function testCellThatHasSameFollowersPassesRule()
     {
-        $rule = new FollowedByRule($this->board, $this->stats_repository, 1);
+        $rule = new FollowedByRule($this->stats_repository, 1);
         $result = [1];
         $this->givenAStatObject($result);    
 
@@ -21,7 +21,7 @@ class FollowedByTest extends RuleTest
 
     public function testCellThatHasLessFollowersPassesRule()
     {
-        $rule = new FollowedByRule($this->board, $this->stats_repository, 2);
+        $rule = new FollowedByRule($this->stats_repository, 2);
         $result = [4];
         $this->givenAStatObject($result);    
 
@@ -31,7 +31,7 @@ class FollowedByTest extends RuleTest
 
     public function testCellThatHasMoreFollowersFailsRule()
     {
-        $rule = new  FollowedByRule($this->board, $this->stats_repository, 2);
+        $rule = new  FollowedByRule($this->stats_repository, 2);
         $result = [3,5,9];
         $this->givenAStatObject($result);    
         

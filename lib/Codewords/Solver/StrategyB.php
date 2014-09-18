@@ -41,7 +41,7 @@ class StrategyB implements StrategyInterface
         $clock = new Clock;
         foreach($letters as $letter){
             $clock->start();
-            $finder = $this->factory->create($this->board, $letter);
+            $finder = $this->factory->create($letter);
             $cells = $finder->solve($this->board);
             $this->letters_to_cells [$letter]= $cells;
 

@@ -15,8 +15,8 @@ abstract class RuleTest extends BaseTest
     public function setUp()
     {
         parent::setUp();
-        $this->givenAStatsRepository();
         $this->givenABoard();
+        $this->givenAStatsRepository();
         $this->cell = $this->getMock('Codewords\Board\Cell', [], [$this->board, 1]);
     }
 

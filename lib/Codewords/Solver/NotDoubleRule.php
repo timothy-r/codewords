@@ -13,12 +13,10 @@ use Codewords\Board\Cell;
 */
 class NotDoubleRule implements IRule
 {
-    protected $board;
     protected $stats_repo;
 
-    public function __construct(Board $board, StatsRepository $stats_repo)
+    public function __construct(StatsRepository $stats_repo)
     {
-        $this->board = $board;
         $this->stats_repo = $stats_repo;
     }
 

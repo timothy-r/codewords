@@ -14,7 +14,7 @@ class NotDoubleTest extends RuleTest
     public function setUp()
     {
         parent::setUp();
-        $this->rule = new NotDoubleRule($this->board, $this->stats_repository);
+        $this->rule = new NotDoubleRule($this->stats_repository);
     }
 
     public function testCellThatHasNoDoublesPassesRule()

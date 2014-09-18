@@ -53,6 +53,7 @@ class WordPattern
                 }
             }
         }
+        //printf("%s\n", $pattern);
         return '^'.$pattern.'$';
     }
 }

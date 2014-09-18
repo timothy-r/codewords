@@ -15,7 +15,7 @@ class NotLastTest extends RuleTest
     public function setUp()
     {
         parent::setUp();
-        $this->rule = new NotLastRule($this->board, $this->stats_repository);
+        $this->rule = new NotLastRule($this->stats_repository);
     }
 
     public function testCellThatHasNoLastsPassesRule()
