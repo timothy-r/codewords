@@ -10,7 +10,7 @@ class HtmlTableBoardRenderer implements IBoardRenderer
 {
     public function render(Board $board)
     {
-        $result = '<table style="border-color: #000; border-width: 1px;">';
+        $result = '<table style="border-color: #000; border-width: 1px;">' . "\n";
 
         $length = $board->getLength();
         for ($y = 0; $y < $length; $y++){

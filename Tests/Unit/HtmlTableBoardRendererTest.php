@@ -13,23 +13,23 @@ class HtmlTableBoardRendererTest extends BaseTest
     {
         return [
             [2, 12, null, 
-"<table>
+'<table style="border-color: #000; border-width: 1px;">
 <tr><td>12</td><td>12</td></tr>
 <tr><td>12</td><td>12</td></tr>
 </table>
-"],
+'],
             [2, 12, 'C',
-"<table>
+'<table style="border-color: #000; border-width: 1px;">
 <tr><td>C</td><td>C</td></tr>
 <tr><td>C</td><td>C</td></tr>
 </table>
-"],
+'],
             [2, 0, null,
-"<table>
-<tr><td></td><td></td></tr>
-<tr><td></td><td></td></tr>
+'<table style="border-color: #000; border-width: 1px;">
+<tr><td style="background-color:#000"></td><td style="background-color:#000"></td></tr>
+<tr><td style="background-color:#000"></td><td style="background-color:#000"></td></tr>
 </table>
-"],
+'],
         ];
     }
 
