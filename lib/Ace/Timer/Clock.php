@@ -1,4 +1,4 @@
-<?php namespace Timer;
+<?php namespace Ace\Timer;
 
 class Clock
 {

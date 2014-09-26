@@ -16,7 +16,7 @@
 	"autoload": {
         "psr-0":{
             "Codewords": "lib/",
-            "Timer": "lib/"
+            "Ace": "lib/"
         }
 	},
 	"config": {

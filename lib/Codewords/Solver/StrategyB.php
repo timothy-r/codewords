@@ -4,7 +4,9 @@ use Codewords\StrategyInterface;
 use Codewords\Board\Cell;
 use Codewords\Board\Board;
 use Codewords\Solver\FinderFactory;
-use Timer\Clock;
+use Codewords\Board\HtmlTableBoardRenderer;
+
+use Ace\Timer\Clock;
 
 class StrategyB implements StrategyInterface
 {

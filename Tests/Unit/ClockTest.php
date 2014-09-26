@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/BaseTest.php');
 
-use Timer\Clock;
+use Ace\Timer\Clock;
 
 /**
 * @group unit
