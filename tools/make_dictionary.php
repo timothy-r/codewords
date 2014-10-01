@@ -30,7 +30,7 @@ function write_dict(array $dict, $file)
 }
 
 // $in is a file with a list of words, one per line
-// $dict is the file to write the data to (it may exist already)
+// $data is the file to write the data to (it may exist already)
 $in = $argv[1];
 $data = $argv[2];
 
