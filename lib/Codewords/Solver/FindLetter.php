@@ -1,7 +1,7 @@
 <?php namespace Codewords\Solver;
 
 use Codewords\IFinder;
-use Codewords\IDictionary;
+use Codewords\DictionaryInterface;
 use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
@@ -22,7 +22,7 @@ class FindLetter implements IFinder
     
     protected $dictionary;
 
-    public function __construct(IDictionary $dictionary, $letter, array $rules)
+    public function __construct(DictionaryInterface $dictionary, $letter, array $rules)
     {
         $this->dictionary = $dictionary;
         $this->letter = $letter;

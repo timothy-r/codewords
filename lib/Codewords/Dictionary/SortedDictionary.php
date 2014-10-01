@@ -1,12 +1,12 @@
 <?php namespace Codewords\Dictionary;
 
-use Codewords\IDictionary;
+use Codewords\DictionaryInterface;
 use Codewords\Dictionary\Dictionary;
 
 /**
-* implements IDictionary using a data grouped by word length
+* implements DictionaryInterface using a data grouped by word length
 */
-class SortedDictionary extends Dictionary implements IDictionary
+class SortedDictionary extends Dictionary implements DictionaryInterface
 {
     /**
     * @var array of Word data

@@ -1,6 +1,6 @@
 <?php namespace Codewords\Solver;
 
-use Codewords\IDictionary;
+use Codewords\DictionaryInterface;
 use Codewords\Solver\FindLetter;
 use Codewords\Solver\NotDoubleRule;
 use Codewords\Solver\NotLastRule;
@@ -18,7 +18,7 @@ class FinderFactory
 
     protected $dictonary;
 
-    public function __construct(StatsRepository $stats_repository, IDictionary $dictionary)
+    public function __construct(StatsRepository $stats_repository, DictionaryInterface $dictionary)
     {
         $this->stats_repository = $stats_repository;
         $this->dictionary = $dictionary;

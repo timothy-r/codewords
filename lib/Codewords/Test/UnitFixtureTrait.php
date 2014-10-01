@@ -42,7 +42,7 @@ trait UnitFixtureTrait
 
     protected function givenAMockDictionary()
     {
-        $this->dictionary =  $this->getMockBuilder('Codewords\IDictionary')->disableOriginalConstructor()->getMock();
+        $this->dictionary =  $this->getMockBuilder('Codewords\DictionaryInterface')->disableOriginalConstructor()->getMock();
     }
 
     protected function givenABoard()

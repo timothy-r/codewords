@@ -1,12 +1,12 @@
 <?php namespace Codewords\Dictionary;
 
-use Codewords\IDictionary;
+use Codewords\DictionaryInterface;
 use Codewords\Dictionary\Dictionary;
 
 /**
-* implements IDictionary using a data from a unix dictionary format file
+* implements DictionaryInterface using a data from a unix dictionary format file
 */
-class FileDictionary extends Dictionary implements IDictionary
+class FileDictionary extends Dictionary implements DictionaryInterface
 {
     /**
     * @var array of words

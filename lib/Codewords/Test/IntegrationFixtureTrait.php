@@ -9,7 +9,7 @@ use Exception;
 trait IntegrationFixtureTrait
 {
     /**
-    * @var Codewords\IDictionary
+    * @var Codewords\DictionaryInterface
     */
     protected $dictionary;
     
