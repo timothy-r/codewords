@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/BaseTest.php');
+require_once(__DIR__ . '/../BaseTest.php');
 
 use Codewords\Dictionary\ArrayDictionary;
 
