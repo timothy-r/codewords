@@ -8,7 +8,7 @@ use Codewords\Test\IntegrationFixtureTrait;
 /**
 * @group integration
 */
-class FindLetterTest extends BaseTest
+class FindLetterTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
 

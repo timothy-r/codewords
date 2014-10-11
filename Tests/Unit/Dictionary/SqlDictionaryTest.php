@@ -6,7 +6,7 @@ use Codewords\Dictionary\SqlDictionary;
 /**
 * @group unit
 */
-class SqlDictionaryTest extends BaseTest
+class SqlDictionaryTest extends PHPUnit_Framework_TestCase
 {
 
     protected $mock_statement;

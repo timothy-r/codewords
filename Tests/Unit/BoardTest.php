@@ -9,7 +9,7 @@ use Codewords\Test\UnitFixtureTrait;
 /**
 * @group unit
 */
-class BoardTest extends BaseTest
+class BoardTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
 

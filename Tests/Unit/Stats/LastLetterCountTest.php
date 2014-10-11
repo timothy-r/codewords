@@ -9,7 +9,7 @@ use Codewords\Test\UnitFixtureTrait;
 /**
 * @group unit
 */
-class LastLetterCountTest extends BaseTest
+class LastLetterCountTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
 

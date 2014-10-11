@@ -8,7 +8,7 @@ use Codewords\Board\CellCollection;
 /**
 * @group unit
 */
-class CellCollectionTest extends BaseTest
+class CellCollectionTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
 

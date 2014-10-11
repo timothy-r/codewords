@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../BaseTest.php');
 use Codewords\Source\Code2;
 use Codewords\Test\FixtureTrait;
 
-class Code2Test extends BaseTest
+class Code2Test extends PHPUnit_Framework_TestCase
 {
     use FixtureTrait;
 

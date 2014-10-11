@@ -7,7 +7,7 @@ use Codewords\Error\UnknownStatName;
 /**
 * @group unit
 */
-class StatsRepositoryTest extends BaseTest
+class StatsRepositoryTest extends PHPUnit_Framework_TestCase
 {
     public function getStatNames()
     {

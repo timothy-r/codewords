@@ -6,7 +6,7 @@ use Codewords\Test\UnitFixtureTrait;
 /**
 * @group unit
 */
-abstract class RuleTest extends BaseTest
+abstract class RuleTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
     

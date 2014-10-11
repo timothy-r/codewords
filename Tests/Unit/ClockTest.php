@@ -6,7 +6,7 @@ use Ace\Timer\Clock;
 /**
 * @group unit
 */
-class ClockTest extends BaseTest
+class ClockTest extends PHPUnit_Framework_TestCase
 {
     public function testStartedClockHasPositiveElapsed()
     {

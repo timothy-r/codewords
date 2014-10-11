@@ -6,7 +6,7 @@ use Codewords\Dictionary\ArrayDictionary;
 /**
 * @group unit
 */
-class ArrayDictionaryTest extends BaseTest
+class ArrayDictionaryTest extends PHPUnit_Framework_TestCase
 {
     public function testFindReturnsAllMatchingWords()
     {

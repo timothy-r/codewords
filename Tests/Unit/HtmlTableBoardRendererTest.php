@@ -7,7 +7,7 @@ use Codewords\Board\HtmlTableBoardRenderer;
 /**
 * @group unit
 */
-class HtmlTableBoardRendererTest extends BaseTest
+class HtmlTableBoardRendererTest extends PHPUnit_Framework_TestCase
 {
     public function getCellFixtures()
     {

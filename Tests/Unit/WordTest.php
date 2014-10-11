@@ -8,7 +8,7 @@ use Codewords\Board\Cell;
 /**
 * @group unit
 */
-class WordTest extends BaseTest
+class WordTest extends PHPUnit_Framework_TestCase
 {
     use UnitFixtureTrait;
 
