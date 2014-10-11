@@ -28,9 +28,9 @@ class StrategyB implements StrategyInterface
         while (count($letters)) {
             $clock->start();
             $results = $this->solveAll($letters);
-            printf("One iteration took %f\n", $clock->stop());
+            #printf("One iteration took %f\n", $clock->stop());
             $letters = array_keys($results);
-            printf("%d letters left\n", count($letters));
+            #printf("%d letters left\n", count($letters));
         }
     }
 
@@ -56,7 +56,7 @@ class StrategyB implements StrategyInterface
 
             $numbers = array_map(function($cell){ return $cell->getNumber();}, $cells);
             #printf("Letter $letter took %f\n", $clock->stop());
-            //printf("%s results %s\n", $letter, implode(',', $numbers));
+            #printf("%s results %s\n", $letter, implode(',', $numbers));
         }
         
         $this->solveCellsWithOneLetter();
