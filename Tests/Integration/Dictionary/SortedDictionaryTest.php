@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/IntegrationTest.php');
+require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Dictionary\SortedDictionary;
 
@@ -22,7 +22,7 @@ class SortedDictionaryTest extends IntegrationTest
     */
     public function testFindReturnsAllMatchingWords($pattern, $expected)
     {
-        $dictionary = new SortedDictionary(__DIR__.'/../../config/dict-2');
+        $dictionary = new SortedDictionary(__DIR__.'/../../../config/dict-2');
         $result = $dictionary->find($pattern, strlen($expected[0]));
         
         $this->assertTrue(is_array($result));

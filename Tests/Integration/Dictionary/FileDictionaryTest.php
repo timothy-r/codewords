@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/IntegrationTest.php');
+require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Dictionary\FileDictionary;
 
@@ -11,7 +11,7 @@ class FileDictionaryTest extends IntegrationTest
     public function testFindReturnsAllMatchingWords()
     {
         $pattern = '^.a.$';
-        $dictionary = new FileDictionary(__DIR__.'/../../config/words');
+        $dictionary = new FileDictionary(__DIR__.'/../../../config/words');
         $result = $dictionary->find($pattern, 3);
 
         $this->assertTrue(is_array($result));
