@@ -19,7 +19,6 @@ class FileDictionary extends Dictionary implements DictionaryInterface
     }
 
     /**
-    *
     * @return array of matching words
     */
     public function find($pattern, $length)
@@ -28,5 +27,13 @@ class FileDictionary extends Dictionary implements DictionaryInterface
             $this->setWords(file($this->file));
         }
         return $this->lookup($pattern);
+    }
+
+    public function words($length)
+    {
+        if (!$this->words){
+            $this->setWords(file($this->file));
+        }
+        return parent::words($length);
     }
 }

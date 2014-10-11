@@ -1,5 +1,8 @@
 <?php namespace Codewords\Dictionary;
 
+/**
+* @todo trim words once on loading not for each invocation of lookup and words
+*/
 abstract class Dictionary
 {
     /**
@@ -29,7 +32,7 @@ abstract class Dictionary
     {
         $result = [];
         foreach($this->words as $word){
-            if (strlen($word) == $length){
+            if (strlen(trim($word)) == $length){
                 $result []= $word;
             }
         }
