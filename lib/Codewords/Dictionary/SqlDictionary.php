@@ -36,4 +36,9 @@ class SqlDictionary implements DictionaryInterface
         
         return $words;
     }
+
+    public function words($length)
+    {
+        
+    }
 }

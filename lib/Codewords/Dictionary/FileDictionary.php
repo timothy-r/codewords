@@ -9,11 +9,6 @@ use Codewords\Dictionary\Dictionary;
 class FileDictionary extends Dictionary implements DictionaryInterface
 {
     /**
-    * @var array of words
-    */
-    protected $words;
-
-    /**
     * @var string
     */
     protected $file;
@@ -30,8 +25,8 @@ class FileDictionary extends Dictionary implements DictionaryInterface
     public function find($pattern, $length)
     {
         if (!$this->words){
-            $this->words = file($this->file);
+            $this->setWords(file($this->file));
         }
-        return $this->lookup($this->words, $pattern);
+        return $this->lookup($pattern);
     }
 }

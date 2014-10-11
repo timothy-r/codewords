@@ -2,16 +2,31 @@
 
 abstract class Dictionary
 {
-    protected function lookup($words, $pattern)
+    /**
+    * @var array of words
+    */
+    protected $words;
+    
+    protected function setWords($words)
+    {
+        $this->words = $words;
+    }
+
+    protected function lookup($pattern)
     {
         $result = [];
         $pattern = strtolower($pattern);
-        foreach($words as $word){
+        foreach($this->words as $word){
             $word = trim($word);
             if (preg_match('#'.$pattern.'#', $word)){
                 $result []= $word;
             }
         }
         return $result;
+    }
+
+    public function words($length)
+    {
+        
     }
 }

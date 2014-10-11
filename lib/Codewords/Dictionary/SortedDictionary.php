@@ -33,4 +33,9 @@ class SortedDictionary implements DictionaryInterface
         preg_match_all('#'.$pattern.'#m', $words, $matches);
         return $matches[0];
     }
+
+    public function words($length)
+    {
+        
+    }
 }

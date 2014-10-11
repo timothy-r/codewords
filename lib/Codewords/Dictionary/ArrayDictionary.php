@@ -8,14 +8,9 @@ use Codewords\Dictionary\Dictionary;
 */
 class ArrayDictionary extends Dictionary implements DictionaryInterface
 {
-    /**
-    * @var array of words
-    */
-    protected $words;
-
     public function __construct(array $words)
     {
-        $this->words = $words;
+        $this->setWords($words);
     }
 
     /**
@@ -24,6 +19,6 @@ class ArrayDictionary extends Dictionary implements DictionaryInterface
     */
     public function find($pattern, $length)
     {
-        return $this->lookup($this->words, $pattern);
+        return $this->lookup($pattern);
     }
 }
