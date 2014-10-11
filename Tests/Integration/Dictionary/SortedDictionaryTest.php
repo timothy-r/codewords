@@ -1,12 +1,11 @@
 <?php
-require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Dictionary\SortedDictionary;
 
 /**
 * @group integration
 */
-class SortedDictionaryTest extends IntegrationTest
+class SortedDictionaryTest extends PHPUnit_Framework_TestCase
 {
     public function getFixtures()
     {

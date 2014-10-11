@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . '/IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
@@ -10,7 +9,7 @@ use Codewords\Board\CsvBoardReader;
 /**
 * @group integration
 */
-class BoardFactoryTest extends IntegrationTest
+class BoardFactoryTest extends PHPUnit_Framework_TestCase
 {
     use IntegrationFixtureTrait;
     use FixtureTrait;

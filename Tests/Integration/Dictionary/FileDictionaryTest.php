@@ -1,12 +1,11 @@
 <?php
-require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Dictionary\FileDictionary;
 
 /**
 * @group integration
 */
-class FileDictionaryTest extends IntegrationTest
+class FileDictionaryTest extends PHPUnit_Framework_TestCase
 {
     public function testFindReturnsAllMatchingWords()
     {

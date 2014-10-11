@@ -1,9 +1,9 @@
 <?php
 
-require_once(__DIR__ . '/../IntegrationTest.php');
-
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
+use Codewords\Test\AssertionTrait;
+
 use Codewords\Solver\StrategyB;
 use Codewords\Board\Cell;
 use Codewords\Solver\FinderFactory;
@@ -12,10 +12,11 @@ use Codewords\Solver\FinderFactory;
 * @group slow
 * @group integration
 */
-class StrategyBIntegrationTest extends IntegrationTest
+class StrategyBIntegrationTest extends PHPUnit_Framework_TestCase
 {
     use IntegrationFixtureTrait;
     use FixtureTrait;
+    use AssertionTrait;
 
     public function getFixtures()
     {

@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . '/../IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
@@ -8,7 +7,7 @@ use Codewords\Solver\FinderFactory;
 /**
 * @group integration
 */
-class FinderFactoryTest extends IntegrationTest
+class FinderFactoryTest extends PHPUnit_Framework_TestCase
 {
     use IntegrationFixtureTrait;
     use FixtureTrait;

@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . '/IntegrationTest.php');
 
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
@@ -8,7 +7,7 @@ use Codewords\BoardLoader;
 /**
 * @group integration
 */
-class BoardLoaderTest extends IntegrationTest
+class BoardLoaderTest extends PHPUnit_Framework_TestCase
 {
     use IntegrationFixtureTrait;
     use FixtureTrait;

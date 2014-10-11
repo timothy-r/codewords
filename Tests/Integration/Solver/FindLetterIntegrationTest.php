@@ -1,15 +1,16 @@
 <?php
 
-require_once(__DIR__ . '/../IntegrationTest.php');
-
 use Codewords\Test\IntegrationFixtureTrait;
 use Codewords\Test\FixtureTrait;
+use Codewords\Test\AssertionTrait;
+
 use Codewords\Solver\FinderFactory;
 
-class FindLetterIntegrationTest extends IntegrationTest
+class FindLetterIntegrationTest extends PHPUnit_Framework_TestCase
 {
     use IntegrationFixtureTrait;
     use FixtureTrait;
+    use AssertionTrait;
 
     public function getValidBoardData()
     {
