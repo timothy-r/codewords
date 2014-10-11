@@ -43,7 +43,7 @@ abstract class Dictionary
     {
         $result = 0;
         foreach($this->words as $word){
-            $result = max($result, strlen($word));
+            $result = max($result, strlen(trim($word)));
         }
         return $result;
     }
