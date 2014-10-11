@@ -24,9 +24,7 @@ class SortedDictionary implements DictionaryInterface
 
     public function find($pattern, $length)
     {
-        if (!count($this->dict)){
-            $this->dict = require($this->file);
-        }
+        $this->load();    
 
         // assume that $pattern contains ^ and $ chars
         $words = $this->dict[$length];
@@ -36,9 +34,7 @@ class SortedDictionary implements DictionaryInterface
 
     public function words($length)
     {
-        if (!count($this->dict)){
-            $this->dict = require($this->file);
-        }
+        $this->load();    
 
         if (isset($this->dict[$length])){
             $words = $this->dict[$length];
@@ -50,5 +46,20 @@ class SortedDictionary implements DictionaryInterface
 
     public function longestWord()
     {
+        $this->load();
+
+        $lengths = array_keys($this->dict);
+        if (!count($lengths)){
+            return 0;
+        }
+        sort($lengths);
+        return array_pop($lengths);
+    }
+
+    protected function load()
+    {
+        if (!count($this->dict)){
+            $this->dict = require($this->file);
+        }
     }
 }

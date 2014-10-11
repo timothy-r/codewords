@@ -45,4 +45,18 @@ class SortedDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($result));
         $this->assertSame(4, count($result));
     }
+
+    public function testLongestWordReturnsZeroWhenNoWordsSet()
+    {
+        $dictionary = new SortedDictionary(__DIR__.'/../../fixtures/empty-dict');
+        $result = $dictionary->longestWord();
+        $this->assertSame(0, $result);
+    }
+
+    public function testLongestWord()
+    {
+        $dictionary = new SortedDictionary(__DIR__.'/../../fixtures/dict-2');
+        $result = $dictionary->longestWord();
+        $this->assertSame(7, $result);
+    }
 }
