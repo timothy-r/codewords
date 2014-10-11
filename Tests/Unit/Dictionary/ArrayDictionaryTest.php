@@ -19,4 +19,22 @@ class ArrayDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(in_array('cat', $result));
         $this->assertTrue(in_array('mat', $result));
     }
+
+    public function testWordsReturnsEmptyWhenNoWordsOfLengthExist()
+    {
+        $words = ['cat', 'mat', 'mouse'];
+        $dictionary = new ArrayDictionary($words);
+        $result = $dictionary->words(4);
+        $this->assertTrue(is_array($result));
+        $this->assertSame(0, count($result));
+    }
+
+    public function testWordsReturnsArrayOfWords()
+    {
+        $words = ['cat', 'mat', 'mouse'];
+        $dictionary = new ArrayDictionary($words);
+        $result = $dictionary->words(3);
+        $this->assertTrue(is_array($result));
+        $this->assertSame(2, count($result));
+    }
 }

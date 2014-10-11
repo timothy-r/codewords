@@ -27,6 +27,12 @@ abstract class Dictionary
 
     public function words($length)
     {
-        
+        $result = [];
+        foreach($this->words as $word){
+            if (strlen($word) == $length){
+                $result []= $word;
+            }
+        }
+        return $result;
     }
 }
