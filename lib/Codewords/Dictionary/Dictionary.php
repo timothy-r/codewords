@@ -38,4 +38,8 @@ abstract class Dictionary
         }
         return $result;
     }
+
+    public function longestWord()
+    {
+    }
 }

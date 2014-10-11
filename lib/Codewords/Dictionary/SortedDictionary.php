@@ -10,7 +10,7 @@ class SortedDictionary implements DictionaryInterface
     /**
     * @var array of Word data
     */
-    protected $dict;
+    protected $dict = [];
 
     /**
     * @var string
@@ -24,7 +24,7 @@ class SortedDictionary implements DictionaryInterface
 
     public function find($pattern, $length)
     {
-        if (!is_array($this->dict)){
+        if (!count($this->dict)){
             $this->dict = require($this->file);
         }
 
@@ -36,6 +36,19 @@ class SortedDictionary implements DictionaryInterface
 
     public function words($length)
     {
-        
+        if (!count($this->dict)){
+            $this->dict = require($this->file);
+        }
+
+        if (isset($this->dict[$length])){
+            $words = $this->dict[$length];
+            return explode("\n", $words);
+        } else {
+            return [];
+        }
+    }
+
+    public function longestWord()
+    {
     }
 }

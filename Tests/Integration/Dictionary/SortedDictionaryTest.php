@@ -21,12 +21,28 @@ class SortedDictionaryTest extends PHPUnit_Framework_TestCase
     */
     public function testFindReturnsAllMatchingWords($pattern, $expected)
     {
-        $dictionary = new SortedDictionary(__DIR__.'/../../../config/dict-2');
+        $dictionary = new SortedDictionary(__DIR__.'/../../fixtures/dict-2');
         $result = $dictionary->find($pattern, strlen($expected[0]));
         
         $this->assertTrue(is_array($result));
         foreach ($expected as $exp) {
             $this->assertTrue(in_array($exp, $result));
         }
+    }
+
+    public function testWordsReturnsEmptyWhenNoWordsOfLengthExist()
+    {
+        $dictionary = new SortedDictionary(__DIR__.'/../../fixtures/dict-2');
+        $result = $dictionary->words(9);
+        $this->assertTrue(is_array($result));
+        $this->assertSame(0, count($result));
+    }
+
+    public function testWordsReturnsArrayOfWords()
+    {
+        $dictionary = new SortedDictionary(__DIR__.'/../../fixtures/dict-2');
+        $result = $dictionary->words(3);
+        $this->assertTrue(is_array($result));
+        $this->assertSame(4, count($result));
     }
 }
