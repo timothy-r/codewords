@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . '/../BaseTest.php');
 
 use Codewords\Board;
 use Codewords\Stats\LetterCount;

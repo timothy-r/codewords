@@ -1,5 +1,4 @@
 <?php
-require_once(__DIR__ . '/../BaseTest.php');
 
 use Codewords\Source\CodeWordServer;
 use Codewords\Test\FixtureTrait;
