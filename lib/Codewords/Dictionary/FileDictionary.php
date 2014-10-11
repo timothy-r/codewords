@@ -23,17 +23,26 @@ class FileDictionary extends Dictionary implements DictionaryInterface
     */
     public function find($pattern, $length)
     {
-        if (!$this->words){
-            $this->setWords(file($this->file));
-        }
+        $this->loadWords();
         return $this->lookup($pattern);
     }
 
     public function words($length)
     {
+        $this->loadWords();
+        return parent::words($length);
+    }
+
+    public function longestWord()
+    {
+        $this->loadWords();
+        return parent::longestWord();
+    }
+
+    protected function loadWords()
+    {
         if (!$this->words){
             $this->setWords(file($this->file));
         }
-        return parent::words($length);
     }
 }

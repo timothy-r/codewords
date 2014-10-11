@@ -37,4 +37,19 @@ class ArrayDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($result));
         $this->assertSame(2, count($result));
     }
+
+    public function testLongestWordReturnsZeroWhenNoWordsSet()
+    {
+        $dictionary = new ArrayDictionary([]);
+        $result = $dictionary->longestWord();
+        $this->assertSame(0, $result);
+    }
+
+    public function testLongestWord()
+    {
+        $words = ['cat', 'mat', 'mouse'];
+        $dictionary = new ArrayDictionary($words);
+        $result = $dictionary->longestWord();
+        $this->assertSame(5, $result);
+    }
 }

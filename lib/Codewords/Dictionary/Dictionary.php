@@ -41,5 +41,10 @@ abstract class Dictionary
 
     public function longestWord()
     {
+        $result = 0;
+        foreach($this->words as $word){
+            $result = max($result, strlen($word));
+        }
+        return $result;
     }
 }

@@ -34,4 +34,11 @@ class FileDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($result));
         $this->assertSame(3, count($result));
     }
+
+    public function testLongestWordReturnsZeroWhenNoWordsSet()
+    {
+        $dictionary = new FileDictionary(__DIR__.'/../../fixtures/empty-words');
+        $result = $dictionary->longestWord();
+        $this->assertSame(0, $result);
+    }
 }
