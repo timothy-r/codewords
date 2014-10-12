@@ -37,9 +37,9 @@ $data = file_get_contents($file);
 $container = getDiContainer(__DIR__ . '/config/services.xml');
 
 $board = $container->get('loader')->load($data);
-$renderer = $container->get('renderer');
 
 $result = $container->get('strategy')->solve($board);
 
 #print $renderer->render($result, $board);
+$renderer = $container->get('renderer');
 print $renderer->render($board);
