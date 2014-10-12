@@ -30,6 +30,6 @@ for ($i =1; $i <= $longest; $i++) {
     // write out sql statements
     $words = $dictionary->words($i);
     foreach ($words as $word) {
-        printf("INSERT INTO dictionary (word, length) VALUES ('%s', '%d');\n", strtolower(trim($word)), $i); 
+        printf("INSERT INTO dictionary (word, length) VALUES ('%s', %d);\n", strtolower(trim($word)), $i); 
     }
 }
