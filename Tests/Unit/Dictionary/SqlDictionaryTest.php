@@ -8,32 +8,37 @@ use Codewords\Dictionary\SqlDictionary;
 class SqlDictionaryTest extends PHPUnit_Framework_TestCase
 {
 
-    protected $mock_statement;
+    protected $mock_query__statement;
 
     protected $mock_db_connection;
+    
+    public function setUp()
+    {
+        parent::setUp();
+        $this->givenAMockQueryStatement();
+        $this->givenAMockWordsStatement();
+        $this->givenAMockDbConnection();
+    }
 
     public function testFindReturnsAllMatchingWords()
     {
-        $this->givenAMockStatement();
-        $this->givenAMockDbConnection();
-
         $pattern = '^.a.$';
         $length = 3;
 
         // set mock db expectations
-        $this->mock_statement->expects($this->at(0))
+        $this->mock_query__statement->expects($this->at(0))
             ->method('bindValue')
             ->with('pattern', $pattern);
 
-        $this->mock_statement->expects($this->at(1))
+        $this->mock_query__statement->expects($this->at(1))
             ->method('bindValue')
             ->with('length', $length);
 
-        $this->mock_statement->expects($this->any())
+        $this->mock_query__statement->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(0));
 
-        $this->mock_statement->expects($this->any())
+        $this->mock_query__statement->expects($this->any())
             ->method('fetchAll')
             ->will($this->returnValue([['cat'],['mat']]));
 
@@ -45,12 +50,43 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertSame(2, count($result));
         $this->assertTrue(in_array('cat', $result));
         $this->assertTrue(in_array('mat', $result));
-        
+    }
+
+    public function testWordsReturnsEmptyWhenNoWordsOfLengthExist()
+    {
+        $length = 3;
+
+        // set mock db expectations
+        $this->mock_words__statement->expects($this->at(0))
+            ->method('bindValue')
+            ->with('length', $length);
+
+        $this->mock_words__statement->expects($this->any())
+            ->method('execute')
+            ->will($this->returnValue(0));
+
+        $this->mock_words__statement->expects($this->any())
+            ->method('fetchAll')
+            ->will($this->returnValue([]));
+
+        $dictionary = new SqlDictionary($this->mock_db_connection);
+
+        $result = $dictionary->words($length);
+        $this->assertTrue(is_array($result), "Expected SqlDictionary::words() to return an array");
+        $this->assertSame(0, count($result));
     }
     
-    protected function givenAMockStatement()
+    protected function givenAMockQueryStatement()
     {
-        $this->mock_statement = $this->getMockBuilder('Doctrine\DBAL\Statement')
+        $this->mock_query__statement = $this->getMockBuilder('Doctrine\DBAL\Statement')
+            ->setMethods(['bindValue', 'execute', 'fetchAll'])
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+    
+    protected function givenAMockWordsStatement()
+    {
+        $this->mock_words__statement = $this->getMockBuilder('Doctrine\DBAL\Statement')
             ->setMethods(['bindValue', 'execute', 'fetchAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -63,9 +99,13 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->mock_db_connection->expects($this->any())
+        $this->mock_db_connection->expects($this->at(0))
             ->method('prepare')
-            ->will($this->returnValue($this->mock_statement));
+            ->will($this->returnValue($this->mock_query__statement));
+
+        $this->mock_db_connection->expects($this->at(1))
+            ->method('prepare')
+            ->will($this->returnValue($this->mock_words__statement));
     }
 }
 
