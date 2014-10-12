@@ -25,14 +25,14 @@ trait IntegrationFixtureTrait
 
     protected function givenAFileDictionary()
     {
-        $file = __DIR__ . '/../../../config/words';
-        //$words = file(__DIR__.'/../../config/words');
+        $file = __DIR__ . '/../../../data/words';
+        //$words = file(__DIR__.'/../../data/words');
         $this->dictionary = new FileDictionary($file);
     }
     
     protected function givenASortedDictionary()
     {
-        $file = __DIR__ . '/../../../config/dict-3';
+        $file = __DIR__ . '/../../../data/dict-3';
         $this->dictionary = new SortedDictionary($file);
     }
 
