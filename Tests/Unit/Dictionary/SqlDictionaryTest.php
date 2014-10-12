@@ -52,10 +52,19 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(in_array('mat', $result));
     }
 
-    public function testWordsReturnsEmptyWhenNoWordsOfLengthExist()
+    public function getWordsFixtures()
     {
-        $length = 3;
+        return [
+            [0, []],
+            [3, [['boy'],['dog'],['pop']]],
+        ];
+    }
 
+    /**
+    * @dataProvider getWordsFixtures
+    */
+    public function testWordsReturnsArrayOfWords($length, $words)
+    {
         // set mock db expectations
         $this->mock_words__statement->expects($this->at(0))
             ->method('bindValue')
@@ -67,13 +76,13 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
 
         $this->mock_words__statement->expects($this->any())
             ->method('fetchAll')
-            ->will($this->returnValue([]));
+            ->will($this->returnValue($words));
 
         $dictionary = new SqlDictionary($this->mock_db_connection);
 
         $result = $dictionary->words($length);
         $this->assertTrue(is_array($result), "Expected SqlDictionary::words() to return an array");
-        $this->assertSame(0, count($result));
+        $this->assertSame(count($words), count($result));
     }
     
     protected function givenAMockQueryStatement()
