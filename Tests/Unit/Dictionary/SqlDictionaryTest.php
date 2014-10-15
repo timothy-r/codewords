@@ -8,7 +8,9 @@ use Codewords\Dictionary\SqlDictionary;
 class SqlDictionaryTest extends PHPUnit_Framework_TestCase
 {
 
-    protected $mock_query__statement;
+    protected $mock_query_statement;
+    protected $mock_words_statement;
+    protected $mock_longest_statement;
 
     protected $mock_db_connection;
     
@@ -17,6 +19,7 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
         parent::setUp();
         $this->givenAMockQueryStatement();
         $this->givenAMockWordsStatement();
+        $this->givenAMockLongestStatement();
         $this->givenAMockDbConnection();
     }
 
@@ -26,19 +29,19 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
         $length = 3;
 
         // set mock db expectations
-        $this->mock_query__statement->expects($this->at(0))
+        $this->mock_query_statement->expects($this->at(0))
             ->method('bindValue')
             ->with('pattern', $pattern);
 
-        $this->mock_query__statement->expects($this->at(1))
+        $this->mock_query_statement->expects($this->at(1))
             ->method('bindValue')
             ->with('length', $length);
 
-        $this->mock_query__statement->expects($this->any())
+        $this->mock_query_statement->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(0));
 
-        $this->mock_query__statement->expects($this->any())
+        $this->mock_query_statement->expects($this->any())
             ->method('fetchAll')
             ->will($this->returnValue([['cat'],['mat']]));
 
@@ -66,15 +69,15 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
     public function testWordsReturnsArrayOfWords($length, $words)
     {
         // set mock db expectations
-        $this->mock_words__statement->expects($this->at(0))
+        $this->mock_words_statement->expects($this->at(0))
             ->method('bindValue')
             ->with('length', $length);
 
-        $this->mock_words__statement->expects($this->any())
+        $this->mock_words_statement->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(0));
 
-        $this->mock_words__statement->expects($this->any())
+        $this->mock_words_statement->expects($this->any())
             ->method('fetchAll')
             ->will($this->returnValue($words));
 
@@ -85,17 +88,40 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
         $this->assertSame(count($words), count($result));
     }
     
+    public function testLongestWordReturnsZeroWhenDictionayIsEmpty()
+    {
+        $this->mock_words_statement->expects($this->any())
+            ->method('execute')
+            ->will($this->returnValue(0));
+
+        $this->mock_words_statement->expects($this->any())
+            ->method('fetchAll')
+            ->will($this->returnValue([]));
+
+        $dictionary = new SqlDictionary($this->mock_db_connection);
+
+        $result = $dictionary->longestWord();
+        $this->assertSame(0, $result, "Expected SqlDictionary::longestWord() to return 0");
+    }
+
     protected function givenAMockQueryStatement()
     {
-        $this->mock_query__statement = $this->getMockBuilder('Doctrine\DBAL\Statement')
-            ->setMethods(['bindValue', 'execute', 'fetchAll'])
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->mock_query_statement = $this->getMockStatement();
     }
     
     protected function givenAMockWordsStatement()
     {
-        $this->mock_words__statement = $this->getMockBuilder('Doctrine\DBAL\Statement')
+        $this->mock_words_statement = $this->getMockStatement();
+    }
+    
+    protected function givenAMockLongestStatement()
+    {
+        $this->mock_longest_statement = $this->getMockStatement();
+    }
+    
+    protected function getMockStatement()
+    {
+        return $this->getMockBuilder('Doctrine\DBAL\Statement')
             ->setMethods(['bindValue', 'execute', 'fetchAll'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -110,11 +136,15 @@ class SqlDictionaryTest extends PHPUnit_Framework_TestCase
 
         $this->mock_db_connection->expects($this->at(0))
             ->method('prepare')
-            ->will($this->returnValue($this->mock_query__statement));
+            ->will($this->returnValue($this->mock_query_statement));
 
         $this->mock_db_connection->expects($this->at(1))
             ->method('prepare')
-            ->will($this->returnValue($this->mock_words__statement));
+            ->will($this->returnValue($this->mock_words_statement));
+
+        $this->mock_db_connection->expects($this->at(2))
+            ->method('prepare')
+            ->will($this->returnValue($this->mock_longest_statement));
     }
 }
 

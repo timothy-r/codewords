@@ -18,13 +18,21 @@ class SqlDictionary implements DictionaryInterface
     */
     protected $words_statement;
 
+    /**
+    * @var Doctrine\DBAL\Statement
+    */
+    protected $longest_statement;
+
     public function __construct(Connection $connection)
     {   
-        $sql = 'SELECT word from dictionary WHERE word REGEXP :pattern AND length = :length';
+        $sql = 'SELECT word FROM dictionary WHERE word REGEXP :pattern AND length = :length';
         $this->query_statement = $connection->prepare($sql);
 
-        $sql = 'SELECT word from dictionary WHERE length = :length';
+        $sql = 'SELECT word FROM dictionary WHERE length = :length';
         $this->words_statement = $connection->prepare($sql);
+
+        $sql = 'SELECT max(length) FROM dictionary';
+        $this->longest_statement = $connection->prepare($sql);
     }
 
     /**
