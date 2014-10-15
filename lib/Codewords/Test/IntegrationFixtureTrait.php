@@ -1,6 +1,8 @@
 <?php namespace Codewords\Test;
 
 use Codewords\BoardLoader;
+use Codewords\Board\CsvBoardReader;
+use Codewords\Board\BoardFactory;
 use Codewords\Dictionary\FileDictionary;
 use Codewords\Dictionary\SortedDictionary;
 use Codewords\Stats\StatsRepository;
@@ -22,6 +24,10 @@ trait IntegrationFixtureTrait
     * @var Codewords\Stats\StatsRepository
     */
     protected $stats_repository;
+    
+    protected $board_reader;
+
+    protected $board_factory;
 
     protected function givenAFileDictionary()
     {
@@ -38,7 +44,7 @@ trait IntegrationFixtureTrait
 
     protected function givenABoard($data)
     {
-        $loader = new BoardLoader();
+        $loader = new BoardLoader($this->board_reader, $this->board_factory);
         $this->board = $loader->load($this->getFixture($data));
     }
 
@@ -52,5 +58,15 @@ trait IntegrationFixtureTrait
         return [
             ['data-1.csv', 'data-1-expectation.html']
         ];
+    }
+
+    protected function givenACsvBoardReader()
+    {
+        $this->board_reader = new CsvBoardReader;
+    }
+
+    protected function givenABoardFactory()
+    {
+        $this->board_factory = new BoardFactory;
     }
 }

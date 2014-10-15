@@ -9,6 +9,17 @@ use Codewords\Board\BoardFactory;
 */
 class BoardLoader
 {
+    
+    private $reader;
+
+    private $factory;
+
+    public function __construct(BoardReaderInterface $reader, BoardFactory $factory)
+    {
+        $this->reader = $reader;
+        $this->factory = $factory;
+    }
+
     /**
     * Interpret data
     * choose a reader
@@ -17,9 +28,7 @@ class BoardLoader
     public function load($data)
     {
         // passing the Reader to the Factory means we can switch Reader without affecting Factory
-        $reader = new CsvBoardReader();
-        $reader->read($data);
-        $factory = new BoardFactory();
-        return $factory->create($reader);
+        $this->reader->read($data);
+        return $this->factory->create($this->reader);
     }
 }

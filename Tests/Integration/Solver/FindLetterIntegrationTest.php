@@ -31,6 +31,8 @@ class FindLetterIntegrationTest extends PHPUnit_Framework_TestCase
     public function testSolveReturnsArrayOfPossibleCells($fixture, $letter, $expected, $solved)
     {
         $this->givenASortedDictionary();
+        $this->givenACsvBoardReader();
+        $this->givenABoardFactory();
         $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         

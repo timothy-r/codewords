@@ -17,7 +17,9 @@ class BoardLoaderTest extends PHPUnit_Framework_TestCase
     */
     public function testLoadBoard($data)
     {
-        $loader = new BoardLoader;
+        $this->givenACsvBoardReader();
+        $this->givenABoardFactory();
+        $loader = new BoardLoader($this->board_reader, $this->board_factory);
         $fixture = $this->getFixture($data);
         $board = $loader->load($fixture);
         $this->assertInstanceOf('Codewords\Board\Board', $board);

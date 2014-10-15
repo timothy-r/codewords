@@ -32,6 +32,8 @@ class StrategyBIntegrationTest extends PHPUnit_Framework_TestCase
     public function testSolve($fixture, $soln)
     {
         $this->givenASortedDictionary();
+        $this->givenACsvBoardReader();
+        $this->givenABoardFactory();
         $this->givenABoard($fixture);
         $this->givenAStatsRepository();
         $finder_factory = new FinderFactory($this->stats_repository, $this->dictionary);
