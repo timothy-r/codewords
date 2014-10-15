@@ -69,5 +69,6 @@ class SqlDictionary implements DictionaryInterface
 
     public function longestWord()
     {
+        return 0;
     }
 }
