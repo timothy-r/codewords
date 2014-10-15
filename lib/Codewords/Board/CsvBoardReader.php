@@ -14,7 +14,7 @@ class CsvBoardReader implements BoardReaderInterface
     */
     protected $length;
 
-    public function __construct($data)
+    public function read($data)
     {
         $this->data = [];
         $lines = str_getcsv($data, "\n");
