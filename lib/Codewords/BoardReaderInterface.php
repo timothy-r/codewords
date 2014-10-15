@@ -1,6 +1,6 @@
 <?php namespace Codewords;
 
-interface IBoardReader
+interface BoardReaderInterface
 {
     public function numberAt($x, $y);
 

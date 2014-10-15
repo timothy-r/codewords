@@ -1,13 +1,13 @@
 <?php namespace Codewords\Board;
 
-use Codewords\IBoardReader;
+use Codewords\BoardReaderInterface;
 use Codewords\Error\InvalidBoardLocation;
 use Codewords\Error\InvalidBoardData;
 
 /**
 * Reads from a Csv data source
 */
-class CsvBoardReader implements IBoardReader
+class CsvBoardReader implements BoardReaderInterface
 {
     /**
     * @var integer the side of the square board
