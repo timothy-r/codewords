@@ -1,6 +1,6 @@
 <?php namespace Codewords\Board;
 
-use Codewords\IBoardReader;
+use Codewords\BoardReaderInterface;
 use Codewords\Board\CellCollection;
 use Codewords\Error\InvalidBoardData;
 
@@ -12,7 +12,7 @@ class BoardFactory
     *
     * @return Codewords\Board
     */
-    public function create(IBoardReader $reader)
+    public function create(BoardReaderInterface $reader)
     {
         $length = $reader->length();
         $board = new Board($length);

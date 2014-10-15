@@ -35,8 +35,9 @@ class BoardFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateReturnsABoard($fixture)
     {
         $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
-        
+        $reader = new CsvBoardReader();
+        $reader->read($data);
+
         $factory = new BoardFactory();
         $product = $factory->create($reader);
         $this->assertInstanceOf('Codewords\Board\Board', $product);
@@ -48,8 +49,8 @@ class BoardFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateReturnsABoardWithCorrectFrequencies($fixture, $expectation)
     {
         $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
-
+        $reader = new CsvBoardReader();
+        $reader->read($data);
         
         $factory = new BoardFactory();
         $product = $factory->create($reader);
@@ -68,7 +69,8 @@ class BoardFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateValidatesBoard($fixture)
     {
         $data = $this->getFixture($fixture);
-        $reader = new CsvBoardReader($data);
+        $reader = new CsvBoardReader();
+        $reader->read($data);
         
         $factory = new BoardFactory();
         $product = $factory->create($reader);

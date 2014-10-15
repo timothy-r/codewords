@@ -17,7 +17,8 @@ class BoardLoader
     public function load($data)
     {
         // passing the Reader to the Factory means we can switch Reader without affecting Factory
-        $reader = new CsvBoardReader($data);
+        $reader = new CsvBoardReader();
+        $reader->read($data);
         $factory = new BoardFactory();
         return $factory->create($reader);
     }
