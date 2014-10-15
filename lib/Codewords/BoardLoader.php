@@ -1,7 +1,6 @@
 <?php namespace Codewords;
 
-use Codewords\Board\CsvBoardReader;
-use Codewords\Board\CellCollection;
+use Codewords\BoardReaderInterface;
 use Codewords\Board\BoardFactory;
 
 /**
@@ -22,7 +21,6 @@ class BoardLoader
 
     /**
     * Interpret data
-    * choose a reader
     * return a Board
     */
     public function load($data)
