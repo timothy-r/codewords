@@ -7,17 +7,17 @@
         <!-- should really state where the config dir is explictly -->
         <parameter key="codewords.dict.file">data/dict-3</parameter>
         <parameter key="codewords.dictionary.class">Codewords\Dictionary\SortedDictionary</parameter>
-        <parameter key="codewords.board_reader.class">Codewords\Board\CsvBoardReader</parameter>
+        <parameter key="codewords.reader.class">Codewords\Board\CsvBoardReader</parameter>
         <parameter key="codewords.solver.class">Codewords\Solver\StrategyB</parameter>
         <parameter key="codewords.renderer.class">Codewords\Board\HtmlTableBoardRenderer</parameter>
-        <parameter key="codewords.board_loader.class">Codewords\BoardLoader</parameter>
+        <parameter key="codewords.loader.class">Codewords\BoardLoader</parameter>
     </parameters>
 
     <services>
 
-        <service id="loader" class="%codewords.board_loader.class%">
-            <argument type="service" id="board_reader" />
-            <argument type="service" id="board_factory" />
+        <service id="loader" class="%codewords.loader.class%">
+            <argument type="service" id="reader" />
+            <argument type="service" id="factory" />
         </service>
 
         <service id="dictionary" class="%codewords.dictionary.class%">
@@ -35,9 +35,9 @@
             not sure this is a service - a reader factory would be more flexible 
             as it could produce different IBoardReaders depending on the data to be read
         -->
-        <service id="board_reader" class="%codewords.board_reader.class%"/>
+        <service id="reader" class="%codewords.reader.class%"/>
 
-        <service id="board_factory" class="Codewords\Board\BoardFactory" />
+        <service id="factory" class="Codewords\Board\BoardFactory" />
 
         <service id="strategy" class="%codewords.solver.class%">
             <argument type="service" id="finder_factory" />
