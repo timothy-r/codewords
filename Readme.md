@@ -7,7 +7,7 @@
 * Fill out initial letters - set the character value of a number
 * Scan frequency of numbers in cells
 * Discover possible Q numbers
-* Use freqencies to discover possible vowels, use double chars too
+* Use frequencies to discover possible vowels, use double chars too
 * Consult Dictionary to guess at words
 
 
