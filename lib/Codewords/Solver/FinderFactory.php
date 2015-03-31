@@ -8,7 +8,7 @@ use Codewords\Solver\FollowedByRule;
 use Codewords\Stats\StatsRepository;
 
 /**
-* Supplies IFinder instances for specific Letters
+* Supplies FinderInterface instances for specific Letters
 */
 class FinderFactory
 {

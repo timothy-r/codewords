@@ -3,7 +3,7 @@
 use Codewords\Error\UnknownStatName;
 
 /**
-* Provides access to IGameStats instances
+* Provides access to GameStatsInterface instances
 */
 class StatsRepository
 {
@@ -23,7 +23,7 @@ class StatsRepository
             case 'FollowingLetter':
                 return $this->getStatInstance($name, 'Codewords\Stats\FollowingLetterCount');
         }
-        throw new UnknownStatName("'$name' is not an IGameStats class name");
+        throw new UnknownStatName("'$name' is not an GameStatsInterface class name");
     }
 
     protected function getStatInstance($name, $class)

@@ -2,7 +2,7 @@
 
 use Codewords\Board\Board;
 
-interface IFinder
+interface FinderInterface
 {
     public function solve(Board $board);
 }

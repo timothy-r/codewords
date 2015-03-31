@@ -1,12 +1,12 @@
 <?php namespace Codewords\Stats;
 
-use Codewords\IGameStats;
+use Codewords\GameStatsInterface;
 use Codewords\Board\Board;
 use Codewords\Board\Cell;
 
 /**
 */
-abstract class GameStats implements IGameStats
+abstract class GameStats implements GameStatsInterface
 {
     protected $counts;
     

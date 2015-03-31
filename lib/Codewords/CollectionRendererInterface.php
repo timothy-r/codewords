@@ -2,7 +2,7 @@
 
 use Codewords\Collection;
 
-interface ICollectionRenderer
+interface CollectionRendererInterface
 {
     public function render(Collection $collection);
 }

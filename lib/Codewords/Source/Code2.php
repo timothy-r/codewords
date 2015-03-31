@@ -1,8 +1,8 @@
 <?php namespace Codewords\Source;
 
-use Codewords\ISource;
+use Codewords\SourceInterface;
 
-class Code2 implements ISource
+class Code2 implements SourceInterface
 {
     public function read($data)
     {

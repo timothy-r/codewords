@@ -1,6 +1,6 @@
 <?php namespace Codewords\Solver;
 
-use Codewords\IFinder;
+use Codewords\FinderInterface;
 use Codewords\DictionaryInterface;
 use Codewords\Board\Board;
 use Codewords\Board\Cell;
@@ -8,7 +8,7 @@ use Codewords\Board\Cell;
 /**
 * Finds Cells that may be a specific Letter
 */
-class FindLetter implements IFinder
+class FindLetter implements FinderInterface
 {
     /**
     * @var string
