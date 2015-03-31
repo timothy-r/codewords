@@ -2,7 +2,7 @@
 
 use Codewords\Board\Board;
 
-interface IBoardRenderer
+interface BoardRendererInterface
 {
     public function render(Board $board);
 }

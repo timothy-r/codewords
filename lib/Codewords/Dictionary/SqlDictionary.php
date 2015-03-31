@@ -9,17 +9,17 @@ use Doctrine\DBAL\Connection;
 class SqlDictionary implements DictionaryInterface
 {
     /**
-    * @var Doctrine\DBAL\Statement
+    * @var \Doctrine\DBAL\Statement
     */
     protected $query_statement;
 
     /**
-    * @var Doctrine\DBAL\Statement
+    * @var \Doctrine\DBAL\Statement
     */
     protected $words_statement;
 
     /**
-    * @var Doctrine\DBAL\Statement
+    * @var \Doctrine\DBAL\Statement
     */
     protected $longest_statement;
 

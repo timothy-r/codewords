@@ -1,12 +1,12 @@
 <?php namespace Codewords\Board;
 
-use Codewords\IBoardRenderer;
+use Codewords\BoardRendererInterface;
 use Codewords\Board\Board;
 
 /**
 * Produces a HTML table version of a Board
 */
-class HtmlTableBoardRenderer implements IBoardRenderer
+class HtmlTableBoardRenderer implements BoardRendererInterface
 {
     public function render(Board $board)
     {
