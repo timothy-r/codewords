@@ -10,7 +10,7 @@ class BoardFactory
     * Creates a Board from the data supplied by IBoardReader
     * Validate the Board after creation
     *
-    * @return Ace\Codewords\Board
+    * @return \Ace\Codewords\Board
     */
     public function create(BoardReaderInterface $reader)
     {

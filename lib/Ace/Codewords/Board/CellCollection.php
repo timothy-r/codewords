@@ -10,7 +10,7 @@ use Ace\Codewords\Error\InvalidCellLocation;
 class CellCollection implements \Iterator
 {
     /**
-    * @var Ace\Codewords\Board\Board
+    * @var \Ace\Codewords\Board\Board
     */
     protected $board;
 
@@ -27,8 +27,8 @@ class CellCollection implements \Iterator
     }
 
     /**
-    * @throws Ace\Codewords\InvalidCellNumber
-    * @return Ace\Codewords\Cell
+    * @throws \Ace\Codewords\InvalidCellNumber
+    * @return \Ace\Codewords\Cell
     */
     public function at($number)
     {

@@ -9,7 +9,7 @@ use Ace\Codewords\Error\InvalidCellNumber;
 class Cell
 {
     /**
-    * @var Ace\Codewords\Board\Board
+    * @var \Ace\Codewords\Board\Board
     */
     protected $board;
 
