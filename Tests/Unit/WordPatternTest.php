@@ -1,10 +1,10 @@
 <?php
 
-use Codewords\Board\Cell;
-use Codewords\Board\CellCollection;
-use Codewords\Board\Word;
-use Codewords\Solver\WordPattern;
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\CellCollection;
+use Ace\Codewords\Board\Word;
+use Ace\Codewords\Solver\WordPattern;
+use Ace\Codewords\Test\UnitFixtureTrait;
 /**
 * @group unit
 */

@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Test\IntegrationFixtureTrait;
-use Codewords\Test\FixtureTrait;
-use Codewords\Solver\FinderFactory;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Test\FixtureTrait;
+use Ace\Codewords\Solver\FinderFactory;
 
 /**
 * @group integration
@@ -29,6 +29,6 @@ class FinderFactoryTest extends PHPUnit_Framework_TestCase
         $this->givenAStatsRepository();
         $factory = new FinderFactory($this->stats_repository, $this->dictionary);
         $finder = $factory->create($letter);
-        $this->assertInstanceOf('Codewords\FinderInterface', $finder);
+        $this->assertInstanceOf('Ace\Codewords\FinderInterface', $finder);
     }
 }

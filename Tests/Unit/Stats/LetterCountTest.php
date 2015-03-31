@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Board;
-use Codewords\Stats\LetterCount;
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board;
+use Ace\Codewords\Stats\LetterCount;
+use Ace\Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit

@@ -1,9 +1,9 @@
 <?php
 
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
-use Codewords\Stats\FirstLetterCount;
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Stats\FirstLetterCount;
+use Ace\Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit

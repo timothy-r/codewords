@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Test\UnitFixtureTrait;
-use Codewords\Board\Cell;
-use Codewords\Board\CellCollection;
+use Ace\Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\CellCollection;
 
 /**
 * @group unit
@@ -26,7 +26,7 @@ class CellCollectionTest extends PHPUnit_Framework_TestCase
     {
         $cell_collection = $this->getCellCollection();
         $cell = $cell_collection->at(1);
-        $this->assertInstanceOf('Codewords\Board\Cell', $cell);
+        $this->assertInstanceOf('Ace\Codewords\Board\Cell', $cell);
     }
 
     public function testCallsToGetCellReturnsSameInstance()
@@ -47,7 +47,7 @@ class CellCollectionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-    * @expectedException Codewords\Error\InvalidCellNumber
+    * @expectedException Ace\Codewords\Error\InvalidCellNumber
     * @dataProvider getInvalidCellNumbers
     */
     public function testGetCellRespectsValidCellRange($number)
@@ -159,7 +159,7 @@ class CellCollectionTest extends PHPUnit_Framework_TestCase
     {
         $cell_collection = $this->getCellCollection();
         foreach($cell_collection as $key => $cell){
-            $this->assertInstanceOf('Codewords\Board\Cell', $cell);
+            $this->assertInstanceOf('Ace\Codewords\Board\Cell', $cell);
         }
     }
 }

@@ -1,8 +1,8 @@
-<?php namespace Codewords\Stats;
+<?php namespace Ace\Codewords\Stats;
 
-use Codewords\GameStatsInterface;
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
+use Ace\Codewords\GameStatsInterface;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
 
 /**
 */

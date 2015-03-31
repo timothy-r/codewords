@@ -1,8 +1,8 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\BoardReaderInterface;
-use Codewords\Error\InvalidBoardLocation;
-use Codewords\Error\InvalidBoardData;
+use Ace\Codewords\BoardReaderInterface;
+use Ace\Codewords\Error\InvalidBoardLocation;
+use Ace\Codewords\Error\InvalidBoardData;
 
 /**
 * Reads from a Csv data source

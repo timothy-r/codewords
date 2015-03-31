@@ -1,7 +1,7 @@
-<?php namespace Codewords\Stats;
+<?php namespace Ace\Codewords\Stats;
 
-use Codewords\Stats\GameStats;
-use Codewords\Board\Cell;
+use Ace\Codewords\Stats\GameStats;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Generates count of when Letters are the last letter in a Word

@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
 interface SourceInterface
 {

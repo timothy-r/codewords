@@ -1,6 +1,6 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\Solver\WordPattern;
+use Ace\Codewords\Solver\WordPattern;
 
 interface WordRepositoryInterface
 {

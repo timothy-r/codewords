@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Dictionary\FileDictionary;
+use Ace\Codewords\Dictionary\FileDictionary;
 
 require_once (__DIR__.'/../vendor/autoload.php');
 

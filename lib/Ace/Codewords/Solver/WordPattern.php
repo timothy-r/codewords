@@ -1,8 +1,8 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\Board\Cell;
-use Codewords\Board\CellCollection;
-use Codewords\Board\Word;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\CellCollection;
+use Ace\Codewords\Board\Word;
 
 /**
 * Creates reg exp patterns for a Word containing a Cell with a specific letter

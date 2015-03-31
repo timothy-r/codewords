@@ -1,8 +1,8 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
-use Codewords\Error\InvalidCellLocation;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Error\InvalidCellLocation;
 
 /**
 * Produces and contains the Games Cells
@@ -10,7 +10,7 @@ use Codewords\Error\InvalidCellLocation;
 class CellCollection implements \Iterator
 {
     /**
-    * @var Codewords\Board\Board
+    * @var Ace\Codewords\Board\Board
     */
     protected $board;
 
@@ -27,8 +27,8 @@ class CellCollection implements \Iterator
     }
 
     /**
-    * @throws Codewords\InvalidCellNumber
-    * @return Codewords\Cell
+    * @throws Ace\Codewords\InvalidCellNumber
+    * @return Ace\Codewords\Cell
     */
     public function at($number)
     {

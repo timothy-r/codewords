@@ -1,6 +1,6 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\Collection;
+use Ace\Codewords\Collection;
 
 interface CollectionRendererInterface
 {

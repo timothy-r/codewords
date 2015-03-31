@@ -1,10 +1,10 @@
 <?php
 
-use Codewords\Test\IntegrationFixtureTrait;
-use Codewords\Test\FixtureTrait;
-use Codewords\Test\AssertionTrait;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Test\FixtureTrait;
+use Ace\Codewords\Test\AssertionTrait;
 
-use Codewords\Solver\FinderFactory;
+use Ace\Codewords\Solver\FinderFactory;
 
 class FindLetterIntegrationTest extends PHPUnit_Framework_TestCase
 {

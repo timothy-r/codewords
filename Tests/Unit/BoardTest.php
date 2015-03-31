@@ -1,9 +1,9 @@
 <?php
 
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
-use Codewords\Board\Word;
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\Word;
+use Ace\Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit
@@ -62,7 +62,7 @@ class BoardTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidCellLocations
-    * @expectedException Codewords\Error\InvalidCellLocation
+    * @expectedException Ace\Codewords\Error\InvalidCellLocation
     */
     public function testMustAddCellAtValidLocation($x, $y)
     {
@@ -73,7 +73,7 @@ class BoardTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidCellLocations
-    * @expectedException Codewords\Error\InvalidCellLocation
+    * @expectedException Ace\Codewords\Error\InvalidCellLocation
     */
     public function testMustGetCellAtValidLocation($x, $y)
     {
@@ -82,7 +82,7 @@ class BoardTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-    * @expectedException Codewords\Error\IllegalOperation
+    * @expectedException Ace\Codewords\Error\IllegalOperation
     */
     public function testCannotOverwriteACell()
     {

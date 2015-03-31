@@ -1,7 +1,7 @@
 <?php
 
-use Codewords\Source\Code2;
-use Codewords\Test\FixtureTrait;
+use Ace\Codewords\Source\Code2;
+use Ace\Codewords\Test\FixtureTrait;
 
 class Code2Test extends PHPUnit_Framework_TestCase
 {

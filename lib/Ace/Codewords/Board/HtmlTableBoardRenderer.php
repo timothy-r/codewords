@@ -1,7 +1,7 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\BoardRendererInterface;
-use Codewords\Board\Board;
+use Ace\Codewords\BoardRendererInterface;
+use Ace\Codewords\Board\Board;
 
 /**
 * Produces a HTML table version of a Board

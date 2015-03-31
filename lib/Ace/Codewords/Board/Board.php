@@ -1,10 +1,10 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\Board\Cell;
-use Codewords\Board\Word;
-use Codewords\Board\CellCollection;
-use Codewords\Error\IllegalOperation;
-use Codewords\Error\InvalidCellLocation;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\Word;
+use Ace\Codewords\Board\CellCollection;
+use Ace\Codewords\Error\IllegalOperation;
+use Ace\Codewords\Error\InvalidCellLocation;
 
 /**
 * Represents the grid of Cells

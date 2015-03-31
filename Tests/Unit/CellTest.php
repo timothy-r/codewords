@@ -1,8 +1,8 @@
 <?php
 
 
-use Codewords\Test\UnitFixtureTrait;
-use Codewords\Board\Cell;
+use Ace\Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Cell;
 
 /**
 * @group unit
@@ -70,7 +70,7 @@ class CellTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidCellNumbers
-    * @expectedException Codewords\Error\InvalidCellNumber
+    * @expectedException Ace\Codewords\Error\InvalidCellNumber
     */
     public function testCellsValidateNumberRange($number)
     {
@@ -118,6 +118,6 @@ class CellTest extends PHPUnit_Framework_TestCase
     {
         $cell = $this->getCell(1);
         $board = $cell->getBoard();
-        $this->assertInstanceOf('Codewords\Board\Board', $board);
+        $this->assertInstanceOf('Ace\Codewords\Board\Board', $board);
     }
 }

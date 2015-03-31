@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\BoardReaderInterface;
-use Codewords\Board\BoardFactory;
+use Ace\Codewords\BoardReaderInterface;
+use Ace\Codewords\Board\BoardFactory;
 
 /**
 * Loads a Board from data

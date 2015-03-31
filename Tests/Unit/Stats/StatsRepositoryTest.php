@@ -1,7 +1,7 @@
 <?php
 
-use Codewords\Stats\StatsRepository;
-use Codewords\Error\UnknownStatName;
+use Ace\Codewords\Stats\StatsRepository;
+use Ace\Codewords\Error\UnknownStatName;
 
 /**
 * @group unit
@@ -26,7 +26,7 @@ class StatsRepositoryTest extends PHPUnit_Framework_TestCase
     {
         $repo = new StatsRepository;
         $stat = $repo->getStat($name);
-        $this->assertInstanceOf('Codewords\GameStatsInterface', $stat);
+        $this->assertInstanceOf('Ace\Codewords\GameStatsInterface', $stat);
     }
 
     public function getInvalidStatNames()
@@ -39,7 +39,7 @@ class StatsRepositoryTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidStatNames
-    * @expectedException Codewords\Error\UnknownStatName
+    * @expectedException Ace\Codewords\Error\UnknownStatName
     */
     public function testGetInvalidStatThrowsException($name)
     {

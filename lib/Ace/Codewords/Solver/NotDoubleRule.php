@@ -1,9 +1,9 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\Board\Board;
-use Codewords\Stats\StatsRepository;
-use Codewords\RuleInterface;
-use Codewords\Board\Cell;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Stats\StatsRepository;
+use Ace\Codewords\RuleInterface;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Tests if a Cell appears as a double letter in any Word

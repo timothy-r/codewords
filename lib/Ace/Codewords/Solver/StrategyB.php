@@ -1,10 +1,10 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\StrategyInterface;
-use Codewords\Board\Cell;
-use Codewords\Board\Board;
-use Codewords\Solver\FinderFactory;
-use Codewords\Board\HtmlTableBoardRenderer;
+use Ace\Codewords\StrategyInterface;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Solver\FinderFactory;
+use Ace\Codewords\Board\HtmlTableBoardRenderer;
 
 use Ace\Timer\Clock;
 

@@ -1,9 +1,9 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\FinderInterface;
-use Codewords\DictionaryInterface;
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
+use Ace\Codewords\FinderInterface;
+use Ace\Codewords\DictionaryInterface;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Finds Cells that may be a specific Letter

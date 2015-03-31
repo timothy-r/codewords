@@ -1,6 +1,6 @@
-<?php namespace Codewords\Source;
+<?php namespace Ace\Codewords\Source;
 
-use Codewords\SourceInterface;
+use Ace\Codewords\SourceInterface;
 
 class Code2 implements SourceInterface
 {

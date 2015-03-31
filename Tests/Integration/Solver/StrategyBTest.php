@@ -1,12 +1,12 @@
 <?php
 
-use Codewords\Test\IntegrationFixtureTrait;
-use Codewords\Test\FixtureTrait;
-use Codewords\Test\AssertionTrait;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Test\FixtureTrait;
+use Ace\Codewords\Test\AssertionTrait;
 
-use Codewords\Solver\StrategyB;
-use Codewords\Board\Cell;
-use Codewords\Solver\FinderFactory;
+use Ace\Codewords\Solver\StrategyB;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Solver\FinderFactory;
 
 /**
 * @group slow

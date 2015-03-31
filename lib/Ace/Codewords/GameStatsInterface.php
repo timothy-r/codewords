@@ -1,7 +1,7 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
 
 /**
 * interface to classes that generate Game statistics

@@ -1,4 +1,4 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
 /**
 * Dictionary interface provides access to query a dictionary using a pattern

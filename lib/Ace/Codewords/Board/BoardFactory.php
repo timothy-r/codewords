@@ -1,8 +1,8 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\BoardReaderInterface;
-use Codewords\Board\CellCollection;
-use Codewords\Error\InvalidBoardData;
+use Ace\Codewords\BoardReaderInterface;
+use Ace\Codewords\Board\CellCollection;
+use Ace\Codewords\Error\InvalidBoardData;
 
 class BoardFactory
 {
@@ -10,7 +10,7 @@ class BoardFactory
     * Creates a Board from the data supplied by IBoardReader
     * Validate the Board after creation
     *
-    * @return Codewords\Board
+    * @return Ace\Codewords\Board
     */
     public function create(BoardReaderInterface $reader)
     {

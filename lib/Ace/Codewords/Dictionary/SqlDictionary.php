@@ -1,6 +1,6 @@
-<?php namespace Codewords\Dictionary;
+<?php namespace Ace\Codewords\Dictionary;
 
-use Codewords\DictionaryInterface;
+use Ace\Codewords\DictionaryInterface;
 use Doctrine\DBAL\Connection;
 
 /**

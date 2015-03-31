@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Dictionary\FileDictionary;
+use Ace\Codewords\Dictionary\FileDictionary;
 
 /**
 * @group integration

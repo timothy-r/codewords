@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit
@@ -16,12 +16,12 @@ abstract class RuleTest extends PHPUnit_Framework_TestCase
         parent::setUp();
         $this->givenABoard();
         $this->givenAStatsRepository();
-        $this->cell = $this->getMock('Codewords\Board\Cell', [], [$this->board, 1]);
+        $this->cell = $this->getMock('Ace\Codewords\Board\Cell', [], [$this->board, 1]);
     }
 
     protected function givenAStatObject($result)
     {
-        $stat = $this->getMock('Codewords\GameStatsInterface', ['generate', 'generateForCell']);
+        $stat = $this->getMock('Ace\Codewords\GameStatsInterface', ['generate', 'generateForCell']);
         $stat->expects($this->any())
             ->method('generateForCell')
             ->will($this->returnValue($result));

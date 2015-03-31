@@ -1,7 +1,7 @@
-<?php namespace Codewords\Dictionary;
+<?php namespace Ace\Codewords\Dictionary;
 
-use Codewords\DictionaryInterface;
-use Codewords\Dictionary\Dictionary;
+use Ace\Codewords\DictionaryInterface;
+use Ace\Codewords\Dictionary\Dictionary;
 
 /**
 * implements DictionaryInterface using a data from a unix dictionary format file

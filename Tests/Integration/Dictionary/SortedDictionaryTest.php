@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Dictionary\SortedDictionary;
+use Ace\Codewords\Dictionary\SortedDictionary;
 
 /**
 * @group integration

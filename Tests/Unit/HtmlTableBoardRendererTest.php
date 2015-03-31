@@ -1,7 +1,7 @@
 <?php
 
 
-use Codewords\Board\HtmlTableBoardRenderer;
+use Ace\Codewords\Board\HtmlTableBoardRenderer;
 
 /**
 * @group unit
@@ -37,7 +37,7 @@ class HtmlTableBoardRendererTest extends PHPUnit_Framework_TestCase
     */
     public function testRenderAsHtml($length, $number, $character, $expected)
     {
-        $cell = $this->getMock('Codewords\Board\Cell', ['getNumber', 'getCharacter', 'isNull'], [], '', false);
+        $cell = $this->getMock('Ace\Codewords\Board\Cell', ['getNumber', 'getCharacter', 'isNull'], [], '', false);
         $cell->expects($this->any())
             ->method('getNumber')
             ->will($this->returnValue($number));
@@ -48,7 +48,7 @@ class HtmlTableBoardRendererTest extends PHPUnit_Framework_TestCase
             ->method('isNull')
             ->will($this->returnValue($number == 0));
 
-        $board = $this->getMock('Codewords\Board\Board', ['getLength', 'getCell'], [], '', false);
+        $board = $this->getMock('Ace\Codewords\Board\Board', ['getLength', 'getCell'], [], '', false);
         $board->expects($this->any())
             ->method('getLength')
             ->will($this->returnValue($length));

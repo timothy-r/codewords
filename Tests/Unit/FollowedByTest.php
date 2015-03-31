@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/RuleTest.php');
 
-use Codewords\Solver\FollowedByRule;
+use Ace\Codewords\Solver\FollowedByRule;
 
 /**
 * @group unit

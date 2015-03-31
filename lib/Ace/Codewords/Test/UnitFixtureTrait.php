@@ -1,9 +1,9 @@
-<?php namespace Codewords\Test;
+<?php namespace Ace\Codewords\Test;
 
-use Codewords\Board\Board;
-use Codewords\Board\Cell;
-use Codewords\Board\CellCollection;
-use Codewords\Board\Word;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\Cell;
+use Ace\Codewords\Board\CellCollection;
+use Ace\Codewords\Board\Word;
 
 trait UnitFixtureTrait
 {
@@ -27,22 +27,22 @@ trait UnitFixtureTrait
 
     protected function givenAStatsRepository()
     {
-        $this->stats_repository = $this->getMock('Codewords\Stats\StatsRepository', ['getStat']);
+        $this->stats_repository = $this->getMock('Ace\Codewords\Stats\StatsRepository', ['getStat']);
     }
 
     protected function givenAMockBoard()
     {
-        $this->board = $this->getMock('Codewords\Board\Board', ['getWordsContainingCell', 'getCells'], [], '', false);
+        $this->board = $this->getMock('Ace\Codewords\Board\Board', ['getWordsContainingCell', 'getCells'], [], '', false);
     }
 
     protected function getMockWord()
     {
-        return $this->getMockBuilder('Codewords\Board\Word')->disableOriginalConstructor()->getMock();
+        return $this->getMockBuilder('Ace\Codewords\Board\Word')->disableOriginalConstructor()->getMock();
     }
 
     protected function givenAMockDictionary()
     {
-        $this->dictionary =  $this->getMockBuilder('Codewords\DictionaryInterface')->disableOriginalConstructor()->getMock();
+        $this->dictionary =  $this->getMockBuilder('Ace\Codewords\DictionaryInterface')->disableOriginalConstructor()->getMock();
     }
 
     protected function givenABoard()

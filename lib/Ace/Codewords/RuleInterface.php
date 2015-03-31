@@ -1,6 +1,6 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\Board\Cell;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Tests if a Cell passes a Rule

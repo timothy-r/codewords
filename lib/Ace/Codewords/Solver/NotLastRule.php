@@ -1,8 +1,8 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\Stats\StatsRepository;
-use Codewords\RuleInterface;
-use Codewords\Board\Cell;
+use Ace\Codewords\Stats\StatsRepository;
+use Ace\Codewords\RuleInterface;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Tests if a Cell appears as the last letter in any Word

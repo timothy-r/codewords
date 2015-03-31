@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Board\CsvBoardReader;
+use Ace\Codewords\Board\CsvBoardReader;
 
 /**
 * @group unit
@@ -47,7 +47,7 @@ class CsvBoardReaderTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidInput
-    * @expectedException Codewords\Error\InvalidBoardLocation
+    * @expectedException Ace\Codewords\Error\InvalidBoardLocation
     */
     public function testNumberAtValidatesInput($x, $y)
     {
@@ -92,7 +92,7 @@ class CsvBoardReaderTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidBoardData
-    * @expectedException Codewords\Error\InvalidBoardData
+    * @expectedException Ace\Codewords\Error\InvalidBoardData
     */
     public function testCsvBoardReaderValidatesData($invalid_data)
     {

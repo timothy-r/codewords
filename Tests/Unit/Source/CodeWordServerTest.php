@@ -1,7 +1,7 @@
 <?php
 
-use Codewords\Source\CodeWordServer;
-use Codewords\Test\FixtureTrait;
+use Ace\Codewords\Source\CodeWordServer;
+use Ace\Codewords\Test\FixtureTrait;
 
 class CodeWordServerTest extends PHPUnit_Framework_TestCase
 {

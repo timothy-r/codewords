@@ -1,11 +1,11 @@
-<?php namespace Codewords\Solver;
+<?php namespace Ace\Codewords\Solver;
 
-use Codewords\DictionaryInterface;
-use Codewords\Solver\FindLetter;
-use Codewords\Solver\NotDoubleRule;
-use Codewords\Solver\NotLastRule;
-use Codewords\Solver\FollowedByRule;
-use Codewords\Stats\StatsRepository;
+use Ace\Codewords\DictionaryInterface;
+use Ace\Codewords\Solver\FindLetter;
+use Ace\Codewords\Solver\NotDoubleRule;
+use Ace\Codewords\Solver\NotLastRule;
+use Ace\Codewords\Solver\FollowedByRule;
+use Ace\Codewords\Stats\StatsRepository;
 
 /**
 * Supplies FinderInterface instances for specific Letters

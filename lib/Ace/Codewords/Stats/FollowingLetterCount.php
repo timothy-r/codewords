@@ -1,7 +1,7 @@
-<?php namespace Codewords\Stats;
+<?php namespace Ace\Codewords\Stats;
 
-use Codewords\Stats\GameStats;
-use Codewords\Board\Cell;
+use Ace\Codewords\Stats\GameStats;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Generates stats on the Letters that follow each Letter in a Board

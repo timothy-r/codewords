@@ -1,7 +1,7 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\Board\Board;
-use Codewords\Error\InvalidCellNumber;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Error\InvalidCellNumber;
 
 /**
 * Maps number to a character
@@ -9,7 +9,7 @@ use Codewords\Error\InvalidCellNumber;
 class Cell
 {
     /**
-    * @var Codewords\Board\Board
+    * @var Ace\Codewords\Board\Board
     */
     protected $board;
 

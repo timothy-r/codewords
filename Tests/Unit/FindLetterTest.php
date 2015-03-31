@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Solver\FindLetter;
-use Codewords\Test\UnitFixtureTrait;
-use Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Solver\FindLetter;
+use Ace\Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
 
 /**
 * @group integration
@@ -91,7 +91,7 @@ class FindLetterTest extends PHPUnit_Framework_TestCase
 
     protected function getMockRule($passes)
     {
-        $rule = $this->getMock('Codewords\IRule', ['passes']);
+        $rule = $this->getMock('Ace\Codewords\IRule', ['passes']);
         $rule->expects($this->any())
             ->method('passes')
             ->will($this->returnValue($passes));

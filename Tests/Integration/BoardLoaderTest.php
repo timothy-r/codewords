@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Test\IntegrationFixtureTrait;
-use Codewords\Test\FixtureTrait;
-use Codewords\BoardLoader;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Test\FixtureTrait;
+use Ace\Codewords\BoardLoader;
 
 /**
 * @group integration
@@ -22,6 +22,6 @@ class BoardLoaderTest extends PHPUnit_Framework_TestCase
         $loader = new BoardLoader($this->board_reader, $this->board_factory);
         $fixture = $this->getFixture($data);
         $board = $loader->load($fixture);
-        $this->assertInstanceOf('Codewords\Board\Board', $board);
+        $this->assertInstanceOf('Ace\Codewords\Board\Board', $board);
     }
 }

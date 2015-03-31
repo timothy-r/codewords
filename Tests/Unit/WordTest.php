@@ -1,8 +1,8 @@
 <?php
 
-use Codewords\Test\UnitFixtureTrait;
-use Codewords\Board\Word;
-use Codewords\Board\Cell;
+use Ace\Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Board\Word;
+use Ace\Codewords\Board\Cell;
 
 /**
 * @group unit

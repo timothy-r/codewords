@@ -1,6 +1,6 @@
-<?php namespace Codewords\Stats;
+<?php namespace Ace\Codewords\Stats;
 
-use Codewords\Error\UnknownStatName;
+use Ace\Codewords\Error\UnknownStatName;
 
 /**
 * Provides access to GameStatsInterface instances
@@ -13,15 +13,15 @@ class StatsRepository
     {
         switch ($name){
             case 'FirstLetter':
-                return $this->getStatInstance($name, 'Codewords\Stats\FirstLetterCount');
+                return $this->getStatInstance($name, 'Ace\Codewords\Stats\FirstLetterCount');
             case 'DoubleLetter':
-                return $this->getStatInstance($name, 'Codewords\Stats\DoubleLetterCount');
+                return $this->getStatInstance($name, 'Ace\Codewords\Stats\DoubleLetterCount');
             case 'LastLetter':
-                return $this->getStatInstance($name, 'Codewords\Stats\LastLetterCount');
+                return $this->getStatInstance($name, 'Ace\Codewords\Stats\LastLetterCount');
             case 'Letter':
-                return $this->getStatInstance($name, 'Codewords\Stats\LetterCount');
+                return $this->getStatInstance($name, 'Ace\Codewords\Stats\LetterCount');
             case 'FollowingLetter':
-                return $this->getStatInstance($name, 'Codewords\Stats\FollowingLetterCount');
+                return $this->getStatInstance($name, 'Ace\Codewords\Stats\FollowingLetterCount');
         }
         throw new UnknownStatName("'$name' is not an GameStatsInterface class name");
     }

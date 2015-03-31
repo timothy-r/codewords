@@ -1,10 +1,10 @@
 <?php
 
-use Codewords\Test\IntegrationFixtureTrait;
-use Codewords\Test\FixtureTrait;
-use Codewords\Board\Board;
-use Codewords\Board\BoardFactory;
-use Codewords\Board\CsvBoardReader;
+use Ace\Codewords\Test\IntegrationFixtureTrait;
+use Ace\Codewords\Test\FixtureTrait;
+use Ace\Codewords\Board\Board;
+use Ace\Codewords\Board\BoardFactory;
+use Ace\Codewords\Board\CsvBoardReader;
 
 /**
 * @group integration
@@ -40,7 +40,7 @@ class BoardFactoryTest extends PHPUnit_Framework_TestCase
 
         $factory = new BoardFactory();
         $product = $factory->create($reader);
-        $this->assertInstanceOf('Codewords\Board\Board', $product);
+        $this->assertInstanceOf('Ace\Codewords\Board\Board', $product);
     }
 
     /**
@@ -64,7 +64,7 @@ class BoardFactoryTest extends PHPUnit_Framework_TestCase
 
     /**
     * @dataProvider getInvalidBoardData
-    * @expectedException Codewords\Error\InvalidBoardData
+    * @expectedException Ace\Codewords\Error\InvalidBoardData
     */
     public function testCreateValidatesBoard($fixture)
     {

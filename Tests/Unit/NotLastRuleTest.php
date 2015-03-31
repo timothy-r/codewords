@@ -1,8 +1,8 @@
 <?php
 require_once(__DIR__ . '/RuleTest.php');
 
-use Codewords\Solver\NotLastRule;
-use Codewords\Test\UnitFixtureTrait;
+use Ace\Codewords\Solver\NotLastRule;
+use Ace\Codewords\Test\UnitFixtureTrait;
 
 /**
 * @group unit

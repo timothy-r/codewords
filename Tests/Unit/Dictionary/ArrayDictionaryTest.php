@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Dictionary\ArrayDictionary;
+use Ace\Codewords\Dictionary\ArrayDictionary;
 
 /**
 * @group unit

@@ -1,6 +1,6 @@
 <?php
 
-use Codewords\Dictionary\SqlDictionary;
+use Ace\Codewords\Dictionary\SqlDictionary;
 
 /**
 * @group unit

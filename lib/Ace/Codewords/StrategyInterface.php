@@ -1,6 +1,6 @@
-<?php namespace Codewords;
+<?php namespace Ace\Codewords;
 
-use Codewords\Board\Board;
+use Ace\Codewords\Board\Board;
 
 interface StrategyInterface
 {

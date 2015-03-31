@@ -1,27 +1,27 @@
-<?php namespace Codewords\Test;
+<?php namespace Ace\Codewords\Test;
 
-use Codewords\BoardLoader;
-use Codewords\Board\CsvBoardReader;
-use Codewords\Board\BoardFactory;
-use Codewords\Dictionary\FileDictionary;
-use Codewords\Dictionary\SortedDictionary;
-use Codewords\Stats\StatsRepository;
+use Ace\Codewords\BoardLoader;
+use Ace\Codewords\Board\CsvBoardReader;
+use Ace\Codewords\Board\BoardFactory;
+use Ace\Codewords\Dictionary\FileDictionary;
+use Ace\Codewords\Dictionary\SortedDictionary;
+use Ace\Codewords\Stats\StatsRepository;
 use Exception;
 
 trait IntegrationFixtureTrait
 {
     /**
-    * @var Codewords\DictionaryInterface
+    * @var Ace\Codewords\DictionaryInterface
     */
     protected $dictionary;
     
     /**
-    * @var Codewords\Board\Board
+    * @var Ace\Codewords\Board\Board
     */
     protected $board;
 
     /**
-    * @var Codewords\Stats\StatsRepository
+    * @var Ace\Codewords\Stats\StatsRepository
     */
     protected $stats_repository;
     
@@ -31,14 +31,14 @@ trait IntegrationFixtureTrait
 
     protected function givenAFileDictionary()
     {
-        $file = __DIR__ . '/../../../data/words';
+        $file = __DIR__ . '/../../../../data/words';
         //$words = file(__DIR__.'/../../data/words');
         $this->dictionary = new FileDictionary($file);
     }
     
     protected function givenASortedDictionary()
     {
-        $file = __DIR__ . '/../../../data/dict-3';
+        $file = __DIR__ . '/../../../../data/dict-3';
         $this->dictionary = new SortedDictionary($file);
     }
 

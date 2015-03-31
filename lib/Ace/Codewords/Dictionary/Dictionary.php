@@ -1,4 +1,4 @@
-<?php namespace Codewords\Dictionary;
+<?php namespace Ace\Codewords\Dictionary;
 
 /**
 * @todo trim words once on loading not for each invocation of lookup and words

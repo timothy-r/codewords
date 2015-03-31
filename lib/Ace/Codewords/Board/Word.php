@@ -1,6 +1,6 @@
-<?php namespace Codewords\Board;
+<?php namespace Ace\Codewords\Board;
 
-use Codewords\Board\Cell;
+use Ace\Codewords\Board\Cell;
 
 /**
 * Represents a Word, set of Cells
