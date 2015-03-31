@@ -7,20 +7,18 @@
 * Fill out initial letters - set the character value of a number
 * Scan frequency of numbers in cells
 * Discover possible Q numbers
-* Use freqencies to discover possible vowels, use double chars too
+* Use frequencies to discover possible vowels, use double chars too
 * Consult Dictionary to guess at words
 
 
 # Classes:
 
-Board contains a grid of Cells
-Cell has a number and can have its character set via the mapping of numbers to characters
+* Board contains a grid of Cells
+* Cell has a number and can have its character set via the mapping of numbers to characters
 * Use 26 Cells and store references to them in the Board
-Character to Number mapping?
-DataReader - string / file to Board
-
-Game to contain parts of the puzzle
-
-Dictionary - allows lookups based on reg exp patterns
+* Character to Number mapping?
+* DataReader - string / file to Board
+* Game to contain parts of the puzzle - removed
+* Dictionary - allows lookups based on reg exp patterns
 
 A Player that interacts with the Board/Game/Dictionary objects
