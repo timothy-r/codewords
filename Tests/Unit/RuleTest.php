@@ -21,7 +21,7 @@ abstract class RuleTest extends PHPUnit_Framework_TestCase
 
     protected function givenAStatObject($result)
     {
-        $stat = $this->getMock('Codewords\IGameStats', ['generate', 'generateForCell']);
+        $stat = $this->getMock('Codewords\GameStatsInterface', ['generate', 'generateForCell']);
         $stat->expects($this->any())
             ->method('generateForCell')
             ->will($this->returnValue($result));

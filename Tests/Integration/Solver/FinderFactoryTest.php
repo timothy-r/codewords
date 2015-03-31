@@ -29,6 +29,6 @@ class FinderFactoryTest extends PHPUnit_Framework_TestCase
         $this->givenAStatsRepository();
         $factory = new FinderFactory($this->stats_repository, $this->dictionary);
         $finder = $factory->create($letter);
-        $this->assertInstanceOf('Codewords\IFinder', $finder);
+        $this->assertInstanceOf('Codewords\FinderInterface', $finder);
     }
 }

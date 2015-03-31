@@ -26,7 +26,7 @@ class StatsRepositoryTest extends PHPUnit_Framework_TestCase
     {
         $repo = new StatsRepository;
         $stat = $repo->getStat($name);
-        $this->assertInstanceOf('Codewords\IGameStats', $stat);
+        $this->assertInstanceOf('Codewords\GameStatsInterface', $stat);
     }
 
     public function getInvalidStatNames()
@@ -44,6 +44,6 @@ class StatsRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetInvalidStatThrowsException($name)
     {
         $repo = new StatsRepository;
-        $stat = $repo->getStat($name);
+        $repo->getStat($name);
     }
 }
